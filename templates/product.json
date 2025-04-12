@@ -115,16 +115,25 @@
     "174446616330f0c165": {
       "type": "apps",
       "blocks": {
+        "kiwi_size_chart_recommender_kiwi_sizing_4yKwh3": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "olivia-luxe-dames-winterjas",
+            "waitForElementSelector": "",
+            "waitForElementDelay": 5
+          }
+        },
         "kiwi_size_chart_recommender_kiwi_sizing_4Q8CkN": {
           "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
           "settings": {
-            "product": "zara™-trendy-oversized-wollen-jas",
-            "waitForElementSelector": "{{ block.settings.product.metafields.shopify.size | metafield_text: field: 'label' }}",
+            "product": "olivia-luxe-dames-winterjas",
+            "waitForElementSelector": "",
             "waitForElementDelay": 5
           }
         }
       },
       "block_order": [
+        "kiwi_size_chart_recommender_kiwi_sizing_4yKwh3",
         "kiwi_size_chart_recommender_kiwi_sizing_4Q8CkN"
       ],
       "settings": {
