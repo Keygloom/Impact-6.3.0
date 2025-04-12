@@ -31,7 +31,7 @@
         "liquid_NL63im": {
           "type": "liquid",
           "settings": {
-            "liquid": ""
+            "liquid": "<ul style=\"list-style: none; padding: 0; margin: 0;\">\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'secure-payment-icon.png' | asset_url }}\" alt=\"Betaal veilig\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span><strong>Betaal veilig</strong> met elke bank</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'postnl-icon.png' | asset_url }}\" alt=\"Gratis verzending\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span>Altijd <strong>Gratis</strong> verzending</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'return-icon.png' | asset_url }}\" alt=\"Retour garantie\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span>30 dagen <strong>Retour garantie</strong></span>\n  </li>\n  <li style=\"display: flex; align-items: center;\">\n    <span style=\"font-size: 18px; color: red; margin-right: 8px;\">●</span>\n    {% if product.available and product.inventory_quantity > 0 %}\n      <span>Nog {{ product.inventory_quantity }} stuks op voorraad</span>\n    {% else %}\n      <span>Niet op voorraad</span>\n    {% endif %}\n  </li>\n</ul>"
           }
         },
         "rating": {
