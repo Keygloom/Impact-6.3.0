@@ -48,6 +48,14 @@
             "collapse_content": false
           }
         },
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "olivia-luxe-dames-winterjas",
+            "waitForElementSelector": "",
+            "waitForElementDelay": 5
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -89,6 +97,7 @@
         "payment_terms",
         "separator",
         "description",
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
@@ -122,19 +131,10 @@
             "waitForElementSelector": "",
             "waitForElementDelay": 5
           }
-        },
-        "kiwi_size_chart_recommender_kiwi_sizing_4Q8CkN": {
-          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
-          "settings": {
-            "product": "olivia-luxe-dames-winterjas",
-            "waitForElementSelector": "",
-            "waitForElementDelay": 5
-          }
         }
       },
       "block_order": [
-        "kiwi_size_chart_recommender_kiwi_sizing_4yKwh3",
-        "kiwi_size_chart_recommender_kiwi_sizing_4Q8CkN"
+        "kiwi_size_chart_recommender_kiwi_sizing_4yKwh3"
       ],
       "settings": {
         "full_width": true,
