@@ -34,6 +34,35 @@
             "liquid": "<ul style=\"list-style: none; padding: 0; margin: 0;\">\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'secure-payment-icon.png' | asset_url }}\" alt=\"Betaal veilig\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span><strong>Betaal veilig</strong> met elke bank</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'postnl-icon.png' | asset_url }}\" alt=\"Gratis verzending\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span>Altijd <strong>Gratis</strong> verzending</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img src=\"{{ 'return-icon.png' | asset_url }}\" alt=\"Retour garantie\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n    <span>30 dagen <strong>Retour garantie</strong></span>\n  </li>\n  <li style=\"display: flex; align-items: center;\">\n    <span style=\"font-size: 18px; color: red; margin-right: 8px;\">●</span>\n    {% if product.available and product.inventory_quantity > 0 %}\n      <span>Nog {{ product.inventory_quantity }} stuks op voorraad</span>\n    {% else %}\n      <span>Niet op voorraad</span>\n    {% endif %}\n  </li>\n</ul>"
           }
         },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "{{ product }}",
+            "waitForElementSelector": "{{ block.settings.product.metafields.shopify.size | metafield_text: field: 'label' }}",
+            "waitForElementDelay": 5
+          }
+        },
+        "liquid_8pqqfN": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap; /* Voorkomt dat iconen naar een nieuwe regel gaan /\n  justify-content: center;\n}\n\n\n.payment-icons-container svg {\n  margin: 0 5px; / Ruimte tussen iconen /\n}\n\n\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: space-evenly; / Verdeelt de iconen gelijk over het scherm */\n  }\n}\n</style>\n\n\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
+          }
+        },
         "rating": {
           "type": "rating",
           "settings": {
@@ -64,35 +93,6 @@
             "variant_image_options": "",
             "size_chart_page": ""
           }
-        },
-        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg": {
-          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
-          "settings": {
-            "product": "olivia-luxe-dames-winterjas",
-            "waitForElementSelector": "{{ block.settings.product.metafields.shopify.size | metafield_text: field: 'label' }}",
-            "waitForElementDelay": 5
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "liquid_8pqqfN": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap; /* Voorkomt dat iconen naar een nieuwe regel gaan /\n  justify-content: center;\n}\n\n\n.payment-icons-container svg {\n  margin: 0 5px; / Ruimte tussen iconen /\n}\n\n\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: space-evenly; / Verdeelt de iconen gelijk over het scherm */\n  }\n}\n</style>\n\n\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
-          }
         }
       },
       "block_order": [
@@ -100,15 +100,15 @@
         "badges",
         "price",
         "liquid_NL63im",
+        "quantity_selector",
+        "buy_buttons",
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
+        "liquid_8pqqfN",
         "rating",
         "payment_terms",
         "separator",
         "description",
-        "variant_picker",
-        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
-        "quantity_selector",
-        "buy_buttons",
-        "liquid_8pqqfN"
+        "variant_picker"
       ],
       "settings": {
         "full_width": true,
