@@ -16,6 +16,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/GettyImages-538940261_16by9_a884e630-7b2a-46a6-96c1-9059206ef0d9.webp",
+            "mobile_image": "shopify://shop_images/GettyImages-538940261_16by9_a884e630-7b2a-46a6-96c1-9059206ef0d9.webp",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -251,7 +252,7 @@
         "1664424181b38582d5-0": {
           "type": "item",
           "settings": {
-            "title": "100%",
+            "title": "100% Amsterdam",
             "subheading": "Showcase a benefit of your product",
             "content": "",
             "button_text": "",
