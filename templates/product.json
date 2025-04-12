@@ -28,10 +28,16 @@
             "show_taxes_notice": false
           }
         },
+        "liquid_NL63im": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        },
         "rating": {
           "type": "rating",
           "settings": {
-            "show_empty": true
+            "show_empty": false
           }
         },
         "payment_terms": {
@@ -93,6 +99,7 @@
         "title",
         "badges",
         "price",
+        "liquid_NL63im",
         "rating",
         "payment_terms",
         "separator",
