@@ -159,21 +159,37 @@
         "item_Tmw7AE": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+            "title": "Hoe kan ik mijn bestelling volgen?",
+            "content": "<p>Je ontvangt een trackingnummer via e-mail zodra je bestelling is verzonden. Hiermee kun je gemakkelijk het pakketje volgen.</p>"
+          }
+        },
+        "item_rfnLtP": {
+          "type": "item",
+          "settings": {
+            "title": "Kan ik een artikel omruilen?",
+            "content": "<p>Ja, je kunt een artikel binnen 30 dagen ruilen voor een andere maat, zolang het artikel in originele staat is. Neem contact met ons op voor het ruilproces.</p>"
+          }
+        },
+        "item_EMhzwL": {
+          "type": "item",
+          "settings": {
+            "title": "Hoe kan ik mijn bestelling retourneren?",
+            "content": "<p>Je kunt je bestelling binnen 30 dagen retourneren. Neem contact met ons op voor verdere instructies en het retourformulier.</p>"
           }
         },
         "item_kFNKjK": {
           "type": "item",
           "settings": {
             "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "content": ""
           }
         }
       },
       "block_order": [
         "item_AQkGqE",
         "item_Tmw7AE",
+        "item_rfnLtP",
+        "item_EMhzwL",
         "item_kFNKjK"
       ],
       "name": "FAQ",
