@@ -15,8 +15,8 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/GettyImages-538940261_16by9_a884e630-7b2a-46a6-96c1-9059206ef0d9.webp",
-            "mobile_image": "shopify://shop_images/GettyImages-538940261_16by9_a884e630-7b2a-46a6-96c1-9059206ef0d9.webp",
+            "image": "shopify://shop_images/ChatGPT_Image_14_okt_2025_16_24_24.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_14_okt_2025_16_24_24.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -49,6 +49,39 @@
         "cycle_speed": 6,
         "background": "#f2f2f2",
         "background_gradient": "linear-gradient(60deg, rgba(60, 65, 68, 1), rgba(23, 29, 33, 1) 98%)"
+      }
+    },
+    "rich_text_G6BcF6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3q9Kdf": {
+          "type": "heading",
+          "settings": {
+            "text": "\"A New Beginning, Woven from Resilience\"",
+            "heading_tag": "h5",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_TaUp8G": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>There are moments in life when you realize it’s time to start over — not because everything is perfect, but because your heart knows it’s finally ready.</p><p>My name is <strong>Susan Miller</strong>, and for as long as I can remember, I’ve dreamed of creating something beautiful — a place where women could feel confident, elegant, and truly themselves. For years, that dream lived quietly in the back of my mind while life moved in other directions.</p><p>I went through seasons of love, loss, and rediscovery. After my marriage ended, I found myself rebuilding — piece by piece — and searching for who I truly was beyond the noise of responsibility and expectation. Somewhere in that process, I remembered the girl who once wanted to open her own boutique.</p><p>So I took a chance on myself.</p><p><strong>WUXIZ Boutique</strong> was born not out of perfection, but out of courage — a reflection of every woman who has ever had to start again. It’s more than clothing; it’s a story of resilience, grace, and renewal. Every piece I curate is chosen with one purpose in mind: to remind women that they are strong, timeless, and worthy of beauty in every season of life.</p><p>Starting this boutique has been one of the hardest and most fulfilling things I’ve ever done. It’s proof that even after heartbreak, dreams can still bloom — sometimes stronger than before.</p><p>From one woman to another — thank you for being part of this journey. Whether you’ve just discovered us or have been here from the start, your support means more than words can express.</p><p>With love,<br/><br/><strong>Susan Miller</strong><br/><br/>Founder of WUXIZ Boutique</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3q9Kdf",
+        "richtext_TaUp8G"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "featured_collection_J6PzcQ": {
@@ -605,6 +638,7 @@
   },
   "order": [
     "slideshow",
+    "rich_text_G6BcF6",
     "featured_collection_J6PzcQ",
     "featured_collection_UxYQdp",
     "impact-text",
