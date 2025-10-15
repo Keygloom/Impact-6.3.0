@@ -15,8 +15,8 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Susan_Miller_35_jaar_Wuxiz_Boutique.png",
-            "mobile_image": "shopify://shop_images/ChatGPT_Image_14_okt_2025_16_24_24.png",
+            "image": "shopify://shop_images/Banner.png",
+            "mobile_image": "shopify://shop_images/Banner.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-end-start sm:text-start",
