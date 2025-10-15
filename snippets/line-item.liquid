@@ -45,7 +45,43 @@ Supported variables
         <p class="bold">{{ line_item.product.title | default: line_item.title }}</p>
       {%- endif -%}
 
-      {%- render 'price-list', line_item: line_item -%}
+      {%- comment -%}
+        Affichage prix + prix barré (compare_at_price) en remplacement de:
+        {%- render 'price-list', line_item: line_item -%}
+      {%- endcomment -%}
+      {%- liquid
+        assign unit_price = line_item.final_price
+        assign unit_compare = nil
+        if line_item.variant
+          assign unit_compare = line_item.variant.compare_at_price
+        endif
+
+        assign has_sale = false
+        if unit_compare and unit_price and unit_compare > unit_price
+          assign has_sale = true
+        endif
+      -%}
+      <div class="line-item__price h-stack items-baseline gap-2">
+        {%- if has_sale -%}
+          <span class="price price--compare text-subdued" style="text-decoration: line-through;">
+            {{ unit_compare | money }}
+          </span>
+        {%- endif -%}
+        <span class="price price--final bold">
+          {{ unit_price | money }}
+        </span>
+      </div>
+      {%- comment -%}
+        Si tu préfères afficher un total barré/total final par ligne, tu peux ajouter ceci:
+        <div class="text-xs text-subdued">
+          {%- if has_sale -%}
+            <span style="text-decoration: line-through; margin-right:.35rem;">
+              {{ unit_compare | times: line_item.quantity | money }}
+            </span>
+          {%- endif -%}
+          <span>{{ line_item.final_line_price | money }}</span>
+        </div>
+      {%- endcomment -%}
     </div>
 
     {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}
