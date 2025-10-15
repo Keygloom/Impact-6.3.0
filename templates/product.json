@@ -83,12 +83,6 @@
             "text_color": "#a30000"
           }
         },
-        "liquid_b4qnr9": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<div style=\"background-color: #fdecea; padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; color: #c62828; font-size: 14px;\">\n  <img src=\"{{ 'sale-tag-icon.png' | asset_url }}\" alt=\"Sale tag\" style=\"width: 18px; height: 18px; margin-right: 8px;\" />\n  <span>\n    <strong> UPDATE:</strong> Due to high demand during the <strong> OPENING SALE, </strong> only 6 units are still available.\n  </span>\n</div>"
-          }
-        },
         "rating": {
           "type": "rating",
           "settings": {
@@ -120,7 +114,6 @@
         "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "liquid_8pqqfN",
         "offer_jLLEVK",
-        "liquid_b4qnr9",
         "rating",
         "payment_terms",
         "separator",
