@@ -176,21 +176,6 @@
     </div>
   {%- endif -%}
 </cart-drawer>
-<div id="cart-timer" style="font-weight:bold; color:#E63946; margin-top:10px;">
-  ⏳ Your discount is reserved for <span id="time">10:00</span>
-</div>
-
-<script>
-  let time = 10 * 60; // 10 minutes
-  const timerElement = document.getElementById('time');
-  const countdown = setInterval(() => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    time--;
-    if (time < 0) clearInterval(countdown);
-  }, 1000);
-</script>
 
 {% schema %}
 {
@@ -258,4 +243,3 @@
   ]
 }
 {% endschema %}
-
