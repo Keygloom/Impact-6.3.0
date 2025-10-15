@@ -21,30 +21,12 @@
     <div class="cart-drawer__inner">
       <div class="cart-drawer__top">
         <div class="h-stack items-center justify-between">
-          {%- if section.settings.show_timer and cart.item_count > 0 -%}
-  <div class="cart-timer" id="cart-timer-element-{{ section.id }}" style="
-    background:#000000;
-    color:#ffffff;
-    padding:12px 0;
-    margin:8px -40px 16px -40px;
-    text-align:center;
-    border-radius:0;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  ">
-    <div style="font-size:14px;font-weight:600;line-height:1.2;">
-      <div><strong>{{ section.settings.timer_badge | default: 'FORTE DEMANDE | Votre panier' }}</strong></div>
-      <div>
-        {{ section.settings.timer_prefix | default: 'est réservé pendant' }}
-        <span id="cart-timer-display-{{ section.id }}" style="font-weight:700;color:#ffffff;">05:00</span>
-      </div>
-    </div>
-  </div>
-{%- endif -%}
-
           <div class="h-stack grow gap-2 sm:gap-2.5">
             <p class="h5">{{- 'cart.general.title' | t -}}</p>
             <cart-count class="count-bubble count-bubble--md">{{ cart.item_count }}</cart-count>
           </div>
+
+          
 
           <button type="button" is="close-button" class="drawer__close-icon">
             <span class="sr-only">{{ 'general.accessibility.close' | t }}</span>
