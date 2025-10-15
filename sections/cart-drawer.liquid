@@ -34,60 +34,22 @@
           {%- render 'free-shipping-bar' -%}
         {%- endif -%}
 
-        <div class="cart-timer-wrapper">
-          <div class="cart-timer">
-            <strong>HIGH DEMAND</strong> | Your cart is reserved for <span id="cart-timer-text">05:00</span>
-          </div>
-        </div>
+        {%- comment -%} Timer remplacé par le snippet réutilisable (EN) {%- endcomment -%}
+        {% render 'cart-timer',
+          id: 'timer-cart-drawer-lg',
+          minutes: 5,
+          label_prefix: 'HIGH DEMAND | Your cart',
+          label_reserved: 'is reserved for',
+          expired_text: 'Reservation time expired',
+          mobile_full_bleed: true
+        %}
 
-        <style>
-        .cart-timer-wrapper {
-          background-color: #000;
-          color: #ffffff; /* <-- texte en blanc */
-          text-align: center;
-          padding: 8px 10px;
-          border-radius: 4px;
-          margin-top: 10px;
-          font-weight: 700;
-          font-size: 14px;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-        .cart-timer strong {
-          font-weight: 800;
-        }
-        </style>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const drawer = document.getElementById('cart-drawer');
-          const timerDisplay = document.getElementById('cart-timer-text');
-          if (!drawer || !timerDisplay) return;
-          let timerInterval;
-          function startCartTimer() {
-            let time = 5 * 60;
-            clearInterval(timerInterval);
-            function updateTimer() {
-              const minutes = Math.floor(time / 60);
-              const seconds = time % 60;
-              timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-              if (time <= 0) clearInterval(timerInterval);
-              time--;
-            }
-            updateTimer();
-            timerInterval = setInterval(updateTimer, 1000);
-          }
-          const observer = new MutationObserver((mutations) => {
-            for (const mutation of mutations) {
-              if (mutation.attributeName === 'open' || mutation.attributeName === 'class') {
-                const isVisible = drawer.classList.contains('is-open') || drawer.hasAttribute('open');
-                if (isVisible) startCartTimer();
-              }
-            }
-          });
-          observer.observe(drawer, { attributes: true, attributeFilter: ['open', 'class'] });
-        });
-        </script>
+        {%- comment -%}
+          Ancien bloc supprimé :
+          <div class="cart-timer-wrapper">...</div>
+          <style>...</style>
+          <script>...</script>
+        {%- endcomment -%}
       </div>
 
       <div class="v-stack gap-6 sm:gap-8">
