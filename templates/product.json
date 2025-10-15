@@ -41,7 +41,7 @@
             "stack_blocks": true,
             "selector_style": "block",
             "swatch_selector_style": "block_swatch",
-            "variant_image_options": "Bruin{{ product.metafields.shopify[\"color-pattern\"] | metafield_text: field: 'label' }}, Grijs, Zwart",
+            "variant_image_options": "",
             "size_chart_page": ""
           }
         },
