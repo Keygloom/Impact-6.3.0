@@ -54,7 +54,14 @@
     "favicon": "shopify://shop_images/WuxiZ_logo_2_be5aa98b-d3a5-4aef-b2d8-39082d869be1.png",
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "3782161271425840822": {
+        "type": "shopify://apps/ns-color-swatch-variant-images/blocks/nestscale_product_variant/53eb5ed4-3892-414c-808b-3ea84516b10d",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Sound": {
