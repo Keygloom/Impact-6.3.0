@@ -39,15 +39,11 @@
           "settings": {
             "hide_sold_out_variants": false,
             "stack_blocks": true,
-            "selector_style": "block",
+            "selector_style": "dropdown",
             "swatch_selector_style": "block_swatch",
             "variant_image_options": "Kleur",
             "size_chart_page": ""
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -107,7 +103,6 @@
         "price",
         "liquid_NL63im",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "liquid_8pqqfN",
