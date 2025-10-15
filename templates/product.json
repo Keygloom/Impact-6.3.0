@@ -70,6 +70,19 @@
             "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap; /* Voorkomt dat iconen naar een nieuwe regel gaan /\n  justify-content: center;\n}\n\n\n.payment-icons-container svg {\n  margin: 0 5px; / Ruimte tussen iconen /\n}\n\n\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: space-evenly; / Verdeelt de iconen gelijk over het scherm */\n  }\n}\n</style>\n\n\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
           }
         },
+        "offer_jLLEVK": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 24,
+            "title": "UPDATE",
+            "content": "<p>Due to high demand during the <strong>OPENING SALE, </strong>only 6 units are still available.</p>",
+            "background": "#f2eaec",
+            "text_color": "#a30000"
+          }
+        },
         "liquid_b4qnr9": {
           "type": "liquid",
           "settings": {
@@ -106,6 +119,7 @@
         "buy_buttons",
         "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "liquid_8pqqfN",
+        "offer_jLLEVK",
         "liquid_b4qnr9",
         "rating",
         "payment_terms",
