@@ -145,9 +145,9 @@
           "settings": {
             "image": "shopify://shop_images/Banner.png",
             "navigation_label": "",
-            "subheading": "",
-            "title": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "subheading": "Meet Susan Miller – The Heart Behind Wuxiz Boutique",
+            "title": "",
+            "content": "<p>For as long as she can remember, Susan dreamed of owning her own boutique. After years of life’s ups and downs — including a challenging divorce that made her put her passions on hold — she finally decided to follow her heart.</p><p>That decision became <strong>Wuxiz Boutique</strong>: a place built from courage, creativity, and love for timeless fashion. Susan’s goal is simple — to help women feel confident, elegant, and true to themselves in every stage of life.</p><p>Every piece in her collection reflects her belief that style should be effortless, empowering, and deeply personal.</p>"
           }
         }
       },
