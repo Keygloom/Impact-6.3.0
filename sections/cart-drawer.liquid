@@ -34,22 +34,80 @@
           {%- render 'free-shipping-bar' -%}
         {%- endif -%}
 
-        {%- comment -%} Timer remplacé par le snippet réutilisable (EN) {%- endcomment -%}
-        {% render 'cart-timer',
-          id: 'timer-cart-drawer-lg',
-          minutes: 5,
-          label_prefix: 'HIGH DEMAND | Your cart',
-          label_reserved: 'is reserved for',
-          expired_text: 'Reservation time expired',
-          mobile_full_bleed: true
-        %}
+        {#---------------------- REPLACED TIMER (from first code, translated) ----------------------#}
+        <div class="cart-timer" id="cart-timer-element" style="
+          background: #000000;
+          color: white;
+          padding: 12px 0;
+          margin: 8px -40px 16px -40px;
+          text-align: center;
+          border-radius: 0;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        ">
+          <div style="
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.2;
+          ">
+            <div><strong>HIGH DEMAND | Your cart</strong></div>
+            <div>is reserved for <span id="cart-timer-display" style="
+              font-weight: 700;
+              color: #ffffff;
+            ">05:00</span></div>
+          </div>
+        </div>
 
-        {%- comment -%}
-          Ancien bloc supprimé :
-          <div class="cart-timer-wrapper">...</div>
-          <style>...</style>
-          <script>...</script>
-        {%- endcomment -%}
+        <script>
+          (function() {
+            if (window.cartTimerInitialized) return;
+            window.cartTimerInitialized = true;
+
+            // Adjust timer margins for mobile
+            function setTimerMarginsForMobile() {
+              var timer = document.getElementById('cart-timer-element');
+              if (timer && window.innerWidth <= 768) {
+                timer.style.setProperty('margin-left', '-24px', 'important');
+                timer.style.setProperty('margin-right', '-24px', 'important');
+              }
+            }
+
+            // Set margins immediately
+            setTimeout(setTimerMarginsForMobile, 50);
+
+            // Timer functionality
+            setTimeout(function() {
+              var display = document.getElementById('cart-timer-display');
+
+              if (display) {
+                console.log('Cart timer started from 5:00');
+
+                var totalSeconds = 5 * 60 + 0; // 5 minutes
+                var currentSeconds = totalSeconds;
+
+                function updateTimer() {
+                  var minutes = Math.floor(currentSeconds / 60);
+                  var seconds = currentSeconds % 60;
+
+                  display.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+                  if (currentSeconds <= 0) {
+                    display.textContent = '00:00';
+                    display.parentElement.parentElement.innerHTML =
+                      '<div><strong>HIGH DEMAND | Your cart</strong></div><div>Reservation time expired</div>';
+                    return;
+                  }
+
+                  currentSeconds--;
+                  setTimeout(updateTimer, 1000);
+                }
+
+                updateTimer();
+              }
+            }, 100);
+          })();
+        </script>
+        {#-------------------- END REPLACED TIMER --------------------#}
+
       </div>
 
       <div class="v-stack gap-6 sm:gap-8">
