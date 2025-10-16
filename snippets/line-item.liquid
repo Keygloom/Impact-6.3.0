@@ -322,11 +322,24 @@
       // Add loading state
       selector.classList.add('loading');
       
+      // Update input value immediately for visual feedback
+      input.value = newQty;
+      
       // Update cart
-      await updateCartQuantity(lineKey, newQty);
+      const result = await updateCartQuantity(lineKey, newQty);
       
       // Remove loading state
       selector.classList.remove('loading');
+      
+      // If item was removed (quantity = 0), remove the line item
+      if (newQty === 0 && result) {
+        const lineItem = selector.closest('.line-item');
+        if (lineItem) {
+          lineItem.style.opacity = '0';
+          lineItem.style.transition = 'opacity 0.3s';
+          setTimeout(() => lineItem.remove(), 300);
+        }
+      }
     }
     
     if (removeBtn) {
