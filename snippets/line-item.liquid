@@ -219,11 +219,11 @@
 
 <script>
 (function() {
-  // Éviter les initialisations multiples
+
   if (window.lineItemHandlersInitialized) return;
   window.lineItemHandlersInitialized = true;
 
-  // Fonction pour mettre à jour le panier
+
   async function updateCart(lineKey, quantity) {
     try {
       const response = await fetch('/cart/change.js', {
@@ -241,7 +241,7 @@
 
       const cart = await response.json();
       
-      // Recharger le contenu du cart drawer
+
       const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
       const html = await cartDrawerResponse.text();
       
@@ -254,7 +254,6 @@
         if (currentCartDrawer) {
           currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
           
-          // Déclencher un événement personnalisé pour notifier d'autres scripts
           document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
         }
       }
@@ -266,13 +265,13 @@
     }
   }
 
-  // Gestionnaire de quantité
+
   document.addEventListener('click', async function(e) {
     const decreaseBtn = e.target.closest('.quantity-decrease');
     const increaseBtn = e.target.closest('.quantity-increase');
     const removeBtn = e.target.closest('.cart-remove-btn');
 
-    // Bouton diminuer
+
     if (decreaseBtn) {
       e.preventDefault();
       const selector = decreaseBtn.closest('.quantity-selector');
@@ -285,7 +284,7 @@
       selector.classList.remove('loading');
     }
 
-    // Bouton augmenter
+
     if (increaseBtn) {
       e.preventDefault();
       const selector = increaseBtn.closest('.quantity-selector');
@@ -298,7 +297,7 @@
       selector.classList.remove('loading');
     }
 
-    // Bouton supprimer
+
     if (removeBtn) {
       e.preventDefault();
       const lineKey = removeBtn.dataset.lineKey;
@@ -309,7 +308,7 @@
     }
   });
 
-  // Mettre à jour le compteur du panier dans le header
+
   document.addEventListener('cart:updated', function(e) {
     const cart = e.detail;
     const cartCounts = document.querySelectorAll('cart-count, [data-cart-count]');
