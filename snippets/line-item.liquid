@@ -278,56 +278,88 @@
       const currentCartDrawer = document.querySelector('cart-drawer');
       
       if (!newCartDrawer || !currentCartDrawer) {
-        console.log('Cart drawer not found, reloading page...');
-        location.reload();
+        console.log('Cart drawer not found');
         return;
       }
       
-      // Find and update ONLY the items section, not the footer
-      const newItems = newCartDrawer.querySelector('.cart-drawer__items, [data-items]');
-      const currentItems = currentCartDrawer.querySelector('.cart-drawer__items, [data-items]');
+      // Save all buttons BEFORE any update
+      const allButtons = currentCartDrawer.querySelectorAll('button, a.button, .button');
+      const savedButtons = new Map();
+      allButtons.forEach((btn, index) => {
+        savedButtons.set(index, {
+          element: btn,
+          parent: btn.parentElement,
+          html: btn.outerHTML,
+          styles: btn.getAttribute('style') || ''
+        });
+      });
       
-      if (newItems && currentItems) {
-        currentItems.innerHTML = newItems.innerHTML;
+      // Find items container - try multiple selectors
+      const itemsSelectors = [
+        '.cart-drawer__items',
+        '[data-cart-items]',
+        '.line-items',
+        'cart-drawer__items',
+        '.cart-items'
+      ];
+      
+      let newItems = null;
+      let currentItems = null;
+      
+      for (const selector of itemsSelectors) {
+        newItems = newCartDrawer.querySelector(selector);
+        currentItems = currentCartDrawer.querySelector(selector);
+        if (newItems && currentItems) {
+          console.log('Found items with selector:', selector);
+          currentItems.innerHTML = newItems.innerHTML;
+          break;
+        }
       }
       
-      // Update subtotal/total text only, not the buttons
-      const newSubtotal = newCartDrawer.querySelector('.cart-drawer__subtotal, [data-subtotal]');
-      const currentSubtotal = currentCartDrawer.querySelector('.cart-drawer__subtotal, [data-subtotal]');
-      
-      if (newSubtotal && currentSubtotal) {
-        currentSubtotal.textContent = newSubtotal.textContent;
+      // If no items container found, update line items directly
+      if (!newItems || !currentItems) {
+        const newLineItems = newCartDrawer.querySelectorAll('.line-item');
+        const currentContainer = currentCartDrawer.querySelector('div');
+        if (newLineItems.length > 0 && currentContainer) {
+          const tempDiv = document.createElement('div');
+          newLineItems.forEach(item => tempDiv.appendChild(item.cloneNode(true)));
+          
+          const oldLineItems = currentCartDrawer.querySelectorAll('.line-item');
+          oldLineItems.forEach(item => item.remove());
+          
+          currentContainer.prepend(...tempDiv.children);
+        }
       }
       
-      // Update the total price element
+      // Update total price - try multiple selectors
       const totalSelectors = [
+        '.cart-drawer__total-price',
         '.total-price',
         '[data-cart-total]',
-        '.cart-total',
-        '.cart-drawer__total'
+        '.cart-total'
       ];
       
       for (const selector of totalSelectors) {
         const newTotal = newCartDrawer.querySelector(selector);
         const currentTotal = currentCartDrawer.querySelector(selector);
-        if (newTotal && currentTotal) {
-          currentTotal.textContent = newTotal.textContent;
+        if (newTotal && currentTotal && !currentTotal.querySelector('button')) {
+          currentTotal.innerHTML = newTotal.innerHTML;
+          console.log('Updated total with selector:', selector);
         }
       }
       
-      // Update cart count
-      const itemCount = newCartDrawer.querySelector('.cart-count-bubble, [data-cart-count]');
-      if (itemCount) {
-        document.querySelectorAll('.cart-count-bubble, [data-cart-count]').forEach(el => {
-          el.textContent = itemCount.textContent;
-        });
-      }
+      // Restore button styles
+      savedButtons.forEach((saved, index) => {
+        const currentBtn = Array.from(currentCartDrawer.querySelectorAll('button, a.button, .button'))[index];
+        if (currentBtn && saved.styles) {
+          currentBtn.setAttribute('style', saved.styles);
+        }
+      });
       
       console.log('Cart display updated successfully');
       
     } catch (error) {
       console.error('Display update error:', error);
-      location.reload();
     }
   }
 
