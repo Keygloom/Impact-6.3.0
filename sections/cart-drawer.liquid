@@ -106,6 +106,40 @@
           })();
         </script>
 
+        <script>
+          // Script pour gérer la suppression des produits du panier
+          document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(e) {
+              // Vérifier si c'est un bouton de suppression
+              if (e.target.closest('[data-line-item-remove]')) {
+                e.preventDefault();
+                var removeButton = e.target.closest('[data-line-item-remove]');
+                var lineKey = removeButton.getAttribute('data-line-item-remove');
+                
+                // Envoyer la requête de suppression
+                fetch('/cart/change.js', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    id: lineKey,
+                    quantity: 0
+                  })
+                })
+                .then(response => response.json())
+                .then(data => {
+                  // Recharger le panier
+                  window.location.reload();
+                })
+                .catch(error => {
+                  console.error('Erreur lors de la suppression:', error);
+                });
+              }
+            });
+          });
+        </script>
+
       </div>
 
       <div class="v-stack gap-6 sm:gap-8">
@@ -175,10 +209,13 @@
         
         {%- comment -%} Calcul des économies totales {%- endcomment -%}
         {%- assign total_savings = 0 -%}
+        {%- assign total_compare_at_price = 0 -%}
         {%- for line_item in cart.items -%}
           {%- if line_item.variant.compare_at_price > line_item.variant.price -%}
             {%- assign item_savings = line_item.variant.compare_at_price | minus: line_item.variant.price | times: line_item.quantity -%}
             {%- assign total_savings = total_savings | plus: item_savings -%}
+            {%- assign item_compare_total = line_item.variant.compare_at_price | times: line_item.quantity -%}
+            {%- assign total_compare_at_price = total_compare_at_price | plus: item_compare_total -%}
           {%- endif -%}
         {%- endfor -%}
         
@@ -189,6 +226,16 @@
         <div class="h-stack gap-4 justify-between">
           <span class="h5">{{ 'cart.general.total' | t }}</span>
           <div class="h-stack gap-2 items-baseline">
+            {%- if total_compare_at_price > 0 -%}
+              <span style="
+                color: #9ca3af;
+                text-decoration: line-through;
+                font-size: 14px;
+                font-weight: 400;
+              ">
+                {{- total_compare_at_price | money_with_currency -}}
+              </span>
+            {%- endif -%}
             <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
             {%- if total_savings > 0 -%}
               <span style="
