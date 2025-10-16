@@ -106,163 +106,6 @@
           })();
         </script>
 
-        <script>
-          // Script pour gérer la suppression et les changements de quantité
-          (function() {
-            // Fonction pour recharger le cart drawer
-            function reloadCartDrawer() {
-              return fetch('/?sections=cart-drawer')
-                .then(response => response.json())
-                .then(data => {
-                  var cartDrawerHTML = data['cart-drawer'];
-                  if (cartDrawerHTML) {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(cartDrawerHTML, 'text/html');
-                    var newCartDrawer = doc.querySelector('#cart-drawer');
-                    var currentCartDrawer = document.querySelector('#cart-drawer');
-                    
-                    if (newCartDrawer && currentCartDrawer) {
-                      // Sauvegarder l'état ouvert/fermé
-                      var wasOpen = currentCartDrawer.hasAttribute('open');
-                      
-                      // Remplacer le contenu
-                      currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
-                      
-                      // Restaurer l'état ouvert si nécessaire
-                      if (wasOpen) {
-                        currentCartDrawer.setAttribute('open', '');
-                      }
-                      
-                      // Réinitialiser le timer
-                      window.cartTimerInitialized = false;
-                      initCartTimer();
-                    }
-                  }
-                });
-            }
-
-            // Fonction pour initialiser le timer (extraction du code existant)
-            function initCartTimer() {
-              if (window.cartTimerInitialized) return;
-              window.cartTimerInitialized = true;
-
-              function setTimerMarginsForMobile() {
-                var timer = document.getElementById('cart-timer-element');
-                if (timer && window.innerWidth <= 768) {
-                  timer.style.setProperty('margin-left', '-24px', 'important');
-                  timer.style.setProperty('margin-right', '-24px', 'important');
-                }
-              }
-
-              setTimeout(setTimerMarginsForMobile, 50);
-
-              setTimeout(function() {
-                var display = document.getElementById('cart-timer-display');
-                if (display) {
-                  var totalSeconds = 5 * 60;
-                  var currentSeconds = totalSeconds;
-
-                  function updateTimer() {
-                    var minutes = Math.floor(currentSeconds / 60);
-                    var seconds = currentSeconds % 60;
-                    display.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-
-                    if (currentSeconds <= 0) {
-                      display.textContent = '00:00';
-                      display.parentElement.parentElement.innerHTML =
-                        '<div><strong>HIGH DEMAND | Your cart</strong></div><div>Reservation time expired</div>';
-                      return;
-                    }
-                    currentSeconds--;
-                    setTimeout(updateTimer, 1000);
-                  }
-                  updateTimer();
-                }
-              }, 100);
-            }
-
-            // Fonction pour mettre à jour la quantité
-            function updateCartQuantity(lineKey, quantity) {
-              var buttons = document.querySelectorAll('quantity-input button');
-              buttons.forEach(btn => btn.disabled = true);
-
-              fetch('/cart/change.js', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  id: lineKey,
-                  quantity: quantity
-                })
-              })
-              .then(response => response.json())
-              .then(data => {
-                console.log('Panier mis à jour:', data);
-                return reloadCartDrawer();
-              })
-              .then(() => {
-                console.log('Cart drawer rechargé avec succès');
-              })
-              .catch(error => {
-                console.error('Erreur:', error);
-                buttons.forEach(btn => btn.disabled = false);
-              });
-            }
-
-            // Event delegation pour tous les événements
-            document.addEventListener('click', function(e) {
-              // Gérer les boutons + et -
-              var quantityButton = e.target.closest('button[name="plus"], button[name="minus"]');
-              if (quantityButton) {
-                e.preventDefault();
-                var lineItem = quantityButton.closest('line-item');
-                if (!lineItem) return;
-                
-                var lineKey = lineItem.getAttribute('data-key') || lineItem.querySelector('[data-index]')?.getAttribute('data-index');
-                var quantityInput = lineItem.querySelector('input[type="number"]');
-                
-                if (quantityInput && lineKey) {
-                  var currentQuantity = parseInt(quantityInput.value) || 0;
-                  var newQuantity = quantityButton.getAttribute('name') === 'plus' 
-                    ? currentQuantity + 1 
-                    : Math.max(0, currentQuantity - 1);
-                  
-                  updateCartQuantity(lineKey, newQuantity);
-                }
-                return;
-              }
-
-              // Gérer la suppression
-              var removeButton = e.target.closest('[data-line-item-remove]');
-              if (removeButton) {
-                e.preventDefault();
-                var lineKey = removeButton.getAttribute('data-line-item-remove');
-                if (lineKey) {
-                  updateCartQuantity(lineKey, 0);
-                }
-                return;
-              }
-            });
-
-            // Gérer les changements manuels de quantité
-            document.addEventListener('change', function(e) {
-              if (e.target.matches('input[type="number"]')) {
-                var input = e.target;
-                var lineItem = input.closest('line-item');
-                if (!lineItem) return;
-                
-                var lineKey = lineItem.getAttribute('data-key') || lineItem.querySelector('[data-index]')?.getAttribute('data-index');
-                var newQuantity = parseInt(input.value) || 0;
-                
-                if (lineKey && newQuantity >= 0) {
-                  updateCartQuantity(lineKey, newQuantity);
-                }
-              }
-            });
-          })();
-        </script>
-
       </div>
 
       <div class="v-stack gap-6 sm:gap-8">
@@ -332,13 +175,10 @@
         
         {%- comment -%} Calcul des économies totales {%- endcomment -%}
         {%- assign total_savings = 0 -%}
-        {%- assign total_compare_at_price = 0 -%}
         {%- for line_item in cart.items -%}
           {%- if line_item.variant.compare_at_price > line_item.variant.price -%}
             {%- assign item_savings = line_item.variant.compare_at_price | minus: line_item.variant.price | times: line_item.quantity -%}
             {%- assign total_savings = total_savings | plus: item_savings -%}
-            {%- assign item_compare_total = line_item.variant.compare_at_price | times: line_item.quantity -%}
-            {%- assign total_compare_at_price = total_compare_at_price | plus: item_compare_total -%}
           {%- endif -%}
         {%- endfor -%}
         
@@ -349,16 +189,6 @@
         <div class="h-stack gap-4 justify-between">
           <span class="h5">{{ 'cart.general.total' | t }}</span>
           <div class="h-stack gap-2 items-baseline">
-            {%- if total_compare_at_price > 0 -%}
-              <span style="
-                color: #9ca3af;
-                text-decoration: line-through;
-                font-size: 14px;
-                font-weight: 400;
-              ">
-                {{- total_compare_at_price | money_with_currency -}}
-              </span>
-            {%- endif -%}
             <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
             {%- if total_savings > 0 -%}
               <span style="
