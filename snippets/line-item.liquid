@@ -149,7 +149,7 @@
     align-items: center;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
-    position: relative;
+    overflow: hidden;
   }
 
   .quantity-selector.loading {
@@ -158,14 +158,15 @@
   }
 
   .quantity-selector__button {
-    background: none;
+    background: white;
     border: none;
-    padding: 0.5rem;
+    padding: 8px 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s;
+    flex-shrink: 0;
   }
 
   .quantity-selector__button:hover:not(:disabled) {
@@ -178,18 +179,26 @@
   }
 
   .quantity-selector__input {
-    width: 40px;
+    width: 45px;
     text-align: center;
     border: none;
-    padding: 0.25rem;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    padding: 8px 4px;
     font-size: 14px;
-    background: transparent;
+    background: white;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .quantity-selector__input::-webkit-inner-spin-button,
   .quantity-selector__input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+
+  .quantity-selector__input:focus {
+    outline: none;
   }
 
   .line-item__remove-button {
@@ -214,79 +223,52 @@
       font-size: 10px !important;
       padding: 2px 4px !important;
     }
+
+    .quantity-selector__button {
+      padding: 6px 10px;
+    }
+
+    .quantity-selector__input {
+      width: 40px;
+    }
   }
 </style>
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
+  initCartHandlers();
+});
 
-  if (window.lineItemHandlersInitialized) return;
-  window.lineItemHandlersInitialized = true;
-
-
-  async function updateCart(lineKey, quantity) {
-    try {
-      const response = await fetch('/cart/change.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: lineKey,
-          quantity: quantity
-        })
-      });
-
-      if (!response.ok) throw new Error('Erreur lors de la mise à jour');
-
-      const cart = await response.json();
-      
-
-      const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
-      const html = await cartDrawerResponse.text();
-      
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const newCartDrawer = doc.querySelector('cart-drawer');
-      
-      if (newCartDrawer) {
-        const currentCartDrawer = document.querySelector('cart-drawer');
-        if (currentCartDrawer) {
-          currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
-          
-          document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
-        }
-      }
-
-      return cart;
-    } catch (error) {
-      console.error('Erreur mise à jour panier:', error);
-      alert('Une erreur est survenue. Veuillez réessayer.');
-    }
+function initCartHandlers() {
+  // Remove old event listeners
+  const oldHandler = document._cartClickHandler;
+  if (oldHandler) {
+    document.removeEventListener('click', oldHandler);
   }
 
-
-  document.addEventListener('click', async function(e) {
+  // Create new handler
+  const cartClickHandler = async function(e) {
     const decreaseBtn = e.target.closest('.quantity-decrease');
     const increaseBtn = e.target.closest('.quantity-increase');
     const removeBtn = e.target.closest('.cart-remove-btn');
 
-
     if (decreaseBtn) {
       e.preventDefault();
+      e.stopPropagation();
       const selector = decreaseBtn.closest('.quantity-selector');
       const input = selector.querySelector('.quantity-input');
       const lineKey = selector.dataset.lineKey;
       const currentQty = parseInt(input.value);
       
-      selector.classList.add('loading');
-      await updateCart(lineKey, currentQty - 1);
-      selector.classList.remove('loading');
+      if (currentQty > 0) {
+        selector.classList.add('loading');
+        await updateCart(lineKey, currentQty - 1);
+      }
     }
-
 
     if (increaseBtn) {
       e.preventDefault();
+      e.stopPropagation();
       const selector = increaseBtn.closest('.quantity-selector');
       const input = selector.querySelector('.quantity-input');
       const lineKey = selector.dataset.lineKey;
@@ -294,28 +276,78 @@
       
       selector.classList.add('loading');
       await updateCart(lineKey, currentQty + 1);
-      selector.classList.remove('loading');
     }
-
 
     if (removeBtn) {
       e.preventDefault();
+      e.stopPropagation();
       const lineKey = removeBtn.dataset.lineKey;
       
       removeBtn.style.opacity = '0.5';
       removeBtn.style.pointerEvents = 'none';
       await updateCart(lineKey, 0);
     }
-  });
+  };
 
+  // Store reference and add listener
+  document._cartClickHandler = cartClickHandler;
+  document.addEventListener('click', cartClickHandler);
+}
 
-  document.addEventListener('cart:updated', function(e) {
-    const cart = e.detail;
-    const cartCounts = document.querySelectorAll('cart-count, [data-cart-count]');
-    
-    cartCounts.forEach(counter => {
-      counter.textContent = cart.item_count;
+async function updateCart(lineKey, quantity) {
+  try {
+    const response = await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: lineKey,
+        quantity: quantity
+      })
     });
+
+    if (!response.ok) throw new Error('Erreur lors de la mise à jour');
+
+    const cart = await response.json();
+    
+    // Reload cart drawer
+    const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
+    const html = await cartDrawerResponse.text();
+    
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const newCartDrawer = doc.querySelector('cart-drawer');
+    
+    if (newCartDrawer) {
+      const currentCartDrawer = document.querySelector('cart-drawer');
+      if (currentCartDrawer) {
+        currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
+        
+        // Reinitialize handlers after reload
+        initCartHandlers();
+        
+        document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
+      }
+    }
+
+    return cart;
+  } catch (error) {
+    console.error('Erreur mise à jour panier:', error);
+    alert('Une erreur est survenue. Veuillez réessayer.');
+    
+    // Reload page on error to restore correct state
+    window.location.reload();
+  }
+}
+
+// Update cart count
+document.addEventListener('cart:updated', function(e) {
+  const cart = e.detail;
+  const cartCounts = document.querySelectorAll('cart-count, [data-cart-count]');
+  
+  cartCounts.forEach(counter => {
+    counter.textContent = cart.item_count;
   });
-})();
+});
 </script>
