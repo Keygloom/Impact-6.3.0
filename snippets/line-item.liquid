@@ -226,8 +226,6 @@
     return new Promise((resolve) => {
       updateTimeout = setTimeout(async () => {
         try {
-          console.log('Updating cart:', lineKey, 'to quantity:', newQuantity);
-          
           // Update cart via Shopify API
           const response = await fetch('/cart/change.js', {
             method: 'POST',
@@ -238,13 +236,9 @@
             })
           });
 
-          if (!response.ok) {
-            console.error('Response not OK:', response.status);
-            throw new Error('Update failed');
-          }
+          if (!response.ok) throw new Error('Update failed');
           
           const cart = await response.json();
-          console.log('Cart updated:', cart);
           
           // Update the page content
           await updateCartDisplay();
@@ -278,100 +272,39 @@
       const currentCartDrawer = document.querySelector('cart-drawer');
       
       if (!newCartDrawer || !currentCartDrawer) {
-        console.log('Cart drawer not found');
+        console.log('Cart drawer not found, reloading page...');
+        location.reload();
         return;
       }
       
-      // Save all buttons BEFORE any update
-      const allButtons = currentCartDrawer.querySelectorAll('button, a.button, .button');
-      const savedButtons = new Map();
-      allButtons.forEach((btn, index) => {
-        savedButtons.set(index, {
-          element: btn,
-          parent: btn.parentElement,
-          html: btn.outerHTML,
-          styles: btn.getAttribute('style') || ''
-        });
-      });
+      // Save footer/buttons before update
+      const footer = currentCartDrawer.querySelector('.cart-drawer__footer');
+      const savedFooter = footer ? footer.cloneNode(true) : null;
       
-      // Find items container - try multiple selectors
-      const itemsSelectors = [
-        '.cart-drawer__items',
-        '[data-cart-items]',
-        '.line-items',
-        'cart-drawer__items',
-        '.cart-items'
-      ];
+      // Update the cart content
+      currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
       
-      let newItems = null;
-      let currentItems = null;
-      
-      for (const selector of itemsSelectors) {
-        newItems = newCartDrawer.querySelector(selector);
-        currentItems = currentCartDrawer.querySelector(selector);
-        if (newItems && currentItems) {
-          console.log('Found items with selector:', selector);
-          currentItems.innerHTML = newItems.innerHTML;
-          break;
+      // Restore footer if it was saved
+      if (savedFooter) {
+        const newFooter = currentCartDrawer.querySelector('.cart-drawer__footer');
+        if (newFooter) {
+          newFooter.innerHTML = savedFooter.innerHTML;
         }
       }
-      
-      // If no items container found, update line items directly
-      if (!newItems || !currentItems) {
-        const newLineItems = newCartDrawer.querySelectorAll('.line-item');
-        const currentContainer = currentCartDrawer.querySelector('div');
-        if (newLineItems.length > 0 && currentContainer) {
-          const tempDiv = document.createElement('div');
-          newLineItems.forEach(item => tempDiv.appendChild(item.cloneNode(true)));
-          
-          const oldLineItems = currentCartDrawer.querySelectorAll('.line-item');
-          oldLineItems.forEach(item => item.remove());
-          
-          currentContainer.prepend(...tempDiv.children);
-        }
-      }
-      
-      // Update total price - try multiple selectors
-      const totalSelectors = [
-        '.cart-drawer__total-price',
-        '.total-price',
-        '[data-cart-total]',
-        '.cart-total'
-      ];
-      
-      for (const selector of totalSelectors) {
-        const newTotal = newCartDrawer.querySelector(selector);
-        const currentTotal = currentCartDrawer.querySelector(selector);
-        if (newTotal && currentTotal && !currentTotal.querySelector('button')) {
-          currentTotal.innerHTML = newTotal.innerHTML;
-          console.log('Updated total with selector:', selector);
-        }
-      }
-      
-      // Restore button styles
-      savedButtons.forEach((saved, index) => {
-        const currentBtn = Array.from(currentCartDrawer.querySelectorAll('button, a.button, .button'))[index];
-        if (currentBtn && saved.styles) {
-          currentBtn.setAttribute('style', saved.styles);
-        }
-      });
       
       console.log('Cart display updated successfully');
       
     } catch (error) {
       console.error('Display update error:', error);
+      location.reload();
     }
   }
 
   // Event delegation for all cart buttons
   document.addEventListener('click', async function(e) {
-    console.log('Click detected on:', e.target);
-    
     const decreaseBtn = e.target.closest('.quantity-decrease');
     const increaseBtn = e.target.closest('.quantity-increase');
     const removeBtn = e.target.closest('.line-item__remove-button');
-    
-    console.log('Buttons found:', { decreaseBtn, increaseBtn, removeBtn });
     
     if (decreaseBtn || increaseBtn) {
       e.preventDefault();
@@ -379,18 +312,10 @@
       
       const button = decreaseBtn || increaseBtn;
       const selector = button.closest('.quantity-selector');
-      
-      if (!selector) {
-        console.error('Quantity selector not found');
-        return;
-      }
-      
       const input = selector.querySelector('.quantity-selector__input');
       const lineKey = selector.dataset.lineKey;
       const currentQty = parseInt(input.value) || 0;
       const newQty = decreaseBtn ? Math.max(0, currentQty - 1) : currentQty + 1;
-      
-      console.log('Quantity change:', { lineKey, currentQty, newQty });
       
       // Add loading state
       selector.classList.add('loading');
@@ -398,7 +323,8 @@
       // Update cart
       await updateCartQuantity(lineKey, newQty);
       
-      // Remove loading state will happen after page reload
+      // Remove loading state
+      selector.classList.remove('loading');
     }
     
     if (removeBtn) {
@@ -406,8 +332,6 @@
       e.stopPropagation();
       
       const lineKey = removeBtn.dataset.lineKey;
-      console.log('Removing item:', lineKey);
-      
       removeBtn.style.opacity = '0.5';
       removeBtn.style.pointerEvents = 'none';
       
