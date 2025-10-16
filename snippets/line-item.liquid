@@ -3,7 +3,6 @@
 
 <div class="line-item" data-line-item-key="{{ line_item.key }}">
   <div class="h-stack gap-4">
-    <!-- Image du produit -->
     <div class="line-item__media">
       {%- if line_item_variant.image != blank -%}
         <img 
@@ -19,9 +18,7 @@
       {%- endif -%}
     </div>
 
-    <!-- Détails du produit -->
     <div class="line-item__info v-stack gap-2 grow">
-      <!-- Titre du produit -->
       <div>
         <a href="{{ line_item_product.url }}" class="line-item__title h6">
           {{ line_item_product.title | escape }}
@@ -43,24 +40,20 @@
         {%- endif -%}
       </div>
 
-      <!-- Section Prix avec nouveau style -->
       <div class="line-item__price-section">
         <div class="h-stack gap-2 items-center flex-wrap">
           {%- if line_item_variant.compare_at_price > line_item_variant.price -%}
             {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price -%}
             {%- assign savings_percentage = savings | times: 100.0 | divided_by: line_item_variant.compare_at_price | round -%}
             
-            <!-- Prix actuel en vert -->
             <span class="line-item__sale-price" style="color: #10b981; font-weight: 600; font-size: 16px;">
               {{ line_item.final_price | money }}
             </span>
             
-            <!-- Prix original barré -->
             <span class="line-item__compare-price" style="text-decoration: line-through; color: #9ca3af; font-size: 14px;">
               {{ line_item_variant.compare_at_price | money }}
             </span>
             
-            <!-- Badge SAVE -->
             <span class="line-item__save-badge" style="
               background-color: #10B981;
               color: white;
@@ -73,14 +66,12 @@
               SAVE {{ savings | money }}
             </span>
           {%- else -%}
-            <!-- Prix normal si pas de promotion -->
             <span class="line-item__regular-price" style="font-weight: 600; font-size: 16px;">
               {{ line_item.final_price | money }}
             </span>
           {%- endif -%}
         </div>
 
-        <!-- Réductions sur la ligne -->
         {%- if line_item.line_level_discount_allocations.size > 0 -%}
           <div class="line-item__discounts text-sm">
             {%- for discount_allocation in line_item.line_level_discount_allocations -%}
@@ -94,7 +85,6 @@
         {%- endif -%}
       </div>
 
-      <!-- Sélecteur de quantité -->
       <div class="line-item__quantity">
         <div class="quantity-selector" data-line-key="{{ line_item.key }}">
           <button type="button" class="quantity-selector__button quantity-decrease" aria-label="{{ 'cart.general.decrease_quantity' | t }}">
@@ -115,7 +105,6 @@
       </div>
     </div>
 
-    <!-- Bouton supprimer -->
     <div class="line-item__remove">
       <button type="button" class="line-item__remove-button cart-remove-btn" data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.general.remove' | t }}">
         {%- render 'icon' with 'trash', width: 14, height: 14 -%}
@@ -291,17 +280,9 @@
       const lineKey = selector.dataset.lineKey;
       const currentQty = parseInt(input.value);
       
-      if (currentQty > 1) {
-        selector.classList.add('loading');
-        await updateCart(lineKey, currentQty - 1);
-        selector.classList.remove('loading');
-      } else if (currentQty === 1) {
-        // Supprimer l'article
-        if (confirm('Voulez-vous supprimer cet article ?')) {
-          selector.classList.add('loading');
-          await updateCart(lineKey, 0);
-        }
-      }
+      selector.classList.add('loading');
+      await updateCart(lineKey, currentQty - 1);
+      selector.classList.remove('loading');
     }
 
     // Bouton augmenter
@@ -322,11 +303,9 @@
       e.preventDefault();
       const lineKey = removeBtn.dataset.lineKey;
       
-      if (confirm('Voulez-vous supprimer cet article ?')) {
-        removeBtn.style.opacity = '0.5';
-        removeBtn.style.pointerEvents = 'none';
-        await updateCart(lineKey, 0);
-      }
+      removeBtn.style.opacity = '0.5';
+      removeBtn.style.pointerEvents = 'none';
+      await updateCart(lineKey, 0);
     }
   });
 
