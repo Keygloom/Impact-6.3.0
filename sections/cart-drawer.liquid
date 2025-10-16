@@ -107,8 +107,9 @@
         </script>
 
         <script>
-          // Script pour gérer la suppression des produits du panier
+          // Script pour gérer la suppression et les changements de quantité
           document.addEventListener('DOMContentLoaded', function() {
+            // Gérer la suppression des produits
             document.addEventListener('click', function(e) {
               // Vérifier si c'est un bouton de suppression
               if (e.target.closest('[data-line-item-remove]')) {
@@ -137,6 +138,58 @@
                 });
               }
             });
+
+            // Gérer les changements de quantité via input
+            document.addEventListener('change', function(e) {
+              if (e.target.matches('quantity-input input[type="number"]')) {
+                var input = e.target;
+                var lineKey = input.closest('[data-line-key]')?.getAttribute('data-line-key');
+                var newQuantity = parseInt(input.value);
+
+                if (lineKey && newQuantity >= 0) {
+                  updateCartQuantity(lineKey, newQuantity);
+                }
+              }
+            });
+
+            // Gérer les boutons + et -
+            document.addEventListener('click', function(e) {
+              var button = e.target.closest('button[name="plus"], button[name="minus"]');
+              if (button) {
+                e.preventDefault();
+                var quantityInput = button.closest('quantity-input')?.querySelector('input[type="number"]');
+                var lineKey = button.closest('[data-line-key]')?.getAttribute('data-line-key');
+                
+                if (quantityInput && lineKey) {
+                  var currentQuantity = parseInt(quantityInput.value);
+                  var newQuantity = button.name === 'plus' ? currentQuantity + 1 : Math.max(0, currentQuantity - 1);
+                  
+                  updateCartQuantity(lineKey, newQuantity);
+                }
+              }
+            });
+
+            // Fonction pour mettre à jour la quantité
+            function updateCartQuantity(lineKey, quantity) {
+              fetch('/cart/change.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  id: lineKey,
+                  quantity: quantity
+                })
+              })
+              .then(response => response.json())
+              .then(data => {
+                // Recharger le panier
+                window.location.reload();
+              })
+              .catch(error => {
+                console.error('Erreur lors de la mise à jour:', error);
+              });
+            }
           });
         </script>
 
