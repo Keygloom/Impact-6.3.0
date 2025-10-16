@@ -67,7 +67,7 @@
         "liquid_8pqqfN": {
           "type": "liquid",
           "settings": {
-            "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center;\n  align-items: center;\n  gap: 12px;\n}\n.payment-icons-container svg {\n  width: 85px; /* Taille augmentée */\n  height: auto;\n  max-height: 50px; /* Hauteur augmentée */\n}\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: center;\n    gap: 8px;\n  }\n  .payment-icons-container svg {\n    width: 55px; /* Plus grand sur mobile */\n    max-height: 38px;\n  }\n}\n</style>\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
+            "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center;\n  align-items: center;\n  gap: 12px;\n}\n.payment-icons-container svg {\n  width: 55px;\n  height: auto;\n  max-height: 50px;\n}\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: center;\n    gap: 8px;\n  }\n  .payment-icons-container svg {\n    width: 45px;\n    max-height: 38px;\n  }\n}\n</style>\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
           }
         },
         "offer_jLLEVK": {
