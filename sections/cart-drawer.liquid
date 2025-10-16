@@ -172,40 +172,10 @@
             <span class="text-subdued">-{{ discount_application.total_allocated_amount | money }}</span>
           </div>
         {% endfor %}
-        
-        {%- comment -%} Calcul des économies totales {%- endcomment -%}
-        {%- assign total_savings = 0 -%}
-        {%- for line_item in cart.items -%}
-          {%- if line_item.variant.compare_at_price > line_item.variant.price -%}
-            {%- assign item_savings = line_item.variant.compare_at_price | minus: line_item.variant.price | times: line_item.quantity -%}
-            {%- assign total_savings = total_savings | plus: item_savings -%}
-          {%- endif -%}
-        {%- endfor -%}
-        
-        {%- for discount_application in cart.cart_level_discount_applications -%}
-          {%- assign total_savings = total_savings | plus: discount_application.total_allocated_amount -%}
-        {%- endfor -%}
-        
         <div class="h-stack gap-4 justify-between">
           <span class="h5">{{ 'cart.general.total' | t }}</span>
-          <div class="h-stack gap-2 items-baseline">
-            <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
-            {%- if total_savings > 0 -%}
-              <span style="
-                background-color: #10b981;
-                color: white;
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 12px;
-                font-weight: 600;
-                white-space: nowrap;
-              ">
-                SAVE {{ total_savings | money }}
-              </span>
-            {%- endif -%}
-          </div>
+          <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
         </div>
-        
         {%- if section.settings.show_shipping_text -%}
           {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
             <p class="text-subdued text-sm">{{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}</p>
