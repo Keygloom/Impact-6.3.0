@@ -171,6 +171,10 @@
 
             // Fonction pour mettre à jour la quantité
             function updateCartQuantity(lineKey, quantity) {
+              // Désactiver temporairement les boutons pour éviter les doubles clics
+              var buttons = document.querySelectorAll('quantity-input button');
+              buttons.forEach(btn => btn.disabled = true);
+
               fetch('/cart/change.js', {
                 method: 'POST',
                 headers: {
@@ -183,11 +187,13 @@
               })
               .then(response => response.json())
               .then(data => {
-                // Recharger le panier
-                window.location.reload();
+                console.log('Panier mis à jour:', data);
+                // Forcer un rechargement complet en contournant le cache
+                window.location.href = window.location.href.split('?')[0] + '?cart_updated=' + Date.now();
               })
               .catch(error => {
                 console.error('Erreur lors de la mise à jour:', error);
+                window.location.reload(true);
               });
             }
           });
