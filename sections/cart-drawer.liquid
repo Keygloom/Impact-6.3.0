@@ -108,70 +108,81 @@
 
         <script>
           // Script pour gérer la suppression et les changements de quantité
-          document.addEventListener('DOMContentLoaded', function() {
-            // Gérer la suppression des produits
-            document.addEventListener('click', function(e) {
-              // Vérifier si c'est un bouton de suppression
-              if (e.target.closest('[data-line-item-remove]')) {
-                e.preventDefault();
-                var removeButton = e.target.closest('[data-line-item-remove]');
-                var lineKey = removeButton.getAttribute('data-line-item-remove');
-                
-                // Envoyer la requête de suppression
-                fetch('/cart/change.js', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    id: lineKey,
-                    quantity: 0
-                  })
-                })
+          (function() {
+            // Fonction pour recharger le cart drawer
+            function reloadCartDrawer() {
+              return fetch('/?sections=cart-drawer')
                 .then(response => response.json())
                 .then(data => {
-                  // Recharger le panier
-                  window.location.reload();
-                })
-                .catch(error => {
-                  console.error('Erreur lors de la suppression:', error);
+                  var cartDrawerHTML = data['cart-drawer'];
+                  if (cartDrawerHTML) {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(cartDrawerHTML, 'text/html');
+                    var newCartDrawer = doc.querySelector('#cart-drawer');
+                    var currentCartDrawer = document.querySelector('#cart-drawer');
+                    
+                    if (newCartDrawer && currentCartDrawer) {
+                      // Sauvegarder l'état ouvert/fermé
+                      var wasOpen = currentCartDrawer.hasAttribute('open');
+                      
+                      // Remplacer le contenu
+                      currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
+                      
+                      // Restaurer l'état ouvert si nécessaire
+                      if (wasOpen) {
+                        currentCartDrawer.setAttribute('open', '');
+                      }
+                      
+                      // Réinitialiser le timer
+                      window.cartTimerInitialized = false;
+                      initCartTimer();
+                    }
+                  }
                 });
-              }
-            });
+            }
 
-            // Gérer les changements de quantité via input
-            document.addEventListener('change', function(e) {
-              if (e.target.matches('quantity-input input[type="number"]')) {
-                var input = e.target;
-                var lineKey = input.closest('[data-line-key]')?.getAttribute('data-line-key');
-                var newQuantity = parseInt(input.value);
+            // Fonction pour initialiser le timer (extraction du code existant)
+            function initCartTimer() {
+              if (window.cartTimerInitialized) return;
+              window.cartTimerInitialized = true;
 
-                if (lineKey && newQuantity >= 0) {
-                  updateCartQuantity(lineKey, newQuantity);
+              function setTimerMarginsForMobile() {
+                var timer = document.getElementById('cart-timer-element');
+                if (timer && window.innerWidth <= 768) {
+                  timer.style.setProperty('margin-left', '-24px', 'important');
+                  timer.style.setProperty('margin-right', '-24px', 'important');
                 }
               }
-            });
 
-            // Gérer les boutons + et -
-            document.addEventListener('click', function(e) {
-              var button = e.target.closest('button[name="plus"], button[name="minus"]');
-              if (button) {
-                e.preventDefault();
-                var quantityInput = button.closest('quantity-input')?.querySelector('input[type="number"]');
-                var lineKey = button.closest('[data-line-key]')?.getAttribute('data-line-key');
-                
-                if (quantityInput && lineKey) {
-                  var currentQuantity = parseInt(quantityInput.value);
-                  var newQuantity = button.name === 'plus' ? currentQuantity + 1 : Math.max(0, currentQuantity - 1);
-                  
-                  updateCartQuantity(lineKey, newQuantity);
+              setTimeout(setTimerMarginsForMobile, 50);
+
+              setTimeout(function() {
+                var display = document.getElementById('cart-timer-display');
+                if (display) {
+                  var totalSeconds = 5 * 60;
+                  var currentSeconds = totalSeconds;
+
+                  function updateTimer() {
+                    var minutes = Math.floor(currentSeconds / 60);
+                    var seconds = currentSeconds % 60;
+                    display.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+                    if (currentSeconds <= 0) {
+                      display.textContent = '00:00';
+                      display.parentElement.parentElement.innerHTML =
+                        '<div><strong>HIGH DEMAND | Your cart</strong></div><div>Reservation time expired</div>';
+                      return;
+                    }
+                    currentSeconds--;
+                    setTimeout(updateTimer, 1000);
+                  }
+                  updateTimer();
                 }
-              }
-            });
+              }, 100);
+            }
 
             // Fonction pour mettre à jour la quantité
             function updateCartQuantity(lineKey, quantity) {
-              // Désactiver temporairement les boutons pour éviter les doubles clics
               var buttons = document.querySelectorAll('quantity-input button');
               buttons.forEach(btn => btn.disabled = true);
 
@@ -188,15 +199,68 @@
               .then(response => response.json())
               .then(data => {
                 console.log('Panier mis à jour:', data);
-                // Forcer un rechargement complet en contournant le cache
-                window.location.href = window.location.href.split('?')[0] + '?cart_updated=' + Date.now();
+                return reloadCartDrawer();
+              })
+              .then(() => {
+                console.log('Cart drawer rechargé avec succès');
               })
               .catch(error => {
-                console.error('Erreur lors de la mise à jour:', error);
-                window.location.reload(true);
+                console.error('Erreur:', error);
+                buttons.forEach(btn => btn.disabled = false);
               });
             }
-          });
+
+            // Event delegation pour tous les événements
+            document.addEventListener('click', function(e) {
+              // Gérer les boutons + et -
+              var quantityButton = e.target.closest('button[name="plus"], button[name="minus"]');
+              if (quantityButton) {
+                e.preventDefault();
+                var lineItem = quantityButton.closest('line-item');
+                if (!lineItem) return;
+                
+                var lineKey = lineItem.getAttribute('data-key') || lineItem.querySelector('[data-index]')?.getAttribute('data-index');
+                var quantityInput = lineItem.querySelector('input[type="number"]');
+                
+                if (quantityInput && lineKey) {
+                  var currentQuantity = parseInt(quantityInput.value) || 0;
+                  var newQuantity = quantityButton.getAttribute('name') === 'plus' 
+                    ? currentQuantity + 1 
+                    : Math.max(0, currentQuantity - 1);
+                  
+                  updateCartQuantity(lineKey, newQuantity);
+                }
+                return;
+              }
+
+              // Gérer la suppression
+              var removeButton = e.target.closest('[data-line-item-remove]');
+              if (removeButton) {
+                e.preventDefault();
+                var lineKey = removeButton.getAttribute('data-line-item-remove');
+                if (lineKey) {
+                  updateCartQuantity(lineKey, 0);
+                }
+                return;
+              }
+            });
+
+            // Gérer les changements manuels de quantité
+            document.addEventListener('change', function(e) {
+              if (e.target.matches('input[type="number"]')) {
+                var input = e.target;
+                var lineItem = input.closest('line-item');
+                if (!lineItem) return;
+                
+                var lineKey = lineItem.getAttribute('data-key') || lineItem.querySelector('[data-index]')?.getAttribute('data-index');
+                var newQuantity = parseInt(input.value) || 0;
+                
+                if (lineKey && newQuantity >= 0) {
+                  updateCartQuantity(lineKey, newQuantity);
+                }
+              }
+            });
+          })();
         </script>
 
       </div>
