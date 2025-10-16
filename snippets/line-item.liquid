@@ -1,397 +1,119 @@
-{%- assign line_item_variant = line_item.variant | default: line_item -%}
-{%- assign line_item_product = line_item.product | default: line_item.variant.product -%}
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+LINE ITEM
+----------------------------------------------------------------------------------------------------------------------
 
-<div class="line-item" data-line-item-key="{{ line_item.key }}">
-  <div class="h-stack gap-4">
-    <div class="line-item__media">
-      {%- if line_item_variant.image != blank -%}
-        <img 
-          src="{{ line_item_variant.image | image_url: width: 140 }}"
-          alt="{{ line_item_variant.image.alt | escape }}"
-          width="70"
-          height="auto"
-          loading="lazy"
-          class="line-item__image"
-        >
+This component renders a single line item product information, and is used on order and cart page.
+
+********************************************
+Supported variables
+********************************************
+
+* line_item: the line item to render (required)
+* show_desktop_quantity: if set to true (for instance on cart drawer), the quantity is also shown on the line
+{%- endcomment -%}
+
+{% liquid
+  assign max_quantity = nil
+
+  if line_item.variant.inventory_management != blank and line_item.variant.inventory_policy == 'deny'
+    assign current_quantity_for_variant = cart | item_count_for_variant: line_item.variant.id
+    assign max_quantity = line_item.variant.inventory_quantity | minus: current_quantity_for_variant | plus: line_item.quantity
+  endif
+
+  if line_item.variant.quantity_rule.max != nil
+    assign max_quantity = max_quantity | default: 999999 | at_most: line_item.variant.quantity_rule.max
+  endif
+%}
+
+<line-item class="line-item">
+  {%- if line_item.image != blank -%}
+    <div class="line-item__media-wrapper">
+      {{- line_item.image | image_url: width: line_item.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 80px, 96px', widths: '80,96,160,192', class: 'line-item__media rounded-xs' -}}
+
+      <pill-loader class="pill-loader"></pill-loader>
+    </div>
+  {%- endif -%}
+
+  <div class="line-item__info">
+    <div class="v-stack gap-0.5">
+      {%- if line_item.url != blank -%}
+        <a href="{{ line_item.url }}" class="bold">
+          <span class="reversed-link hover:show">{{ line_item.product.title | default: line_item.title }}</span>
+        </a>
       {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag: 'line-item__image placeholder' }}
+        <p class="bold">{{ line_item.product.title | default: line_item.title }}</p>
+      {%- endif -%}
+
+      {%- render 'price-list', line_item: line_item -%}
+    </div>
+
+    {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}
+      <p class="text-sm text-subdued">{{ line_item.variant.title }}</p>
+    {%- endunless -%}
+
+    {%- if line_item.selling_plan_allocation -%}
+      <p class="text-sm text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+    {%- endif -%}
+
+    {%- unless line_item.properties == blank -%}
+      <ul class="list-disc">
+        {%- for property in line_item.properties -%}
+          {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+
+          {%- if property.last == blank or first_character_in_key == '_' -%}
+            {%- continue -%}
+          {%- endif -%}
+
+          <li class="text-sm text-subdued">
+            {%- if property.last contains '/uploads/' -%}
+              <a href="{{ property.last }}" class="link">{{ property.last | split: '/' | last }}</a>
+            {%- else -%}
+              {{ property.first }}: {{ property.last }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endunless -%}
+
+    <div class="text-sm text-subdued sm:hidden">
+      {%- if line_item.url_to_remove -%}
+        <line-item-quantity class="h-stack justify-center gap-3">
+          <input class="quantity-input" type="number" is="quantity-input" inputmode="numeric" min="{{ line_item.variant.quantity_rule.min }}" step="{{ line_item.variant.quantity_rule.increment }}" {% if max_quantity != nil %}max="{{ max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+
+          <span class="text-xs">
+            <a href="{{ line_item.url_to_remove }}" class="link" aria-label="{{ 'cart.order.remove_with_title' | t: title: line_item.title | escape }}">
+              {{- 'cart.order.remove' | t -}}
+            </a>
+          </span>
+        </line-item-quantity>
+      {%- else -%}
+        {{- 'customer.order.quantity' | t }}: {{ line_item.quantity -}}
       {%- endif -%}
     </div>
 
-    <div class="line-item__info v-stack gap-2 grow">
-      <div>
-        <a href="{{ line_item_product.url }}" class="line-item__title h6">
-          {{ line_item_product.title | escape }}
-        </a>
-        
-        {%- unless line_item_product.has_only_default_variant -%}
-          <div class="text-sm text-subdued">
-            {%- for option in line_item.variant.options -%}
-              <span>{{ option }}</span>
-              {%- unless forloop.last -%} / {%- endunless -%}
-            {%- endfor -%}
-          </div>
-        {%- endunless -%}
-
-        {%- if line_item.selling_plan_allocation -%}
-          <div class="text-sm text-subdued">
-            {{ line_item.selling_plan_allocation.selling_plan.name | escape }}
-          </div>
-        {%- endif -%}
-      </div>
-
-      <div class="line-item__price-section">
-        <div class="h-stack gap-2 items-center flex-wrap">
-          {%- if line_item_variant.compare_at_price > line_item_variant.price -%}
-            {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price -%}
-            {%- assign savings_percentage = savings | times: 100.0 | divided_by: line_item_variant.compare_at_price | round -%}
-            
-            <span class="line-item__sale-price" style="color: #10b981; font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
-            </span>
-            
-            <span class="line-item__compare-price" style="text-decoration: line-through; color: #9ca3af; font-size: 14px;">
-              {{ line_item_variant.compare_at_price | money }}
-            </span>
-            
-            <span class="line-item__save-badge" style="
-              background-color: #10B981;
-              color: white;
-              padding: 2px 6px;
-              border-radius: 8px;
-              font-size: 11px;
-              font-weight: 600;
-              white-space: nowrap;
-            ">
-              SAVE {{ savings | money }}
-            </span>
-          {%- else -%}
-            <span class="line-item__regular-price" style="font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
-            </span>
-          {%- endif -%}
-        </div>
-
-        {%- if line_item.line_level_discount_allocations.size > 0 -%}
-          <div class="line-item__discounts text-sm">
-            {%- for discount_allocation in line_item.line_level_discount_allocations -%}
-              <div class="badge badge--discount">
-                {%- render 'icon' with 'discount', width: 12, height: 12 -%}
-                <span>{{ discount_allocation.discount_application.title }}</span>
-                <span>(-{{ discount_allocation.amount | money }})</span>
-              </div>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-      </div>
-
-      <div class="line-item__quantity">
-        <div class="quantity-selector" data-line-key="{{ line_item.key }}">
-          <button type="button" class="quantity-selector__button quantity-decrease" aria-label="{{ 'cart.general.decrease_quantity' | t }}">
-            {%- render 'icon' with 'minus', width: 12, height: 12 -%}
-          </button>
-          <input 
-            type="number" 
-            class="quantity-selector__input quantity-input"
-            value="{{ line_item.quantity }}" 
-            min="0"
-            aria-label="{{ 'cart.general.quantity' | t }}"
-            readonly
-          >
-          <button type="button" class="quantity-selector__button quantity-increase" aria-label="{{ 'cart.general.increase_quantity' | t }}">
-            {%- render 'icon' with 'plus', width: 12, height: 12 -%}
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="line-item__remove">
-      <button type="button" class="line-item__remove-button cart-remove-btn" data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.general.remove' | t }}">
-        {%- render 'icon' with 'trash', width: 14, height: 14 -%}
-      </button>
-    </div>
+    {%- if line_item.line_level_discount_allocations != blank -%}
+      <ul class="contents" role="list">
+        {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+          <li class="badge">
+            {%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
   </div>
-</div>
 
-<style>
-  .line-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
+  {%- if show_desktop_quantity -%}
+    <div class="line-item__actions text-subdued hidden sm:block">
+      <line-item-quantity class="v-stack gap-2">
+        <input class="quantity-input" type="number" is="quantity-input" inputmode="numeric" min="{{ line_item.variant.quantity_rule.min }}" step="{{ line_item.variant.quantity_rule.increment }}" {% if max_quantity != nil %}max="{{ max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
 
-  .line-item:last-child {
-    border-bottom: none;
-  }
-
-  .line-item__media {
-    flex-shrink: 0;
-  }
-
-  .line-item__image {
-    width: 70px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .line-item__title {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .line-item__title:hover {
-    text-decoration: underline;
-  }
-
-  .quantity-selector {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .quantity-selector.loading {
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  .quantity-selector__button {
-    background: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
-    flex-shrink: 0;
-  }
-
-  .quantity-selector__button:hover:not(:disabled) {
-    background-color: #f3f4f6;
-  }
-
-  .quantity-selector__button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .quantity-selector__input {
-    width: 45px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
-    padding: 8px 4px;
-    font-size: 14px;
-    background: white;
-    margin: 0;
-    flex-shrink: 0;
-  }
-
-  .quantity-selector__input::-webkit-inner-spin-button,
-  .quantity-selector__input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  .quantity-selector__input:focus {
-    outline: none;
-  }
-
-  .line-item__remove-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    color: #6b7280;
-    transition: color 0.2s;
-  }
-
-  .line-item__remove-button:hover {
-    color: #ef4444;
-  }
-
-  @media (max-width: 640px) {
-    .line-item__image {
-      width: 60px;
-    }
-    
-    .line-item__save-badge {
-      font-size: 10px !important;
-      padding: 2px 4px !important;
-    }
-
-    .quantity-selector__button {
-      padding: 6px 10px;
-    }
-
-    .quantity-selector__input {
-      width: 40px;
-    }
-  }
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  initCartHandlers();
-});
-
-function initCartHandlers() {
-  // Remove old event listeners
-  const oldHandler = document._cartClickHandler;
-  if (oldHandler) {
-    document.removeEventListener('click', oldHandler);
-  }
-
-  // Create new handler
-  const cartClickHandler = async function(e) {
-    const decreaseBtn = e.target.closest('.quantity-decrease');
-    const increaseBtn = e.target.closest('.quantity-increase');
-    const removeBtn = e.target.closest('.cart-remove-btn');
-
-    if (decreaseBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      const selector = decreaseBtn.closest('.quantity-selector');
-      const input = selector.querySelector('.quantity-input');
-      const lineKey = selector.dataset.lineKey;
-      const currentQty = parseInt(input.value);
-      
-      if (currentQty > 0) {
-        selector.classList.add('loading');
-        await updateCart(lineKey, currentQty - 1);
-      }
-    }
-
-    if (increaseBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      const selector = increaseBtn.closest('.quantity-selector');
-      const input = selector.querySelector('.quantity-input');
-      const lineKey = selector.dataset.lineKey;
-      const currentQty = parseInt(input.value);
-      
-      selector.classList.add('loading');
-      await updateCart(lineKey, currentQty + 1);
-    }
-
-    if (removeBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      const lineKey = removeBtn.dataset.lineKey;
-      
-      removeBtn.style.opacity = '0.5';
-      removeBtn.style.pointerEvents = 'none';
-      await updateCart(lineKey, 0);
-    }
-  };
-
-  // Store reference and add listener
-  document._cartClickHandler = cartClickHandler;
-  document.addEventListener('click', cartClickHandler);
-}
-
-async function updateCart(lineKey, quantity) {
-  try {
-    const response = await fetch('/cart/change.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: lineKey,
-        quantity: quantity
-      })
-    });
-
-    if (!response.ok) throw new Error('Erreur lors de la mise à jour');
-
-    const cart = await response.json();
-    
-    // If quantity is 0, remove the line item
-    if (quantity === 0) {
-      const lineItem = document.querySelector(`[data-line-item-key="${lineKey}"]`);
-      if (lineItem) {
-        lineItem.remove();
-      }
-    } else {
-      // Update the quantity input
-      const selector = document.querySelector(`[data-line-key="${lineKey}"]`);
-      if (selector) {
-        const input = selector.querySelector('.quantity-input');
-        if (input) {
-          input.value = quantity;
-        }
-        selector.classList.remove('loading');
-      }
-    }
-    
-    // Update cart count in header
-    const cartCounts = document.querySelectorAll('cart-count, [data-cart-count], .cart-count');
-    cartCounts.forEach(counter => {
-      counter.textContent = cart.item_count;
-    });
-    
-    // Update total price - try multiple selectors
-    const totalSelectors = [
-      '.cart-drawer__total',
-      '[data-cart-total]',
-      '.cart-total',
-      '.total-price'
-    ];
-    
-    totalSelectors.forEach(selector => {
-      const totalElement = document.querySelector(selector);
-      if (totalElement) {
-        totalElement.textContent = formatMoney(cart.total_price);
-      }
-    });
-    
-    // Update savings badge if exists
-    const savingsSelectors = [
-      '[data-cart-savings]',
-      '.cart-savings',
-      '.total-savings'
-    ];
-    
-    const totalSavings = cart.total_discount;
-    savingsSelectors.forEach(selector => {
-      const savingsElement = document.querySelector(selector);
-      if (savingsElement && totalSavings > 0) {
-        savingsElement.textContent = formatMoney(totalSavings);
-      }
-    });
-    
-    document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
-
-    return cart;
-  } catch (error) {
-    console.error('Erreur mise à jour panier:', error);
-    alert('Une erreur est survenue. Veuillez réessayer.');
-    
-    // Remove loading state on error
-    document.querySelectorAll('.quantity-selector.loading').forEach(el => {
-      el.classList.remove('loading');
-    });
-  }
-}
-
-// Helper function to format money (adjust based on your shop's currency format)
-function formatMoney(cents) {
-  const amount = (cents / 100).toFixed(2);
-  return `${amount} CAD`;
-}
-
-// Update cart count
-document.addEventListener('cart:updated', function(e) {
-  const cart = e.detail;
-  const cartCounts = document.querySelectorAll('cart-count, [data-cart-count]');
-  
-  cartCounts.forEach(counter => {
-    counter.textContent = cart.item_count;
-  });
-});
-</script>
+        <span class="text-xs text-center">
+          <a href="{{ line_item.url_to_remove }}" class="link" aria-label="{{ 'cart.order.remove_with_title' | t: title: line_item.title | escape }}">
+            {{- 'cart.order.remove' | t -}}
+          </a>
+        </span>
+      </line-item-quantity>
+    </div>
+  {%- endif -%}
+</line-item>
