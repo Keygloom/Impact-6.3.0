@@ -285,47 +285,13 @@
         return;
       }
       
-      // 1. Mise à jour UNIQUEMENT de la liste des items (sans réinitialiser les scripts)
-      const newLineItems = newDoc.querySelector('.cart-drawer__line-items');
-      const currentLineItems = currentCartDrawer.querySelector('.cart-drawer__line-items');
+      // Mise à jour UNIQUEMENT du bouton checkout
+      const newCheckoutBtn = newDoc.querySelector('[name="checkout"], .cart-drawer__checkout, button[type="submit"]');
+      const currentCheckoutBtn = currentCartDrawer.querySelector('[name="checkout"], .cart-drawer__checkout, button[type="submit"]');
       
-      if (newLineItems && currentLineItems) {
-        currentLineItems.innerHTML = newLineItems.innerHTML;
-        console.log('Line items updated');
-      }
-      
-      // 2. Mise à jour du count bubble
-      const newCount = newDoc.querySelector('cart-count');
-      const currentCount = currentCartDrawer.querySelector('cart-count');
-      
-      if (newCount && currentCount) {
-        currentCount.textContent = newCount.textContent;
-        console.log('Count updated to:', newCount.textContent);
-      }
-      
-      // 3. Mise à jour du footer (prix total, économies, etc.)
-      const newFooter = newDoc.querySelector('[slot="footer"]');
-      const currentFooter = currentCartDrawer.querySelector('[slot="footer"]');
-      
-      if (newFooter && currentFooter) {
-        currentFooter.innerHTML = newFooter.innerHTML;
-        console.log('Footer updated');
-      }
-      
-      // 4. Mise à jour de la barre de livraison gratuite si elle existe
-      const newShippingBar = newDoc.querySelector('.free-shipping-bar');
-      const currentShippingBar = currentCartDrawer.querySelector('.free-shipping-bar');
-      
-      if (newShippingBar && currentShippingBar) {
-        currentShippingBar.outerHTML = newShippingBar.outerHTML;
-        console.log('Shipping bar updated');
-      }
-      
-      // 5. Gestion du panier vide
-      const newEmptyState = newDoc.querySelector('.empty-state');
-      if (newEmptyState) {
-        currentCartDrawer.innerHTML = newDoc.querySelector('cart-drawer').innerHTML;
-        console.log('Cart is now empty, full reload');
+      if (newCheckoutBtn && currentCheckoutBtn) {
+        currentCheckoutBtn.outerHTML = newCheckoutBtn.outerHTML;
+        console.log('Checkout button updated');
       }
       
       console.log('Cart display updated successfully');
