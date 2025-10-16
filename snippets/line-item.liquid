@@ -261,39 +261,42 @@
   async function updateCartDisplay() {
     try {
       // Fetch updated cart section
-      const response = await fetch(window.location.pathname + '?section_id=cart-drawer');
+      const response = await fetch('/?section_id=cart-drawer');
       const html = await response.text();
       
       const parser = new DOMParser();
       const newDoc = parser.parseFromString(html, 'text/html');
       
-      // Update only the items container
-      const newItems = newDoc.querySelector('.cart-items-wrapper, [data-cart-items], .line-items');
-      const currentItems = document.querySelector('.cart-items-wrapper, [data-cart-items], .line-items');
+      // Get the full cart drawer
+      const newCartDrawer = newDoc.querySelector('cart-drawer');
+      const currentCartDrawer = document.querySelector('cart-drawer');
       
-      if (newItems && currentItems) {
-        currentItems.innerHTML = newItems.innerHTML;
+      if (!newCartDrawer || !currentCartDrawer) {
+        console.log('Cart drawer not found, reloading page...');
+        location.reload();
+        return;
       }
       
-      // Update total price
-      const newTotal = newDoc.querySelector('.cart-total-price, [data-cart-total-price]');
-      const currentTotal = document.querySelector('.cart-total-price, [data-cart-total-price]');
+      // Save footer/buttons before update
+      const footer = currentCartDrawer.querySelector('.cart-drawer__footer');
+      const savedFooter = footer ? footer.cloneNode(true) : null;
       
-      if (newTotal && currentTotal) {
-        currentTotal.innerHTML = newTotal.innerHTML;
+      // Update the cart content
+      currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
+      
+      // Restore footer if it was saved
+      if (savedFooter) {
+        const newFooter = currentCartDrawer.querySelector('.cart-drawer__footer');
+        if (newFooter) {
+          newFooter.innerHTML = savedFooter.innerHTML;
+        }
       }
       
-      // Update cart count
-      const newCount = newDoc.querySelector('.cart-count-bubble, [data-cart-count]');
-      if (newCount) {
-        const count = newCount.textContent;
-        document.querySelectorAll('.cart-count-bubble, [data-cart-count]').forEach(el => {
-          el.textContent = count;
-        });
-      }
+      console.log('Cart display updated successfully');
       
     } catch (error) {
       console.error('Display update error:', error);
+      location.reload();
     }
   }
 
