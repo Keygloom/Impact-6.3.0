@@ -55,7 +55,14 @@
     "cart_show_free_shipping_threshold": true,
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "7241659924025436803": {
+        "type": "shopify://apps/mageplaza-size-chart/blocks/app-embed/305100b1-3599-492a-a54d-54f196ff1f94",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Sound": {
