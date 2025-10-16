@@ -132,11 +132,12 @@
 
   .quantity-selector {
     display: inline-flex;
-    align-items: center;
+    align-items: stretch;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
     overflow: hidden;
     background: white;
+    height: 36px;
   }
 
   .quantity-selector.loading {
@@ -147,13 +148,14 @@
   .quantity-selector__button {
     background: white;
     border: none;
-    padding: 8px 12px;
+    padding: 0 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s;
     flex-shrink: 0;
+    min-width: 36px;
   }
 
   .quantity-selector__button:hover:not(:disabled) {
@@ -171,10 +173,12 @@
     border: none;
     border-left: 1px solid #e5e7eb;
     border-right: 1px solid #e5e7eb;
-    padding: 8px 4px;
+    padding: 0 4px;
     font-size: 14px;
     background: white;
     -moz-appearance: textfield;
+    height: 100%;
+    line-height: 36px;
   }
 
   .quantity-selector__input::-webkit-inner-spin-button,
@@ -201,12 +205,18 @@
       width: 60px;
     }
     
+    .quantity-selector {
+      height: 32px;
+    }
+
     .quantity-selector__button {
-      padding: 6px 10px;
+      padding: 0 10px;
+      min-width: 32px;
     }
 
     .quantity-selector__input {
       width: 40px;
+      line-height: 32px;
     }
   }
 </style>
