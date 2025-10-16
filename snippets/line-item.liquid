@@ -311,39 +311,59 @@ async function updateCart(lineKey, quantity) {
 
     const cart = await response.json();
     
-    // Fetch only the cart items section
-    const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
-    const html = await cartDrawerResponse.text();
-    
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    
-    // Update only the line items container, not the entire drawer
-    const newLineItems = doc.querySelector('.cart-drawer__items, [data-cart-items]');
-    const currentLineItems = document.querySelector('.cart-drawer__items, [data-cart-items]');
-    
-    if (newLineItems && currentLineItems) {
-      currentLineItems.innerHTML = newLineItems.innerHTML;
+    // If quantity is 0, remove the line item
+    if (quantity === 0) {
+      const lineItem = document.querySelector(`[data-line-item-key="${lineKey}"]`);
+      if (lineItem) {
+        lineItem.remove();
+      }
+    } else {
+      // Update the quantity input
+      const selector = document.querySelector(`[data-line-key="${lineKey}"]`);
+      if (selector) {
+        const input = selector.querySelector('.quantity-input');
+        if (input) {
+          input.value = quantity;
+        }
+        selector.classList.remove('loading');
+      }
     }
     
-    // Update totals without replacing buttons
-    const newTotal = doc.querySelector('.cart-drawer__footer [data-cart-total]');
-    const currentTotal = document.querySelector('.cart-drawer__footer [data-cart-total]');
+    // Update cart count in header
+    const cartCounts = document.querySelectorAll('cart-count, [data-cart-count], .cart-count');
+    cartCounts.forEach(counter => {
+      counter.textContent = cart.item_count;
+    });
     
-    if (newTotal && currentTotal) {
-      currentTotal.textContent = newTotal.textContent;
-    }
+    // Update total price - try multiple selectors
+    const totalSelectors = [
+      '.cart-drawer__total',
+      '[data-cart-total]',
+      '.cart-total',
+      '.total-price'
+    ];
     
-    // Update subtotal if exists
-    const newSubtotal = doc.querySelector('[data-cart-subtotal]');
-    const currentSubtotal = document.querySelector('[data-cart-subtotal]');
+    totalSelectors.forEach(selector => {
+      const totalElement = document.querySelector(selector);
+      if (totalElement) {
+        totalElement.textContent = formatMoney(cart.total_price);
+      }
+    });
     
-    if (newSubtotal && currentSubtotal) {
-      currentSubtotal.textContent = newSubtotal.textContent;
-    }
+    // Update savings badge if exists
+    const savingsSelectors = [
+      '[data-cart-savings]',
+      '.cart-savings',
+      '.total-savings'
+    ];
     
-    // Reinitialize handlers
-    initCartHandlers();
+    const totalSavings = cart.total_discount;
+    savingsSelectors.forEach(selector => {
+      const savingsElement = document.querySelector(selector);
+      if (savingsElement && totalSavings > 0) {
+        savingsElement.textContent = formatMoney(totalSavings);
+      }
+    });
     
     document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
 
@@ -351,7 +371,18 @@ async function updateCart(lineKey, quantity) {
   } catch (error) {
     console.error('Erreur mise à jour panier:', error);
     alert('Une erreur est survenue. Veuillez réessayer.');
+    
+    // Remove loading state on error
+    document.querySelectorAll('.quantity-selector.loading').forEach(el => {
+      el.classList.remove('loading');
+    });
   }
+}
+
+// Helper function to format money (adjust based on your shop's currency format)
+function formatMoney(cents) {
+  const amount = (cents / 100).toFixed(2);
+  return `${amount} CAD`;
 }
 
 // Update cart count
