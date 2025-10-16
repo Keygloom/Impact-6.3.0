@@ -311,33 +311,46 @@ async function updateCart(lineKey, quantity) {
 
     const cart = await response.json();
     
-    // Reload cart drawer
+    // Fetch only the cart items section
     const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
     const html = await cartDrawerResponse.text();
     
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
-    const newCartDrawer = doc.querySelector('cart-drawer');
     
-    if (newCartDrawer) {
-      const currentCartDrawer = document.querySelector('cart-drawer');
-      if (currentCartDrawer) {
-        currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
-        
-        // Reinitialize handlers after reload
-        initCartHandlers();
-        
-        document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
-      }
+    // Update only the line items container, not the entire drawer
+    const newLineItems = doc.querySelector('.cart-drawer__items, [data-cart-items]');
+    const currentLineItems = document.querySelector('.cart-drawer__items, [data-cart-items]');
+    
+    if (newLineItems && currentLineItems) {
+      currentLineItems.innerHTML = newLineItems.innerHTML;
     }
+    
+    // Update totals without replacing buttons
+    const newTotal = doc.querySelector('.cart-drawer__footer [data-cart-total]');
+    const currentTotal = document.querySelector('.cart-drawer__footer [data-cart-total]');
+    
+    if (newTotal && currentTotal) {
+      currentTotal.textContent = newTotal.textContent;
+    }
+    
+    // Update subtotal if exists
+    const newSubtotal = doc.querySelector('[data-cart-subtotal]');
+    const currentSubtotal = document.querySelector('[data-cart-subtotal]');
+    
+    if (newSubtotal && currentSubtotal) {
+      currentSubtotal.textContent = newSubtotal.textContent;
+    }
+    
+    // Reinitialize handlers
+    initCartHandlers();
+    
+    document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
 
     return cart;
   } catch (error) {
     console.error('Erreur mise à jour panier:', error);
     alert('Une erreur est survenue. Veuillez réessayer.');
-    
-    // Reload page on error to restore correct state
-    window.location.reload();
   }
 }
 
