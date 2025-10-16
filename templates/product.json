@@ -34,6 +34,14 @@
             "liquid": "<ul style=\"list-style: none; padding: 0; margin: 0;\">\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/5676238.png?v=1760558390\" \n      alt=\"Pay safely\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Pay safely</strong> with Creditcard & PayPal</span>\n  </li>\n\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/197430.png?v=1760558322\" \n      alt=\"Free shipping\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Free shipping</strong> across Canada</span>\n  </li>\n\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/655339-200.png?v=1760182300\" \n      alt=\"Money Back Guarantee\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span>30-Day<strong> Money Back Guarantee</strong></span>\n  </li>\n\n  <li style=\"display: flex; align-items: center;\">\n    <span style=\"font-size: 18px; color: red; margin-right: 8px;\">●</span>\n    {% if product.available and product.inventory_quantity > 0 %}\n      <span>Nog {{ product.inventory_quantity }} stuks op voorraad</span>\n    {% else %}\n      <span>Only 5 Left In Stock</span>\n    {% endif %}\n  </li>\n</ul>"
           }
         },
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "yila-casual-hooded-puffer-down-jacket",
+            "waitForElementSelector": "{{ block.settings.product.metafields.shopify.size | metafield_text: field: 'label' }}",
+            "waitForElementDelay": 5
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -56,14 +64,6 @@
             "payment_button_text_color": ""
           }
         },
-        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg": {
-          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
-          "settings": {
-            "product": "{{ product }}",
-            "waitForElementSelector": "{{ block.settings.product.metafields.shopify.size | metafield_text: field: 'label' }}",
-            "waitForElementDelay": 5
-          }
-        },
         "liquid_8pqqfN": {
           "type": "liquid",
           "settings": {
@@ -81,12 +81,6 @@
             "content": "<p>Due to high demand during the <strong>OPENING SALE, </strong>only 5 units are still available.</p>",
             "background": "#f2eaec",
             "text_color": "#a30000"
-          }
-        },
-        "rating": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
           }
         },
         "payment_terms": {
@@ -109,12 +103,11 @@
         "badges",
         "price",
         "liquid_NL63im",
+        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "variant_picker",
         "buy_buttons",
-        "kiwi_size_chart_recommender_kiwi_sizing_9gXkCg",
         "liquid_8pqqfN",
         "offer_jLLEVK",
-        "rating",
         "payment_terms",
         "separator",
         "description"
