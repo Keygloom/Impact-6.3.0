@@ -285,13 +285,31 @@
         return;
       }
       
-      // Mise à jour UNIQUEMENT du bouton checkout
+      // 1. Mise à jour du bouton checkout
       const newCheckoutBtn = newDoc.querySelector('[name="checkout"], .cart-drawer__checkout, button[type="submit"]');
       const currentCheckoutBtn = currentCartDrawer.querySelector('[name="checkout"], .cart-drawer__checkout, button[type="submit"]');
       
       if (newCheckoutBtn && currentCheckoutBtn) {
         currentCheckoutBtn.outerHTML = newCheckoutBtn.outerHTML;
         console.log('Checkout button updated');
+      }
+      
+      // 2. Mise à jour du footer (prix total, sous-total, etc.)
+      const newFooter = newDoc.querySelector('[slot="footer"]');
+      const currentFooter = currentCartDrawer.querySelector('[slot="footer"]');
+      
+      if (newFooter && currentFooter) {
+        currentFooter.innerHTML = newFooter.innerHTML;
+        console.log('Footer updated');
+      }
+      
+      // 3. Mise à jour du count bubble
+      const newCount = newDoc.querySelector('cart-count');
+      const currentCount = currentCartDrawer.querySelector('cart-count');
+      
+      if (newCount && currentCount) {
+        currentCount.textContent = newCount.textContent;
+        console.log('Count updated to:', newCount.textContent);
       }
       
       console.log('Cart display updated successfully');
