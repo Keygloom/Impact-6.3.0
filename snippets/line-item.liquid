@@ -250,7 +250,7 @@
           
           const cart = await response.json();
           
-          // Update the page content
+          // Update the page content with selective update
           await updateCartDisplay();
           
           // Trigger custom event
@@ -277,29 +277,55 @@
       const parser = new DOMParser();
       const newDoc = parser.parseFromString(html, 'text/html');
       
-      // Get the full cart drawer
-      const newCartDrawer = newDoc.querySelector('cart-drawer');
       const currentCartDrawer = document.querySelector('cart-drawer');
       
-      if (!newCartDrawer || !currentCartDrawer) {
+      if (!currentCartDrawer) {
         console.log('Cart drawer not found, reloading page...');
         location.reload();
         return;
       }
       
-      // Save footer/buttons before update
-      const footer = currentCartDrawer.querySelector('.cart-drawer__footer');
-      const savedFooter = footer ? footer.cloneNode(true) : null;
+      // 1. Mise à jour UNIQUEMENT de la liste des items (sans réinitialiser les scripts)
+      const newLineItems = newDoc.querySelector('.cart-drawer__line-items');
+      const currentLineItems = currentCartDrawer.querySelector('.cart-drawer__line-items');
       
-      // Update the cart content
-      currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
+      if (newLineItems && currentLineItems) {
+        currentLineItems.innerHTML = newLineItems.innerHTML;
+        console.log('Line items updated');
+      }
       
-      // Restore footer if it was saved
-      if (savedFooter) {
-        const newFooter = currentCartDrawer.querySelector('.cart-drawer__footer');
-        if (newFooter) {
-          newFooter.innerHTML = savedFooter.innerHTML;
-        }
+      // 2. Mise à jour du count bubble
+      const newCount = newDoc.querySelector('cart-count');
+      const currentCount = currentCartDrawer.querySelector('cart-count');
+      
+      if (newCount && currentCount) {
+        currentCount.textContent = newCount.textContent;
+        console.log('Count updated to:', newCount.textContent);
+      }
+      
+      // 3. Mise à jour du footer (prix total, économies, etc.)
+      const newFooter = newDoc.querySelector('[slot="footer"]');
+      const currentFooter = currentCartDrawer.querySelector('[slot="footer"]');
+      
+      if (newFooter && currentFooter) {
+        currentFooter.innerHTML = newFooter.innerHTML;
+        console.log('Footer updated');
+      }
+      
+      // 4. Mise à jour de la barre de livraison gratuite si elle existe
+      const newShippingBar = newDoc.querySelector('.free-shipping-bar');
+      const currentShippingBar = currentCartDrawer.querySelector('.free-shipping-bar');
+      
+      if (newShippingBar && currentShippingBar) {
+        currentShippingBar.outerHTML = newShippingBar.outerHTML;
+        console.log('Shipping bar updated');
+      }
+      
+      // 5. Gestion du panier vide
+      const newEmptyState = newDoc.querySelector('.empty-state');
+      if (newEmptyState) {
+        currentCartDrawer.innerHTML = newDoc.querySelector('cart-drawer').innerHTML;
+        console.log('Cart is now empty, full reload');
       }
       
       console.log('Cart display updated successfully');
