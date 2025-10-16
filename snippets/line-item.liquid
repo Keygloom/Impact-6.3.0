@@ -290,7 +290,9 @@
       const currentFooter = currentCartDrawer.querySelector('[slot="footer"]');
       
       if (newFooter && currentFooter) {
-        currentFooter.innerHTML = newFooter.innerHTML;
+        // Utiliser replaceWith au lieu de innerHTML pour forcer le rechargement complet
+        const newFooterClone = newFooter.cloneNode(true);
+        currentFooter.replaceWith(newFooterClone);
         console.log('Footer with checkout button updated');
       }
       
