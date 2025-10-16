@@ -1,8 +1,7 @@
-<!-- LINE-ITEM.LIQUID - À placer dans snippets/line-item.liquid -->
 {%- assign line_item_variant = line_item.variant | default: line_item -%}
 {%- assign line_item_product = line_item.product | default: line_item.variant.product -%}
 
-<div class="line-item" data-line-item-id="{{ line_item.id }}">
+<div class="line-item" data-line-item-key="{{ line_item.key }}">
   <div class="h-stack gap-4">
     <!-- Image du produit -->
     <div class="line-item__media">
@@ -97,33 +96,30 @@
 
       <!-- Sélecteur de quantité -->
       <div class="line-item__quantity">
-        <quantity-selector class="quantity-selector">
-          <button type="button" class="quantity-selector__button" aria-label="{{ 'cart.general.decrease_quantity' | t }}" data-quantity-decrease>
+        <div class="quantity-selector" data-line-key="{{ line_item.key }}">
+          <button type="button" class="quantity-selector__button quantity-decrease" aria-label="{{ 'cart.general.decrease_quantity' | t }}">
             {%- render 'icon' with 'minus', width: 12, height: 12 -%}
           </button>
           <input 
             type="number" 
-            name="updates[]" 
+            class="quantity-selector__input quantity-input"
             value="{{ line_item.quantity }}" 
             min="0"
-            class="quantity-selector__input"
             aria-label="{{ 'cart.general.quantity' | t }}"
-            data-line-item-id="{{ line_item.id }}"
+            readonly
           >
-          <button type="button" class="quantity-selector__button" aria-label="{{ 'cart.general.increase_quantity' | t }}" data-quantity-increase>
+          <button type="button" class="quantity-selector__button quantity-increase" aria-label="{{ 'cart.general.increase_quantity' | t }}">
             {%- render 'icon' with 'plus', width: 12, height: 12 -%}
           </button>
-        </quantity-selector>
+        </div>
       </div>
     </div>
 
     <!-- Bouton supprimer -->
     <div class="line-item__remove">
-      <cart-remove-button data-line-item-id="{{ line_item.id }}">
-        <button type="button" class="line-item__remove-button" aria-label="{{ 'cart.general.remove' | t }}">
-          {%- render 'icon' with 'trash', width: 14, height: 14 -%}
-        </button>
-      </cart-remove-button>
+      <button type="button" class="line-item__remove-button cart-remove-btn" data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.general.remove' | t }}">
+        {%- render 'icon' with 'trash', width: 14, height: 14 -%}
+      </button>
     </div>
   </div>
 </div>
@@ -164,6 +160,12 @@
     align-items: center;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
+    position: relative;
+  }
+
+  .quantity-selector.loading {
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   .quantity-selector__button {
@@ -174,10 +176,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.2s;
   }
 
-  .quantity-selector__button:hover {
+  .quantity-selector__button:hover:not(:disabled) {
     background-color: #f3f4f6;
+  }
+
+  .quantity-selector__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .quantity-selector__input {
@@ -186,6 +194,7 @@
     border: none;
     padding: 0.25rem;
     font-size: 14px;
+    background: transparent;
   }
 
   .quantity-selector__input::-webkit-inner-spin-button,
@@ -204,7 +213,7 @@
   }
 
   .line-item__remove-button:hover {
-    color: #10B981;
+    color: #ef4444;
   }
 
   @media (max-width: 640px) {
@@ -218,3 +227,117 @@
     }
   }
 </style>
+
+<script>
+(function() {
+  // Éviter les initialisations multiples
+  if (window.lineItemHandlersInitialized) return;
+  window.lineItemHandlersInitialized = true;
+
+  // Fonction pour mettre à jour le panier
+  async function updateCart(lineKey, quantity) {
+    try {
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: lineKey,
+          quantity: quantity
+        })
+      });
+
+      if (!response.ok) throw new Error('Erreur lors de la mise à jour');
+
+      const cart = await response.json();
+      
+      // Recharger le contenu du cart drawer
+      const cartDrawerResponse = await fetch('/?section_id=cart-drawer');
+      const html = await cartDrawerResponse.text();
+      
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newCartDrawer = doc.querySelector('cart-drawer');
+      
+      if (newCartDrawer) {
+        const currentCartDrawer = document.querySelector('cart-drawer');
+        if (currentCartDrawer) {
+          currentCartDrawer.innerHTML = newCartDrawer.innerHTML;
+          
+          // Déclencher un événement personnalisé pour notifier d'autres scripts
+          document.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
+        }
+      }
+
+      return cart;
+    } catch (error) {
+      console.error('Erreur mise à jour panier:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  }
+
+  // Gestionnaire de quantité
+  document.addEventListener('click', async function(e) {
+    const decreaseBtn = e.target.closest('.quantity-decrease');
+    const increaseBtn = e.target.closest('.quantity-increase');
+    const removeBtn = e.target.closest('.cart-remove-btn');
+
+    // Bouton diminuer
+    if (decreaseBtn) {
+      e.preventDefault();
+      const selector = decreaseBtn.closest('.quantity-selector');
+      const input = selector.querySelector('.quantity-input');
+      const lineKey = selector.dataset.lineKey;
+      const currentQty = parseInt(input.value);
+      
+      if (currentQty > 1) {
+        selector.classList.add('loading');
+        await updateCart(lineKey, currentQty - 1);
+        selector.classList.remove('loading');
+      } else if (currentQty === 1) {
+        // Supprimer l'article
+        if (confirm('Voulez-vous supprimer cet article ?')) {
+          selector.classList.add('loading');
+          await updateCart(lineKey, 0);
+        }
+      }
+    }
+
+    // Bouton augmenter
+    if (increaseBtn) {
+      e.preventDefault();
+      const selector = increaseBtn.closest('.quantity-selector');
+      const input = selector.querySelector('.quantity-input');
+      const lineKey = selector.dataset.lineKey;
+      const currentQty = parseInt(input.value);
+      
+      selector.classList.add('loading');
+      await updateCart(lineKey, currentQty + 1);
+      selector.classList.remove('loading');
+    }
+
+    // Bouton supprimer
+    if (removeBtn) {
+      e.preventDefault();
+      const lineKey = removeBtn.dataset.lineKey;
+      
+      if (confirm('Voulez-vous supprimer cet article ?')) {
+        removeBtn.style.opacity = '0.5';
+        removeBtn.style.pointerEvents = 'none';
+        await updateCart(lineKey, 0);
+      }
+    }
+  });
+
+  // Mettre à jour le compteur du panier dans le header
+  document.addEventListener('cart:updated', function(e) {
+    const cart = e.detail;
+    const cartCounts = document.querySelectorAll('cart-count, [data-cart-count]');
+    
+    cartCounts.forEach(counter => {
+      counter.textContent = cart.item_count;
+    });
+  });
+})();
+</script>
