@@ -135,6 +135,9 @@
                           <span class="text-subdued text-sm">{{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}</span>
                         {%- else -%}
                           <span class="text-subdued text-sm">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</span>
+                        {% comment %}
+                          (tax-note removed)
+                        {% endcomment %}
                         {%- endif -%}
                       {%- endif -%}
                     </div>
