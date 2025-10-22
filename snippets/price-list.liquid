@@ -49,23 +49,13 @@ Supported variables
     {%- endcomment -%}
     <sale-price class="{% if variant.compare_at_price > variant.price %}{{ on_sale_price_classes }}{% else %}{{ regular_price_classes }}{% endif %}">
       <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-
-      {%- if settings.currency_code_enabled -%}
-        {{- variant.price | money_with_currency -}}
-      {%- else -%}
-        {{- variant.price | money -}}
-      {%- endif -%}
+      {{- variant.price | money_without_currency -}}$
     </sale-price>
 
     {%- if variant.compare_at_price > variant.price -%}
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-
-        {%- if settings.currency_code_enabled -%}
-          {{- variant.compare_at_price | money_with_currency -}}
-        {%- else -%}
-          {{- variant.compare_at_price | money -}}
-        {%- endif -%}
+        {{- variant.compare_at_price | money_without_currency -}}$
       </compare-at-price>
     {%- endif -%}
   {%- elsif line_item != blank -%}
@@ -76,23 +66,13 @@ Supported variables
     {%- endcomment -%}
     <sale-price class="{% if line_item.original_line_price > line_item.final_line_price %}{{ on_sale_price_classes }}{% else %}{{ regular_price_classes }}{% endif %}">
       <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-
-      {%- if settings.currency_code_enabled -%}
-        {{- line_item.final_line_price | money_with_currency -}}
-      {%- else -%}
-        {{- line_item.final_line_price | money -}}
-      {%- endif -%}
+      {{- line_item.final_line_price | money_without_currency -}}$
     </sale-price>
 
     {%- if line_item.original_line_price > line_item.final_line_price -%}
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-
-        {%- if settings.currency_code_enabled -%}
-          {{- line_item.original_line_price | money_with_currency -}}
-        {%- else -%}
-          {{- line_item.original_line_price | money -}}
-        {%- endif -%}
+        {{- line_item.original_line_price | money_without_currency -}}$
       </compare-at-price>
     {%- endif -%}
   {%- else -%}
@@ -105,11 +85,7 @@ Supported variables
       {%- assign cheapest_variant = product.variants | sort: 'price' | first -%}
 
       {%- capture price_min -%}
-        {%- if settings.currency_code_enabled -%}
-          {{- cheapest_variant.price | money_with_currency -}}
-        {%- else -%}
-          {{- cheapest_variant.price | money -}}
-        {%- endif -%}
+        {{- cheapest_variant.price | money_without_currency -}}$
       {%- endcapture -%}
 
       {%- if cheapest_variant.price < cheapest_variant.compare_at_price -%}
@@ -120,12 +96,7 @@ Supported variables
 
         <compare-at-price class="{{ compare_at_price_classes }}">
           <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-
-          {%- if settings.currency_code_enabled -%}
-            {{- cheapest_variant.compare_at_price | money_with_currency -}}
-          {%- else -%}
-            {{- cheapest_variant.compare_at_price | money -}}
-          {%- endif -%}
+          {{- cheapest_variant.compare_at_price | money_without_currency -}}$
         </compare-at-price>
       {%- else -%}
         <sale-price class="{{ regular_price_classes }}">
@@ -136,38 +107,20 @@ Supported variables
     {%- elsif product.price < product.compare_at_price -%}
       <sale-price class="{{ on_sale_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-
-        {%- if settings.currency_code_enabled -%}
-          {{- product.price | money_with_currency -}}
-        {%- else -%}
-          {{- product.price | money -}}
-        {%- endif -%}
+        {{- product.price | money_without_currency -}}$
       </sale-price>
 
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-
-        {%- if settings.currency_code_enabled -%}
-          {{- product.compare_at_price | money_with_currency -}}
-        {%- else -%}
-          {{- product.compare_at_price | money -}}
-        {%- endif -%}
+        {{- product.compare_at_price | money_without_currency -}}$
       </compare-at-price>
     {%- elsif product.price_varies -%}
       {%- capture price_min -%}
-        {%- if settings.currency_code_enabled -%}
-          {{ product.price_min | money_with_currency }}
-        {%- else -%}
-          {{ product.price_min | money }}
-        {%- endif -%}
+        {{ product.price_min | money_without_currency }}$
       {%- endcapture -%}
 
       {%- capture price_max -%}
-        {%- if settings.currency_code_enabled -%}
-          {{- product.price_max | money_with_currency -}}
-        {%- else -%}
-          {{- product.price_max | money -}}
-        {%- endif -%}
+        {{- product.price_max | money_without_currency -}}$
       {%- endcapture -%}
 
       <sale-price class="{{ regular_price_classes }}">
@@ -177,12 +130,7 @@ Supported variables
     {%- else -%}
       <sale-price class="{{ regular_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-
-        {%- if settings.currency_code_enabled -%}
-          {{- product.price | money_with_currency -}}
-        {%- else -%}
-          {{- product.price | money -}}
-        {%- endif -%}
+        {{- product.price | money_without_currency -}}$
       </sale-price>
     {%- endif -%}
   {%- endif -%}
@@ -198,7 +146,7 @@ Supported variables
           {%- assign reference_value = unit_price_measurement.reference_value -%}
         {%- endif -%}
 
-        ({{ unit_price_item.unit_price | money }}/{{ reference_value }}{{ unit_price_measurement.reference_unit }})
+        ({{ unit_price_item.unit_price | money_without_currency }}$/{{ reference_value }}{{ unit_price_measurement.reference_unit }})
       </unit-price>
     {%- endif -%}
   {%- endunless -%}
