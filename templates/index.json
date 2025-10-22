@@ -84,6 +84,123 @@
         "text_color": ""
       }
     },
+    "image_link_blocks_3MCAdN": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_GVCjzF": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "Shop Now",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_HBftRr": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_TdTpHE": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_MVtLfL": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_GVCjzF",
+        "item_HBftRr",
+        "item_TdTpHE",
+        "item_MVtLfL"
+      ],
+      "name": "Image link blocks",
+      "settings": {
+        "full_width": true,
+        "block_size": "large",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "slideshow_ta8Vp7": {
+      "type": "slideshow",
+      "blocks": {
+        "image_7Eb3Nj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Wuxiz_Boutique_voorkant_winkel_zonder_gemini_logo.png",
+            "mobile_image": "shopify://shop_images/Wuxiz_Boutique_voorkant_winkel_zonder_gemini_logo.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "Tell your story",
+            "title": "Slide 1",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "shopify://collections",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_7Eb3Nj"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#F2F2F2",
+        "background_gradient": ""
+      }
+    },
     "featured_collection_jY77BQ": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -93,9 +210,9 @@
           "estelle™-ruffled-collar-sweater-top",
           "jenna-loose-knit-pullover"
         ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": true,
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": false,
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
@@ -171,7 +288,7 @@
       "settings": {
         "collection": "jackets-coats",
         "products": [],
-        "full_width": true,
+        "full_width": false,
         "stack_products": false,
         "show_progress_bar": false,
         "products_count": 6,
@@ -195,6 +312,8 @@
   "order": [
     "slideshow",
     "rich_text_G6BcF6",
+    "image_link_blocks_3MCAdN",
+    "slideshow_ta8Vp7",
     "featured_collection_jY77BQ",
     "press_gVCanL",
     "featured_collection_Hiytgd"
