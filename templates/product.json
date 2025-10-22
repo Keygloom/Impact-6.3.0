@@ -109,15 +109,15 @@
           "type": "collapsible_text",
           "settings": {
             "title": "Returns",
-            "content": "<p>Share some content to your customers about your products.</p>",
+            "content": "<p>Wrong size? Displeased? <strong>No problem!</strong> If for any reason you are not satisfied with the product, we offer a 30 day return policy.</p>",
             "page": ""
           }
         },
         "collapsible_text_UdYfW4": {
           "type": "collapsible_text",
           "settings": {
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
+            "title": "Any other questions?",
+            "content": "<p>We believe that fashion is a way to showcase your individuality and embrace your confidence.<br/><br/>That's why we're committed to helping you discover the perfect outfit that reflects your unique style and personality.</p><p>Our <strong>friendly customer service team</strong> is always ready to assist. Whether you need advice on sizing, outfit recommendations, or simply want to reach out, we're here to support you!</p><p>Feel free to get in touch anytime through our <strong>contact form</strong> or drop us an email at <strong>info@wuxiz.com.</strong></p>",
             "page": ""
           }
         },
