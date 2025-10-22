@@ -10096,29 +10096,3 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   display: -webkit-box;
   overflow: hidden;
 }
-/* Version de base (mobile) */
-.variant-picker__option-info {
-  position: relative !important;
-}
-
-.variant-picker__option-info .ks-chart-modal-link {
-  position: absolute !important;
-  right: 250px !important;
-  top: -8px !important;
-  left: auto !important;
-}
-
-/* Version Desktop (écrans moyens et grands) */
-@media screen and (min-width: 768px) {
-  .variant-picker__option-info .ks-chart-modal-link {
-    right: 10px !important;
-    top: 0 !important;
-  }
-}
-
-/* Version Desktop large (optionnel, si besoin d'ajustement) */
-@media screen and (min-width: 1200px) {
-  .variant-picker__option-info .ks-chart-modal-link {
-    right: 20px !important;
-  }
-}
