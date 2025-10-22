@@ -74,13 +74,12 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter": {
-          "type": "newsletter",
+        "text": {
+          "type": "text",
           "settings": {
-            "image_width": 150,
-            "heading_size": "h3",
-            "title": "Sign up for new stories and personal offers",
-            "content": ""
+            "title": "",
+            "content": "<p>Need help? Please contact our customer service.</p><p><strong>Monday to Sunday:</strong> <br/>08:00 - 20:30 (Weekdays), <br/>09:00 - 13:00 (Weekends)</p><p>Our team is at your disposal 7 days a week. Do not hesitate to contact us!</p><p><strong>Email:</strong> info@wuxiz.com</p>",
+            "enable_follow_on_shop": true
           }
         },
         "links": {
@@ -90,20 +89,11 @@
             "show_menu_title": true,
             "menu_title": ""
           }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "title": "Opening hours",
-            "content": "<p>Need help? Please contact our customer service.</p><p><strong>Monday to Sunday:</strong> <br/>08:00 - 20:30 (Weekdays), <br/>09:00 - 13:00 (Weekends)</p><p>Our team is at your disposal 7 days a week. Do not hesitate to contact us!</p><p><strong>Email:</strong> info@wuxiz.com</p>",
-            "enable_follow_on_shop": true
-          }
         }
       },
       "block_order": [
-        "newsletter",
-        "links",
-        "text"
+        "text",
+        "links"
       ],
       "settings": {
         "show_social_media": true,
