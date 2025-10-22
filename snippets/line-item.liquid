@@ -40,33 +40,39 @@
         {%- endif -%}
       </div>
 
+      {%- comment -%}
+        SECTION PRIX — Alignée sur la devise présentée (ex: CAD)
+        Règle: on n'utilise PAS variant.price/compare_at_price pour l'affichage.
+        On s'appuie sur line_item.* (presentment).
+      {%- endcomment -%}
       <div class="line-item__price-section">
         <div class="h-stack gap-2 items-center flex-wrap">
-          {%- if line_item_variant.compare_at_price > line_item_variant.price -%}
-            {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price -%}
-            
-            <span class="line-item__sale-price" style="color: #10b981; font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
+          {%- assign has_compare = line_item.compare_at_price and line_item.compare_at_price > line_item.final_price -%}
+          {%- if has_compare -%}
+            {%- assign unit_savings = line_item.compare_at_price | minus: line_item.final_price -%}
+
+            <span class="line-item__sale-price" style="color:#10b981; font-weight:600; font-size:16px;">
+              {{ line_item.final_price | money_with_currency }}
             </span>
-            
-            <span class="line-item__compare-price" style="text-decoration: line-through; color: #9ca3af; font-size: 14px;">
-              {{ line_item_variant.compare_at_price | money }}
+
+            <span class="line-item__compare-price" style="text-decoration:line-through; color:#9ca3af; font-size:14px;">
+              {{ line_item.compare_at_price | money_with_currency }}
             </span>
-            
+
             <span class="line-item__save-badge" style="
-              background-color: #10B981;
-              color: white;
-              padding: 2px 6px;
-              border-radius: 8px;
-              font-size: 11px;
-              font-weight: 600;
-              white-space: nowrap;
+              background-color:#10B981;
+              color:white;
+              padding:2px 6px;
+              border-radius:8px;
+              font-size:11px;
+              font-weight:600;
+              white-space:nowrap;
             ">
-              SAVE {{ savings | money }}
+              SAVE {{ unit_savings | money_with_currency }}
             </span>
           {%- else -%}
-            <span class="line-item__regular-price" style="font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
+            <span class="line-item__regular-price" style="font-weight:600; font-size:16px;">
+              {{ line_item.final_price | money_with_currency }}
             </span>
           {%- endif -%}
         </div>
@@ -104,120 +110,44 @@
     padding: 1rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
-
-  .line-item:last-child {
-    border-bottom: none;
-  }
-
-  .line-item__media {
-    flex-shrink: 0;
-  }
-
-  .line-item__image {
-    width: 70px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .line-item__title {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .line-item__title:hover {
-    text-decoration: underline;
-  }
+  .line-item:last-child { border-bottom: none; }
+  .line-item__media { flex-shrink: 0; }
+  .line-item__image { width: 70px; height: auto; object-fit: cover; border-radius: 8px; }
+  .line-item__title { color: inherit; text-decoration: none; font-weight: 500; }
+  .line-item__title:hover { text-decoration: underline; }
 
   .quantity-selector {
-    display: inline-flex;
-    align-items: stretch;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    overflow: hidden;
-    background: white;
-    height: 36px;
+    display: inline-flex; align-items: stretch; border: 1px solid #e5e7eb;
+    border-radius: 6px; overflow: hidden; background: white; height: 36px;
   }
-
-  .quantity-selector.loading {
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
+  .quantity-selector.loading { opacity: 0.6; pointer-events: none; }
   .quantity-selector__button {
-    background: white;
-    border: none;
-    padding: 0 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
-    flex-shrink: 0;
-    min-width: 36px;
+    background: white; border: none; padding: 0 12px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background-color 0.2s; flex-shrink: 0; min-width: 36px;
   }
-
-  .quantity-selector__button:hover:not(:disabled) {
-    background-color: #f3f4f6;
-  }
-
-  .quantity-selector__button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
+  .quantity-selector__button:hover:not(:disabled) { background-color: #f3f4f6; }
+  .quantity-selector__button:disabled { opacity: 0.5; cursor: not-allowed; }
   .quantity-selector__input {
-    width: 45px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
-    padding: 0 4px;
-    font-size: 14px;
-    background: white;
-    -moz-appearance: textfield;
-    height: 100%;
-    line-height: 36px;
+    width: 45px; text-align: center; border: none;
+    border-left: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb;
+    padding: 0 4px; font-size: 14px; background: white; -moz-appearance: textfield;
+    height: 100%; line-height: 36px;
   }
-
   .quantity-selector__input::-webkit-inner-spin-button,
-  .quantity-selector__input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+  .quantity-selector__input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
   .line-item__remove-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    color: #6b7280;
-    transition: color 0.2s;
+    background: none; border: none; cursor: pointer; padding: 0.5rem;
+    color: #6b7280; transition: color 0.2s;
   }
-
-  .line-item__remove-button:hover {
-    color: #ef4444;
-  }
+  .line-item__remove-button:hover { color: #ef4444; }
 
   @media (max-width: 640px) {
-    .line-item__image {
-      width: 60px;
-    }
-    
-    .quantity-selector {
-      height: 32px;
-    }
-
-    .quantity-selector__button {
-      padding: 0 10px;
-      min-width: 32px;
-    }
-
-    .quantity-selector__input {
-      width: 40px;
-      line-height: 32px;
-    }
+    .line-item__image { width: 60px; }
+    .quantity-selector { height: 32px; }
+    .quantity-selector__button { padding: 0 10px; min-width: 32px; }
+    .quantity-selector__input { width: 40px; line-height: 32px; }
   }
 </style>
 
@@ -285,43 +215,39 @@
         return;
       }
       
-      // 1. Mise à jour UNIQUEMENT de la liste des items (sans réinitialiser les scripts)
+      // 1. Update only line items
       const newLineItems = newDoc.querySelector('.cart-drawer__line-items');
       const currentLineItems = currentCartDrawer.querySelector('.cart-drawer__line-items');
-      
       if (newLineItems && currentLineItems) {
         currentLineItems.innerHTML = newLineItems.innerHTML;
         console.log('Line items updated');
       }
       
-      // 2. Mise à jour du count bubble
+      // 2. Update count bubble
       const newCount = newDoc.querySelector('cart-count');
       const currentCount = currentCartDrawer.querySelector('cart-count');
-      
       if (newCount && currentCount) {
         currentCount.textContent = newCount.textContent;
         console.log('Count updated to:', newCount.textContent);
       }
       
-      // 3. Mise à jour du footer (prix total, économies, etc.)
+      // 3. Update footer (totals, savings, etc.)
       const newFooter = newDoc.querySelector('[slot="footer"]');
       const currentFooter = currentCartDrawer.querySelector('[slot="footer"]');
-      
       if (newFooter && currentFooter) {
         currentFooter.innerHTML = newFooter.innerHTML;
         console.log('Footer updated');
       }
       
-      // 4. Mise à jour de la barre de livraison gratuite si elle existe
+      // 4. Update free shipping bar if present
       const newShippingBar = newDoc.querySelector('.free-shipping-bar');
       const currentShippingBar = currentCartDrawer.querySelector('.free-shipping-bar');
-      
       if (newShippingBar && currentShippingBar) {
         currentShippingBar.outerHTML = newShippingBar.outerHTML;
         console.log('Shipping bar updated');
       }
       
-      // 5. Gestion du panier vide
+      // 5. Empty cart state
       const newEmptyState = newDoc.querySelector('.empty-state');
       if (newEmptyState) {
         currentCartDrawer.innerHTML = newDoc.querySelector('cart-drawer').innerHTML;
