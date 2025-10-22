@@ -72,34 +72,27 @@
 
             setTimeout(function() {
               var display = document.getElementById('cart-timer-display');
-
               if (display) {
-                var totalSeconds = 5 * 60 + 0; // 5 minutes
+                var totalSeconds = 5 * 60 + 0;
                 var currentSeconds = totalSeconds;
-
                 function updateTimer() {
                   var minutes = Math.floor(currentSeconds / 60);
                   var seconds = currentSeconds % 60;
-
                   display.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-
                   if (currentSeconds <= 0) {
                     display.textContent = '00:00';
                     display.parentElement.parentElement.innerHTML =
                       '<div><strong>HIGH DEMAND | Your cart</strong></div><div>Reservation time expired</div>';
                     return;
                   }
-
                   currentSeconds--;
                   setTimeout(updateTimer, 1000);
                 }
-
                 updateTimer();
               }
             }, 100);
           })();
         </script>
-
       </div>
 
       <div class="v-stack gap-6 sm:gap-8">
@@ -167,7 +160,6 @@
           </div>
         {% endfor %}
 
-        {%- comment -%} Calcul des économies totales {%- endcomment -%}
         {%- assign total_savings = 0 -%}
         {%- assign total_compare_at_price = 0 -%}
         {%- for line_item in cart.items -%}
@@ -199,43 +191,11 @@
             {%- endif -%}
           </div>
         </div>
-
-        {%- if section.settings.show_cart_note -%}
-          <button type="button" class="justify-self-start" aria-controls="cart-drawer-note">
-            <span class="link text-sm text-subdued">
-              {%- if cart.note == blank -%}
-                {{- 'cart.general.add_order_note' | t -}}
-              {%- else -%}
-                {{- 'cart.general.edit_order_note' | t -}}
-              {%- endif -%}
-            </span>
-          </button>
-          <cart-note-dialog id="cart-drawer-note" class="cart-drawer__note">
-            <div class="cart-drawer__note-inner">
-              <div class="v-stack gap-4 sm:gap-6">
-                <p class="h5">{{ 'cart.general.order_note' | t }}</p>
-                <cart-note class="v-stack gap-4">
-                  {%- assign order_note = 'cart.general.order_note' | t -%}
-                  {%- assign order_save_label = 'cart.general.save_note' | t -%}
-                  {%- render 'input', name: 'note', multiline: 3, label: order_note, value: cart.note -%}
-                  <div class="justify-self-start">
-                    {%- render 'button', type: 'button', content: order_save_label, size: 'lg', is: 'close-button', secondary: true -%}
-                  </div>
-                </cart-note>
-              </div>
-            </div>
-          </cart-note-dialog>
-        {%- endif -%}
       </div>
 
-      {%- comment -%}
-        Bouton de checkout + icônes de paiement juste en dessous
-      {%- endcomment -%}
       <form action="{{ routes.cart_url }}" method="POST" class="buy-buttons">
         {%- assign checkout_label = 'cart.general.checkout' | t -%}
         {%- render 'button', type: 'submit', content: checkout_label, icon: 'picto-lock', name: 'checkout', size: 'xl' -%}
-
-        <!-- Icônes de paiement sous le bouton -->
         <div class="payment-icons-container" aria-label="Accepted payment methods">
           {%- for type in shop.enabled_payment_types -%}
             {{ type | payment_type_svg_tag }}
@@ -247,20 +207,17 @@
 </cart-drawer>
 
 <style>
-  /* Styles pour les prix du total */
   .cart-total-prices {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 8px;
   }
-
   .cart-compare-price {
     text-decoration: line-through;
     color: #6b7280;
     font-size: 14px;
   }
-
   .cart-savings-badge {
     background-color: #10b981;
     color: white;
@@ -270,25 +227,19 @@
     font-weight: 600;
     white-space: nowrap;
   }
-
-  /* Mobile : tous les prix sur une seule ligne */
   @media (max-width: 768px) {
     .cart-total-prices {
       flex-wrap: nowrap;
       gap: 6px;
     }
-    
     .cart-compare-price {
       font-size: 12px;
     }
-    
     .cart-savings-badge {
       font-size: 11px;
       padding: 3px 6px;
     }
   }
-
-  /* Styles pour les icônes de paiement */
   .payment-icons-container {
     display: flex;
     flex-wrap: nowrap;
@@ -297,13 +248,11 @@
     gap: 12px;
     margin-top: 12px;
   }
-  
   .payment-icons-container svg {
     width: 56px;
     height: auto;
     max-height: 50px;
   }
-  
   @media (max-width: 768px) {
     .payment-icons-container {
       gap: 8px;
