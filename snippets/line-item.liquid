@@ -46,11 +46,11 @@
             {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price -%}
             
             <span class="line-item__sale-price" style="color: #10b981; font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
+              {{ line_item.final_price | money_without_currency }}$
             </span>
             
             <span class="line-item__compare-price" style="text-decoration: line-through; color: #9ca3af; font-size: 14px;">
-              {{ line_item_variant.compare_at_price | money }}
+              {{ line_item_variant.compare_at_price | money_without_currency }}$
             </span>
             
             <span class="line-item__save-badge" style="
@@ -62,11 +62,11 @@
               font-weight: 600;
               white-space: nowrap;
             ">
-              SAVE {{ savings | money }}
+              SAVE {{ savings | money_without_currency }}$
             </span>
           {%- else -%}
             <span class="line-item__regular-price" style="font-weight: 600; font-size: 16px;">
-              {{ line_item.final_price | money }}
+              {{ line_item.final_price | money_without_currency }}$
             </span>
           {%- endif -%}
         </div>
