@@ -49,13 +49,13 @@ Supported variables
     {%- endcomment -%}
     <sale-price class="{% if variant.compare_at_price > variant.price %}{{ on_sale_price_classes }}{% else %}{{ regular_price_classes }}{% endif %}">
       <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-      {{- variant.price | money_without_currency -}}$
+      {{- variant.price | money -}}
     </sale-price>
 
     {%- if variant.compare_at_price > variant.price -%}
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-        {{- variant.compare_at_price | money_without_currency -}}$
+        {{- variant.compare_at_price | money -}}
       </compare-at-price>
     {%- endif -%}
   {%- elsif line_item != blank -%}
@@ -66,13 +66,13 @@ Supported variables
     {%- endcomment -%}
     <sale-price class="{% if line_item.original_line_price > line_item.final_line_price %}{{ on_sale_price_classes }}{% else %}{{ regular_price_classes }}{% endif %}">
       <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-      {{- line_item.final_line_price | money_without_currency -}}$
+      {{- line_item.final_line_price | money -}}
     </sale-price>
 
     {%- if line_item.original_line_price > line_item.final_line_price -%}
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-        {{- line_item.original_line_price | money_without_currency -}}$
+        {{- line_item.original_line_price | money -}}
       </compare-at-price>
     {%- endif -%}
   {%- else -%}
@@ -85,7 +85,7 @@ Supported variables
       {%- assign cheapest_variant = product.variants | sort: 'price' | first -%}
 
       {%- capture price_min -%}
-        {{- cheapest_variant.price | money_without_currency -}}$
+        {{- cheapest_variant.price | money -}}
       {%- endcapture -%}
 
       {%- if cheapest_variant.price < cheapest_variant.compare_at_price -%}
@@ -96,7 +96,7 @@ Supported variables
 
         <compare-at-price class="{{ compare_at_price_classes }}">
           <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-          {{- cheapest_variant.compare_at_price | money_without_currency -}}$
+          {{- cheapest_variant.compare_at_price | money -}}
         </compare-at-price>
       {%- else -%}
         <sale-price class="{{ regular_price_classes }}">
@@ -107,20 +107,20 @@ Supported variables
     {%- elsif product.price < product.compare_at_price -%}
       <sale-price class="{{ on_sale_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-        {{- product.price | money_without_currency -}}$
+        {{- product.price | money -}}
       </sale-price>
 
       <compare-at-price class="{{ compare_at_price_classes }}">
         <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
-        {{- product.compare_at_price | money_without_currency -}}$
+        {{- product.compare_at_price | money -}}
       </compare-at-price>
     {%- elsif product.price_varies -%}
       {%- capture price_min -%}
-        {{ product.price_min | money_without_currency }}$
+        {{ product.price_min | money }}
       {%- endcapture -%}
 
       {%- capture price_max -%}
-        {{- product.price_max | money_without_currency -}}$
+        {{- product.price_max | money -}}
       {%- endcapture -%}
 
       <sale-price class="{{ regular_price_classes }}">
@@ -130,7 +130,7 @@ Supported variables
     {%- else -%}
       <sale-price class="{{ regular_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
-        {{- product.price | money_without_currency -}}$
+        {{- product.price | money -}}
       </sale-price>
     {%- endif -%}
   {%- endif -%}
@@ -146,7 +146,7 @@ Supported variables
           {%- assign reference_value = unit_price_measurement.reference_value -%}
         {%- endif -%}
 
-        ({{ unit_price_item.unit_price | money_without_currency }}$/{{ reference_value }}{{ unit_price_measurement.reference_unit }})
+        ({{ unit_price_item.unit_price | money }}/{{ reference_value }}{{ unit_price_measurement.reference_unit }})
       </unit-price>
     {%- endif -%}
   {%- endunless -%}
