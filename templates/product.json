@@ -120,14 +120,6 @@
             "content": "<p>We believe that fashion is a way to showcase your individuality and embrace your confidence.<br/><br/>That's why we're committed to helping you discover the perfect outfit that reflects your unique style and personality.</p><p>Our <strong>friendly customer service team</strong> is always ready to assist. Whether you need advice on sizing, outfit recommendations, or simply want to reach out, we're here to support you!</p><p>Feel free to get in touch anytime through our <strong>contact form</strong> or drop us an email at <strong>info@wuxiz.com.</strong></p>",
             "page": ""
           }
-        },
-        "collapsible_text_QqQAkf": {
-          "type": "collapsible_text",
-          "settings": {
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
-            "page": ""
-          }
         }
       },
       "block_order": [
@@ -145,8 +137,7 @@
         "description",
         "collapsible_text_JfimfT",
         "collapsible_text_86WpAt",
-        "collapsible_text_UdYfW4",
-        "collapsible_text_QqQAkf"
+        "collapsible_text_UdYfW4"
       ],
       "settings": {
         "full_width": true,
@@ -164,6 +155,102 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
+      }
+    },
+    "testimonials_fECkpy": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_xDHEBX": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "John S.",
+            "title": "Testimonial 1",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        },
+        "testimonial_3kUy9W": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        },
+        "testimonial_PVrYHw": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        },
+        "testimonial_mte4Vh": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Testimonial",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        },
+        "testimonial_4gKFbY": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "",
+            "title": "Testimonial",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        },
+        "testimonial_cEnzWi": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "",
+            "title": "Testimonial",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xDHEBX",
+        "testimonial_3kUy9W",
+        "testimonial_PVrYHw",
+        "testimonial_mte4Vh",
+        "testimonial_4gKFbY",
+        "testimonial_cEnzWi"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
       }
     },
     "timeline_cL7Q6K": {
@@ -191,135 +278,6 @@
         "text_color": ""
       }
     },
-    "faq_7kJgfF": {
-      "type": "faq",
-      "blocks": {
-        "item_AQkGqE": {
-          "type": "item",
-          "settings": {
-            "title": "Hoe neem ik contact met WuxiZ op?",
-            "content": "<p>Je kunt contact met ons opnemen via onze contactpagina of een e-mail sturen naar <strong>Info@wuxiz.nl. </strong>We helpen je dan graag verder!</p>"
-          }
-        },
-        "item_Tmw7AE": {
-          "type": "item",
-          "settings": {
-            "title": "Hoe kan ik mijn bestelling volgen?",
-            "content": "<p>Je ontvangt een trackingnummer via e-mail zodra je bestelling is verzonden. Hiermee kun je gemakkelijk het pakketje volgen.</p>"
-          }
-        },
-        "item_rfnLtP": {
-          "type": "item",
-          "settings": {
-            "title": "Kan ik een artikel omruilen?",
-            "content": "<p>Ja, je kunt een artikel binnen 30 dagen ruilen voor een andere maat, zolang het artikel in originele staat is. Neem contact met ons op voor het ruilproces.</p>"
-          }
-        },
-        "item_EMhzwL": {
-          "type": "item",
-          "settings": {
-            "title": "Hoe kan ik mijn bestelling retourneren?",
-            "content": "<p>Je kunt je bestelling binnen 30 dagen retourneren. Neem contact met ons op voor verdere instructies en het retourformulier.</p>"
-          }
-        },
-        "item_kFNKjK": {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_AQkGqE",
-        "item_Tmw7AE",
-        "item_rfnLtP",
-        "item_EMhzwL",
-        "item_kFNKjK"
-      ],
-      "name": "FAQ",
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
-        "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
-    },
-    "testimonials_fECkpy": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_xDHEBX": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 4,
-            "author": "John S.",
-            "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
-          }
-        },
-        "testimonial_3kUy9W": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
-          }
-        },
-        "testimonial_PVrYHw": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xDHEBX",
-        "testimonial_3kUy9W",
-        "testimonial_PVrYHw"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "full_width": true,
-        "stack_testimonials": true,
-        "subheading": "",
-        "title": "Testimonials",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "testimonial_card_background": "",
-        "testimonial_card_text_color": ""
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -344,22 +302,6 @@
     },
     "17611495280cf56421": {
       "type": "apps",
-      "blocks": {
-        "loox_reviews_loox_dynamic_section_FeYj4W": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "only_photos": false,
-            "aggregated": false,
-            "limit": 20,
-            "hide_thumbnails": false,
-            "maxwidth": 1080,
-            "is_sample": true
-          }
-        }
-      },
-      "block_order": [
-        "loox_reviews_loox_dynamic_section_FeYj4W"
-      ],
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -372,9 +314,8 @@
   },
   "order": [
     "main",
-    "timeline_cL7Q6K",
-    "faq_7kJgfF",
     "testimonials_fECkpy",
+    "timeline_cL7Q6K",
     "related-products",
     "17611495280cf56421"
   ]
