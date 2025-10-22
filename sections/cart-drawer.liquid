@@ -156,7 +156,7 @@
             <div class="badge">
               {%- render 'icon' with 'discount' -%} {{- discount_application.title -}}
             </div>
-            <span class="text-subdued">-{{ discount_application.total_allocated_amount | money }}</span>
+            <span class="text-subdued">-{{ discount_application.total_allocated_amount | money_without_currency }}$</span>
           </div>
         {% endfor %}
 
@@ -178,15 +178,15 @@
         <div class="h-stack gap-4 justify-between">
           <span class="h5">{{ 'cart.general.total' | t }}</span>
           <div class="cart-total-prices">
-            <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
+            <span class="h5">{{- cart.total_price | money_without_currency -}}$</span>
             {%- if total_compare_at_price > cart.total_price -%}
               <span class="cart-compare-price">
-                {{ total_compare_at_price | money }}
+                {{ total_compare_at_price | money_without_currency }}$
               </span>
             {%- endif -%}
             {%- if total_savings > 0 -%}
               <span class="cart-savings-badge">
-                SAVE {{ total_savings | money }}
+                SAVE {{ total_savings | money_without_currency }}$
               </span>
             {%- endif -%}
           </div>
