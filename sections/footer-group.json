@@ -17,14 +17,14 @@
         "free-shipping": {
           "type": "item",
           "settings": {
-            "icon": "picto-box",
+            "icon": "picto-truck",
             "mobile_icon_width": 24,
             "icon_width": 24,
             "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Free shipping",
-            "content": "<p>Tell your customers about your shipping offer.</p>"
+            "title": "FREE DELIVERY",
+            "content": "<p>We offer free delivery that's fast, reliable, and handled with care, ensuring your order arrives safely and on time.</p>"
           }
         },
         "customer-support": {
@@ -36,46 +36,32 @@
             "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Customer service",
-            "content": "<p>Tell your customers how they can reach you.</p>"
+            "title": "CUSTOMER SERVICE",
+            "content": "<p>Our team is always here to assist you, every day of the week. No matter when you need help, we're just a message away!</p>"
           }
         },
         "discount": {
           "type": "item",
           "settings": {
-            "icon": "picto-coupon",
+            "icon": "picto-return",
             "mobile_icon_width": 24,
             "icon_width": 24,
             "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Refer a friend",
-            "content": "<p>Tell your customers about your promotional offers.</p>"
-          }
-        },
-        "payment": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-lock",
-            "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
-            "icon_background": "",
-            "icon_color": "",
-            "title": "Secure payment",
-            "content": "<p>Tel your customers about your payment methods.</p>"
+            "title": "30 DAY RETURN POLICY",
+            "content": "<p>After receiving the order, you have 30 days to decide whether to keep the product or return it effortlessly.</p>"
           }
         }
       },
       "block_order": [
         "free-shipping",
         "customer-support",
-        "discount",
-        "payment"
+        "discount"
       ],
       "settings": {
         "full_width": true,
-        "stack_on_mobile": false,
+        "stack_on_mobile": true,
         "title": "",
         "heading_tag": "h6",
         "text_alignment": "center",
