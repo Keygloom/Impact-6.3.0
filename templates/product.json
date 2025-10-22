@@ -34,6 +34,14 @@
             "liquid": "<ul style=\"list-style: none; padding: 0; margin: 0;\">\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/5676238.png?v=1760558390\" \n      alt=\"Pay safely\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Pay safely</strong> with Creditcard & PayPal</span>\n  </li>\n\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/197430.png?v=1760558322\" \n      alt=\"Free shipping\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Free shipping</strong> across Canada</span>\n  </li>\n\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/655339-200.png?v=1760182300\" \n      alt=\"Money Back Guarantee\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span>30-Day<strong> Money Back Guarantee</strong></span>\n  </li>\n\n  <li style=\"display: flex; align-items: center;\">\n    <span style=\"font-size: 18px; color: red; margin-right: 8px;\">●</span>\n    {% if product.available and product.inventory_quantity > 0 %}\n      <span>Nog {{ product.inventory_quantity }} stuks op voorraad</span>\n    {% else %}\n      <span>Only 5 Left In Stock</span>\n    {% endif %}\n  </li>\n</ul>"
           }
         },
+        "kiwi_size_chart_recommender_kiwi_sizing_dw3Gkh": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "{{product}}",
+            "waitForElementSelector": "",
+            "waitForElementDelay": 5
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -43,14 +51,6 @@
             "swatch_selector_style": "block_swatch",
             "variant_image_options": "Color",
             "size_chart_page": ""
-          }
-        },
-        "kiwi_size_chart_recommender_kiwi_sizing_dw3Gkh": {
-          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
-          "settings": {
-            "product": "{{product}}",
-            "waitForElementSelector": "",
-            "waitForElementDelay": 5
           }
         },
         "buy_buttons": {
@@ -128,15 +128,6 @@
             "content": "<p>Share some content to your customers about your products.</p>",
             "page": ""
           }
-        },
-        "okendo_reviews_carousel_cYcaNr": {
-          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "show_heading": false,
-            "heading": "",
-            "badge_link": "",
-            "product": "{{product}}"
-          }
         }
       },
       "block_order": [
@@ -144,8 +135,8 @@
         "badges",
         "price",
         "liquid_NL63im",
-        "variant_picker",
         "kiwi_size_chart_recommender_kiwi_sizing_dw3Gkh",
+        "variant_picker",
         "buy_buttons",
         "liquid_8pqqfN",
         "offer_jLLEVK",
@@ -155,8 +146,7 @@
         "collapsible_text_JfimfT",
         "collapsible_text_86WpAt",
         "collapsible_text_UdYfW4",
-        "collapsible_text_QqQAkf",
-        "okendo_reviews_carousel_cYcaNr"
+        "collapsible_text_QqQAkf"
       ],
       "settings": {
         "full_width": true,
