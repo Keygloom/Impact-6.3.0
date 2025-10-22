@@ -10103,7 +10103,7 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
 
 .variant-picker__option-info .ks-chart-modal-link {
   position: absolute !important;
-  right: 170px !important;
+  right: 250px !important;
   top: -8px !important;
   left: auto !important;
 }
