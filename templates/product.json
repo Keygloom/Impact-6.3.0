@@ -121,10 +121,18 @@
             "page": ""
           }
         },
-        "okendo_reviews_carousel_Gj33J3": {
+        "collapsible_text_QqQAkf": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "page": ""
+          }
+        },
+        "okendo_reviews_carousel_cYcaNr": {
           "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
-            "show_heading": true,
+            "show_heading": false,
             "heading": "",
             "badge_link": "",
             "product": "{{product}}"
@@ -147,7 +155,8 @@
         "collapsible_text_JfimfT",
         "collapsible_text_86WpAt",
         "collapsible_text_UdYfW4",
-        "okendo_reviews_carousel_Gj33J3"
+        "collapsible_text_QqQAkf",
+        "okendo_reviews_carousel_cYcaNr"
       ],
       "settings": {
         "full_width": true,
@@ -190,6 +199,75 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "faq_7kJgfF": {
+      "type": "faq",
+      "blocks": {
+        "item_AQkGqE": {
+          "type": "item",
+          "settings": {
+            "title": "Hoe neem ik contact met WuxiZ op?",
+            "content": "<p>Je kunt contact met ons opnemen via onze contactpagina of een e-mail sturen naar <strong>Info@wuxiz.nl. </strong>We helpen je dan graag verder!</p>"
+          }
+        },
+        "item_Tmw7AE": {
+          "type": "item",
+          "settings": {
+            "title": "Hoe kan ik mijn bestelling volgen?",
+            "content": "<p>Je ontvangt een trackingnummer via e-mail zodra je bestelling is verzonden. Hiermee kun je gemakkelijk het pakketje volgen.</p>"
+          }
+        },
+        "item_rfnLtP": {
+          "type": "item",
+          "settings": {
+            "title": "Kan ik een artikel omruilen?",
+            "content": "<p>Ja, je kunt een artikel binnen 30 dagen ruilen voor een andere maat, zolang het artikel in originele staat is. Neem contact met ons op voor het ruilproces.</p>"
+          }
+        },
+        "item_EMhzwL": {
+          "type": "item",
+          "settings": {
+            "title": "Hoe kan ik mijn bestelling retourneren?",
+            "content": "<p>Je kunt je bestelling binnen 30 dagen retourneren. Neem contact met ons op voor verdere instructies en het retourformulier.</p>"
+          }
+        },
+        "item_kFNKjK": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_AQkGqE",
+        "item_Tmw7AE",
+        "item_rfnLtP",
+        "item_EMhzwL",
+        "item_kFNKjK"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "testimonials_fECkpy": {
@@ -273,12 +351,38 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
+    },
+    "1761146871472b2f39": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_rMQEUx": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_rMQEUx"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "timeline_cL7Q6K",
+    "faq_7kJgfF",
     "testimonials_fECkpy",
-    "related-products"
+    "related-products",
+    "1761146871472b2f39"
   ]
 }
