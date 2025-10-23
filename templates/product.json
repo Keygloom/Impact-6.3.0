@@ -173,9 +173,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "John S.",
-            "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "author": "Laura Whitmore",
+            "title": "Fast Delivery",
+            "content": "<p>I was honestly surprised by how quickly my order arrived. Everything was beautifully packaged and exactly as described. It’s rare to find such efficiency with online boutiques these days.<br/><br/></p>"
           }
         },
         "testimonial_3kUy9W": {
@@ -184,9 +184,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "author": "Michelle Davenport",
+            "title": "Great Quality from Wuxiz Boutique",
+            "content": "<p>The craftsmanship is incredible, you can feel the quality the moment you touch the fabric. I’ve washed my sweater several times already and it still looks brand new. Wuxiz Boutique has truly become one of my go-to stores.</p>"
           }
         },
         "testimonial_PVrYHw": {
@@ -194,10 +194,10 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "rating": 5,
+            "author": "Samantha Collins",
+            "title": "Great Customer Service",
+            "content": "<p>I had a sizing question before ordering and the Wuxiz team replied within hours, so kind and professional. They helped me find the right fit and even followed up after delivery to make sure I was happy. That’s real service.</p>"
           }
         },
         "testimonial_mte4Vh": {
@@ -216,18 +216,7 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "",
-            "title": "Testimonial",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
-          }
-        },
-        "testimonial_cEnzWi": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 4,
+            "rating": 5,
             "author": "",
             "title": "Testimonial",
             "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
@@ -239,8 +228,7 @@
         "testimonial_3kUy9W",
         "testimonial_PVrYHw",
         "testimonial_mte4Vh",
-        "testimonial_4gKFbY",
-        "testimonial_cEnzWi"
+        "testimonial_4gKFbY"
       ],
       "name": "Testimonials",
       "settings": {
