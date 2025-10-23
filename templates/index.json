@@ -102,6 +102,20 @@
             "overlay_opacity": 30
           }
         },
+        "collection_DPRmJV": {
+          "type": "collection",
+          "settings": {
+            "collection": "jackets-coats",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "collection_BTTyQA": {
           "type": "collection",
           "settings": {
@@ -116,10 +130,10 @@
             "overlay_opacity": 30
           }
         },
-        "collection_DPRmJV": {
+        "collection_9Xkdbg": {
           "type": "collection",
           "settings": {
-            "collection": "jackets-coats",
+            "collection": "heels-sandals",
             "subheading": "",
             "title": "",
             "url": "",
@@ -161,8 +175,9 @@
       },
       "block_order": [
         "collection_hNVQff",
-        "collection_BTTyQA",
         "collection_DPRmJV",
+        "collection_BTTyQA",
+        "collection_9Xkdbg",
         "collection_dn9LVp",
         "collection_UaGkxX"
       ],
