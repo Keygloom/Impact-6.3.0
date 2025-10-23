@@ -182,7 +182,7 @@
         "testimonial_3kUy9W": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_3.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
@@ -194,6 +194,7 @@
         "testimonial_PVrYHw": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_4.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
@@ -205,6 +206,7 @@
         "testimonial_mte4Vh": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_3.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
@@ -216,6 +218,7 @@
         "testimonial_4gKFbY": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_2.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
