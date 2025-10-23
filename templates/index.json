@@ -92,7 +92,7 @@
           "settings": {
             "collection": "sweaters",
             "image": "shopify://shop_images/Kersttrui_met_persona.png",
-            "subheading": "Shop Now",
+            "subheading": "",
             "title": "",
             "url": "",
             "heading_tag": "h2",
