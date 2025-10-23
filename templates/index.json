@@ -105,7 +105,7 @@
         "collection_BTTyQA": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "jurken-jumpsuits",
             "subheading": "",
             "title": "",
             "url": "",
@@ -117,6 +117,34 @@
           }
         },
         "collection_DPRmJV": {
+          "type": "collection",
+          "settings": {
+            "collection": "jackets-coats",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_dn9LVp": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_UaGkxX": {
           "type": "collection",
           "settings": {
             "collection": "",
@@ -134,7 +162,9 @@
       "block_order": [
         "collection_hNVQff",
         "collection_BTTyQA",
-        "collection_DPRmJV"
+        "collection_DPRmJV",
+        "collection_dn9LVp",
+        "collection_UaGkxX"
       ],
       "name": "Collection list",
       "settings": {
