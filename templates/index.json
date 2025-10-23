@@ -84,74 +84,70 @@
         "text_color": ""
       }
     },
-    "image_link_blocks_3MCAdN": {
-      "type": "image-link-blocks",
+    "collection_list_KRbTrD": {
+      "type": "collection-list",
       "blocks": {
-        "item_GVCjzF": {
-          "type": "item",
+        "collection_hNVQff": {
+          "type": "collection",
           "settings": {
+            "collection": "sweaters",
             "image": "shopify://shop_images/Kersttrui_met_persona.png",
-            "stretch_image": true,
-            "link_text": "Shop Now",
-            "link_url": "shopify://collections/sweaters",
-            "background": "",
+            "subheading": "Shop Now",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 30
           }
         },
-        "item_HBftRr": {
-          "type": "item",
+        "collection_BTTyQA": {
+          "type": "collection",
           "settings": {
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 30
           }
         },
-        "item_TdTpHE": {
-          "type": "item",
+        "collection_DPRmJV": {
+          "type": "collection",
           "settings": {
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_MVtLfL": {
-          "type": "item",
-          "settings": {
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 30
           }
         }
       },
       "block_order": [
-        "item_GVCjzF",
-        "item_HBftRr",
-        "item_TdTpHE",
-        "item_MVtLfL"
+        "collection_hNVQff",
+        "collection_BTTyQA",
+        "collection_DPRmJV"
       ],
-      "name": "Image link blocks",
+      "name": "Collection list",
       "settings": {
         "full_width": true,
-        "block_size": "large",
+        "stack_collections": false,
+        "collections_per_row_mobile": "1",
+        "collections_per_row": 3,
+        "show_progress_bar": false,
         "subheading": "",
-        "title": "",
+        "title": "Collection list",
         "content": "",
         "link_url": "",
-        "link_text": "",
+        "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -353,7 +349,7 @@
   "order": [
     "slideshow",
     "rich_text_G6BcF6",
-    "image_link_blocks_3MCAdN",
+    "collection_list_KRbTrD",
     "slideshow_ta8Vp7",
     "featured_collection_jY77BQ",
     "testimonials_kMpRWb",
