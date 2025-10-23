@@ -248,34 +248,37 @@
         "testimonial_hjc8Yn": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "author": "Michelle Davenport",
+            "title": "Great Quality from Wuxiz Boutique",
+            "content": "<p>The craftsmanship is incredible, you can feel the quality the moment you touch the fabric. I’ve washed my sweater several times already and it still looks brand new. Wuxiz Boutique has truly become one of my go-to stores.</p>"
           }
         },
         "testimonial_fizBrU": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_4.png",
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "rating": 5,
+            "author": "Samantha Collins",
+            "title": "Great Customer Service",
+            "content": "<p>I had a sizing question before ordering and the Wuxiz Boutique team replied within hours, so kind and professional. They helped me find the right fit and even followed up after delivery to make sure I was happy. That’s real service.</p>"
           }
         },
         "testimonial_zMkz4p": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ru0tz0ru0tz0ru0t_3.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 4,
-            "author": "",
-            "title": "Testimonial",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "author": "Rachel Monroe",
+            "title": "Perfect Fit & Sizing",
+            "content": "<p>I’m always cautious with online shopping, but Wuxiz Boutique nailed the sizing guide perfectly. The top I ordered fits like it was made for me, flattering without being too tight. I’ve already ordered two more colors!</p>"
           }
         },
         "testimonial_MML34b": {
