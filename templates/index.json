@@ -90,9 +90,10 @@
         "item_GVCjzF": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Kersttrui_met_persona.png",
             "stretch_image": true,
             "link_text": "Shop Now",
-            "link_url": "",
+            "link_url": "shopify://collections/sweaters",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
