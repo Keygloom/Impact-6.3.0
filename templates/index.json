@@ -106,6 +106,7 @@
           "type": "collection",
           "settings": {
             "collection": "jackets-coats",
+            "image": "shopify://shop_images/3_b03f0cb5-acce-406b-880a-249fd97b31d9.png",
             "subheading": "",
             "title": "",
             "url": "",
@@ -120,6 +121,7 @@
           "type": "collection",
           "settings": {
             "collection": "jurken-jumpsuits",
+            "image": "shopify://shop_images/2_5ddb8d9c-91f1-47a4-8f3f-e2639553e5bd.png",
             "subheading": "",
             "title": "",
             "url": "",
@@ -134,6 +136,7 @@
           "type": "collection",
           "settings": {
             "collection": "heels-sandals",
+            "image": "shopify://shop_images/6_59aa5437-9cd0-44b8-8bd6-dd31660dc01c.png",
             "subheading": "",
             "title": "",
             "url": "",
