@@ -10096,3 +10096,7 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   display: -webkit-box;
   overflow: hidden;
 }
+.shopify-pc__banner__dialog,
+#shopify-pc__banner {
+  display: none !important;
+}
