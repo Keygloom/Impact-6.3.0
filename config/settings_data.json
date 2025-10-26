@@ -66,6 +66,11 @@
         "type": "shopify://apps/trackbee-connect/blocks/trackbee/4ee1d514-671e-48bf-bd4e-9373f4af089a",
         "disabled": false,
         "settings": {}
+      },
+      "13223602749629917723": {
+        "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
