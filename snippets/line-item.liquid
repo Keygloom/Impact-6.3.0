@@ -43,15 +43,14 @@
       <div class="line-item__price-section">
         <div class="h-stack gap-2 items-center flex-wrap">
           {%- if line_item_variant.compare_at_price > line_item_variant.price -%}
-            {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price | times: line_item.quantity -%}
-            {%- assign total_compare_price = line_item_variant.compare_at_price | times: line_item.quantity -%}
+            {%- assign savings = line_item_variant.compare_at_price | minus: line_item_variant.price -%}
             
             <span class="line-item__sale-price" style="color: #10b981; font-weight: 600; font-size: 16px;">
-              {{ line_item.final_line_price | money }}
+              {{ line_item.final_price | money }}
             </span>
             
             <span class="line-item__compare-price" style="text-decoration: line-through; color: #9ca3af; font-size: 14px;">
-              {{ total_compare_price | money }}
+              {{ line_item_variant.compare_at_price | money }}
             </span>
             
             <span class="line-item__save-badge" style="
@@ -67,7 +66,7 @@
             </span>
           {%- else -%}
             <span class="line-item__regular-price" style="font-weight: 600; font-size: 16px;">
-              {{ line_item.final_line_price | money }}
+              {{ line_item.final_price | money }}
             </span>
           {%- endif -%}
         </div>
