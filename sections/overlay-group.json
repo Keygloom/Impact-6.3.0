@@ -15,9 +15,9 @@
       "type": "newsletter-popup",
       "settings": {
         "apparition_delay": 5,
-        "show_only_on_index": true,
-        "show_only_for_visitors": true,
-        "show_only_once": true,
+        "show_only_on_index": false,
+        "show_only_for_visitors": false,
+        "show_only_once": false,
         "title": "Signup for our newsletter",
         "button_text": "Subscribe",
         "subtext": "Describe what your customers will receive when subscribing to your newsletter."
@@ -26,7 +26,10 @@
     "privacy-banner": {
       "type": "privacy-banner",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "privacy_bar_title": "Cookie policy",
+        "privacy_bar_content": "<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.</p>"
+      }
     },
     "cart-drawer": {
       "type": "cart-drawer",
