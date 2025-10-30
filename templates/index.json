@@ -15,8 +15,8 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/dbf6d454-0b07-4a5a-8e33-f03291a7f873.png",
-            "mobile_image": "shopify://shop_images/dbf6d454-0b07-4a5a-8e33-f03291a7f873.png",
+            "image": "shopify://shop_images/adf859dd-04e6-49f4-bd05-43144a8bd9cb.png",
+            "mobile_image": "shopify://shop_images/adf859dd-04e6-49f4-bd05-43144a8bd9cb.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
