@@ -8,6 +8,186 @@
     "theme_support_url": "https://support.com/article/203-contact-us"
   },
   {
+    "name": "Trustpilot Slider",
+    "settings": [
+    {
+      "type": "text",
+      "id": "Col1_Title",
+      "label": "Main Bottom Line"
+    },
+    {
+      "type": "text",
+      "id": "Col1_reviews",
+      "label": "Verified Text"
+    },
+    {
+      "type": "header",
+      "content": "Review 1"
+    },
+    {
+      "type": "range",
+      "id": "reviewstars1",
+      "min": 4,
+      "max": 5,
+      "step": 0.5,
+      "label": "Review Rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "reviewheading1",
+      "label": "Review Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "reviewtext1",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "reviewname1",
+      "label": "Customer Name"
+    },
+    {
+      "type": "text",
+      "id": "timestmp1",
+      "label": "Time"
+    },
+    {
+      "type": "header",
+      "content": "Review 2"
+    },
+    {
+      "type": "range",
+      "id": "reviewstars2",
+      "min": 4,
+      "max": 5,
+      "step": 0.5,
+      "label": "Review Rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "reviewheading2",
+      "label": "Review Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "reviewtext2",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "reviewname2",
+      "label": "Customer Name"
+    },
+    {
+      "type": "text",
+      "id": "timestmp2",
+      "label": "Time"
+    },
+    {
+      "type": "header",
+      "content": "Review 3"
+    },
+    {
+      "type": "range",
+      "id": "reviewstars3",
+      "min": 4,
+      "max": 5,
+      "step": 0.5,
+      "label": "Review Rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "reviewheading3",
+      "label": "Review Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "reviewtext3",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "reviewname3",
+      "label": "Customer Name"
+    },
+    {
+      "type": "text",
+      "id": "timestmp3",
+      "label": "Time"
+    },
+    {
+      "type": "header",
+      "content": "Review 4"
+    },
+    {
+      "type": "range",
+      "id": "reviewstars4",
+      "min": 4,
+      "max": 5,
+      "step": 0.5,
+      "label": "Review Rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "reviewheading4",
+      "label": "Review Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "reviewtext4",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "reviewname4",
+      "label": "Customer Name"
+    },
+    {
+      "type": "text",
+      "id": "timestmp4",
+      "label": "Time"
+    },
+    {
+      "type": "header",
+      "content": "Review 5"
+    },
+    {
+      "type": "range",
+      "id": "reviewstars5",
+      "min": 4,
+      "max": 5,
+      "step": 0.5,
+      "label": "Review Rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "reviewheading5",
+      "label": "Review Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "reviewtext5",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "reviewname5",
+      "label": "Customer Name"
+    },
+    {
+      "type": "text",
+      "id": "timestmp5",
+      "label": "Time"
+    }
+    ]
+  },
+  {
     "name": "Appearance and spacing",
     "settings": [
       {
