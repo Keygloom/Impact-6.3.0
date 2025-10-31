@@ -130,7 +130,7 @@
         "liquid_jEXQVj": {
           "type": "liquid",
           "settings": {
-            "liquid": "<details class=\"product-info__accordion accordion  group\" aria-expanded=\"true\" is=\"accordion-disclosure\" open=\"\" style=\"overflow: visible; height: auto;\">\n  <summary><div class=\"accordion__toggle bold\"><span>Reviews</span><span class=\"circle-chevron group-hover:colors group-expanded:colors group-expanded:rotate\"><svg role=\"presentation\" focusable=\"false\" width=\"8\" height=\"6\" class=\"icon icon-chevron-bottom-small\" viewBox=\"0 0 8 6\">\n        <path d=\"m1 1.5 3 3 3-3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path>\n      </svg></span>\n    </div>\n  </summary>\n\n  <div class=\"accordion__content\" style=\"opacity: 1; transform: translateY(-4px);\">{% render 'svg-down' %}</div>\n</details>"
+            "liquid": "<details class=\"product-info__accordion accordion  group\" aria-expanded=\"true\" is=\"accordion-disclosure\" open=\"\" style=\"overflow: visible; height: auto;margin-top:-25px;border-top:none;\">\n  <summary><div class=\"accordion__toggle bold\"><span>Reviews</span><span class=\"circle-chevron group-hover:colors group-expanded:colors group-expanded:rotate\"><svg role=\"presentation\" focusable=\"false\" width=\"8\" height=\"6\" class=\"icon icon-chevron-bottom-small\" viewBox=\"0 0 8 6\">\n        <path d=\"m1 1.5 3 3 3-3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path>\n      </svg></span>\n    </div>\n  </summary>\n\n  <div class=\"accordion__content\" style=\"opacity: 1; transform: translateY(-4px);\">{% render 'svg-down' %}</div>\n</details>"
           }
         }
       },
