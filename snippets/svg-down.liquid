@@ -1,0 +1,353 @@
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+  <style>
+    #CustomReviewSlider_RowMain .card_bg {
+      --bs-bg-opacity: 0.1 !important;
+    }
+    #CustomReviewSlider_RowMain .card .card-body{
+      background-color: #f8f9fa !important;
+      padding: 12px !important;
+      height: 190px !important;
+      box-shadow: 0 1px 0 0 rgba(182,196,210,.4) !important;
+    }
+
+    #CustomReviewSlider_RowMain .slider_star_img {
+      width: 90px;
+      height: 22px;
+      display: inline-block !important;
+    }
+
+    #CustomReviewSlider_RowMain .slick-arrow svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    #CustomReviewSlider_RowMain .custom_slider_tp {
+      position: relative;
+    }
+
+    #CustomReviewSlider_RowMain .slick-arrow {
+      position: absolute;
+      top: 45%;
+      z-index: 10;
+      height: 24px;
+      width: 24px;
+    }
+
+    #CustomReviewSlider_RowMain .slick-next {
+      right: -15px;
+    }
+
+    #CustomReviewSlider_RowMain .slick-prev {
+      left: -15px;
+    }
+
+    #CustomReviewSlider_RowMain .tab_star_img {
+      width: 118px;
+      height: 25px;
+    }
+
+    #CustomReviewSlider_RowMain .accordion_header_outer:focus {
+      box-shadow: none !important;
+    }
+
+    #CustomReviewSlider_RowMain .accordion-button::after {
+      float: right;
+      font-family: 'FontAwesome';
+      content: "\f106";
+      background-image: none !important;
+      font-size: 30px;
+      padding-top: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: fit-content;
+      color: #00ab6b;
+    }
+
+    #CustomReviewSlider_RowMain .accordion-button:not(.collapsed)::after {
+      background-image: none !important;
+      transform: rotate(-180deg);
+    }
+
+    #CustomReviewSlider_RowMain .TP-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    #CustomReviewSlider_RowMain .usr_name {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    #CustomReviewSlider_RowMain .card_bg p {
+      color: #000000;
+      font-size:13px;
+    }
+    
+    #CustomReviewSlider_RowMain  .TP-text {
+      font-size: 13px;
+    }
+
+    #CustomReviewSlider_RowMain .TP-text p {
+      margin: 10px 0px 0px 0px;
+      font-size: 12px;
+      color: #191919;
+      letter-spacing: 0px !important;
+    }
+
+    #CustomReviewSlider_RowMain .slick-slider .slick-track {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #CustomReviewSlider_RowMain .slick-initialized .slick-slide .card-body{
+      /* box-shadow: 0px 3px 3px 3px rgb(0 0 0 / 16%) */
+    }
+
+    #CustomReviewSlider_RowMain .static_div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #CustomReviewSlider_RowMain .rev_detail {
+      height: 165px;
+      font-size: 13px;
+    }
+.verified-text span{
+    font-size: 12px !important;
+}
+    #CustomReviewSlider_RowMain .footer_name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: grey;
+    }
+    #CustomReviewSlider_RowMain .card.slick-slide{
+      padding:0px 10px !important;
+    }
+  
+    @media screen and (max-width: 767px){
+      #CustomReviewSlider_RowMain{
+        max-width:350px;
+        margin: 0 auto;
+      }
+      #CustomReviewSlider_Col1{
+        margin-bottom:30px !important; 
+      }
+    }
+    @media screen and (min-width: 992px){
+      #CustomReviewSlider_RowMain{
+        max-width:900px;
+        margin: 0 auto;
+        padding: 0px 20px;
+      }
+      #CustomReviewSlider_RowMain{
+        /* display:flex !important; */
+        /* margin-top: 80px !important; */
+      }
+    }
+    #CustomReviewSlider_RowMain .card-body .justify-content-end .m-0{
+      font-weight: 600 !important;
+      display: inline-block !important;
+      color: #00000099 !important;
+      font-size: 12px;
+    }
+    #CustomReviewSlider_RowMain .card-body .timestmp{
+      font-weight: 600 !important;
+      display: inline-block !important;
+      color: #00000099 !important;
+      font-size: 12px;
+    }
+    #CustomReviewSlider_RowMain .card-body .card-text{
+      color: #191919 !important;
+      font-size: 13px;
+    }
+    #CustomReviewSlider_RowMain p{
+      margin-bottom:10px !important;
+    }
+    #CustomReviewSlider_RowMain .Namediv{
+      position: absolute;
+      bottom: 10px;
+    }
+     #CustomReviewSlider_RowMain .verified-text {
+      color: #666666;
+      font-weight: 300;
+      font-size: 12px !important;
+      line-height: 15px;
+      margin-top: 0px !important;
+    }
+    #CustomReviewSlider_RowMain img.verified-icon{
+        margin-top: 0px !important;
+    }
+    .verified-badge-wrapper {
+      margin: 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .rev-headingtext{
+      margin: 0px 0px 5px 0px !important;
+      font-size: 14px !important;
+      line-height:15px;
+      font-weight: bold;
+    }
+    .slick-prev:before, .slick-next:before{
+      display:none !important;
+    }
+
+    .slick-next.slick-arrow svg{
+      transform: rotateY(180deg);
+    }
+  </style>
+
+  <div class="container mt-5">
+    <div id="CustomReviewSlider_RowMain" class="row">
+      <div id="CustomReviewSlider_Col2" class="col-md-9">
+        <div class="custom_slider_tp">
+          <div class="card mx-2">
+            <div class="card-body bg-secondary card_bg py-4 px-2">
+              <div class="verified-badge-wrapper">
+                {% if settings.reviewstars1 == 5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"> {% endif %}
+                {% if settings.reviewstars1 == 4.5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"> {% endif %}
+                {% if settings.reviewstars1 == 4 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.svg"> {% endif %}
+                <img class="verified-icon" alt="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0591/3011/8188/files/verified-badge.svg?v=1680281387" style="width: 14px;">
+                <div class="verified-text"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{{ settings.Col1_reviews }}</span></span></div>
+              </div>
+              <h3 class="rev-headingtext">{{ settings.reviewheading1 }}</h3>
+              <p class="card-text mb-5">{{ settings.reviewtext1 }}</p>
+              <div class="d-flex justify-content-end align-items-center Namediv">
+                <p class="m-0">{{ settings.reviewname1 }}</p>,
+                <p class="timestmp">{{ settings.timestmp1 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card mx-2">
+            <div class="card-body bg-secondary card_bg py-4 px-2">
+              <div class="verified-badge-wrapper">
+                {% if settings.reviewstars2 == 5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"> {% endif %}
+                {% if settings.reviewstars2 == 4.5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"> {% endif %}
+                {% if settings.reviewstars2 == 4 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.svg"> {% endif %}
+                <img class="verified-icon" alt="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0591/3011/8188/files/verified-badge.svg?v=1680281387" style="width: 14px;">
+                <div class="verified-text"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{{ settings.Col1_reviews }}</span></span></div>
+              </div>
+              <h3 class="rev-headingtext">{{ settings.reviewheading2 }}</h3>
+              <p class="card-text mb-5">{{ settings.reviewtext2 }}</p>
+              <div class="d-flex justify-content-end align-items-center Namediv">
+                <p class="m-0">{{ settings.reviewname2 }}</p>,
+                <p class="timestmp">{{ settings.timestmp2 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card mx-2">
+            <div class="card-body bg-secondary card_bg py-4 px-2">
+              <div class="verified-badge-wrapper">
+                {% if settings.reviewstars3 == 5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"> {% endif %}
+                {% if settings.reviewstars3 == 4.5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"> {% endif %}
+                {% if settings.reviewstars3 == 4 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.svg"> {% endif %}
+                <img class="verified-icon" alt="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0591/3011/8188/files/verified-badge.svg?v=1680281387" style="width: 14px;">
+                <div class="verified-text"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{{ settings.Col1_reviews }}</span></span></div>
+              </div>
+              <h3 class="rev-headingtext">{{ settings.reviewheading3 }}</h3>
+              <p class="card-text mb-5">{{ settings.reviewtext3 }}</p>
+              <div class="d-flex justify-content-end align-items-center Namediv">
+                <p class="m-0">{{ settings.reviewname3 }}</p>,
+                <p class="timestmp">{{ settings.timestmp3 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card mx-2">
+            <div class="card-body bg-secondary card_bg py-4 px-2">
+              <div class="verified-badge-wrapper">
+                {% if settings.reviewstars4 == 5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"> {% endif %}
+                {% if settings.reviewstars4 == 4.5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"> {% endif %}
+                {% if settings.reviewstars4 == 4 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.svg"> {% endif %}
+                <img class="verified-icon" alt="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0591/3011/8188/files/verified-badge.svg?v=1680281387" style="width: 14px;">
+                <div class="verified-text"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{{ settings.Col1_reviews }}</span></span></div>
+              </div>
+              <h3 class="rev-headingtext">{{ settings.reviewheading4 }}</h3>
+              <p class="card-text mb-5">{{ settings.reviewtext4 }}</p>
+              <div class="d-flex justify-content-end align-items-center Namediv">
+                <p class="m-0">{{ settings.reviewname4 }}</p>,
+                <p class="timestmp">{{ settings.timestmp4 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card mx-2">
+            <div class="card-body bg-secondary card_bg py-4 px-2">
+              <div class="verified-badge-wrapper">
+                {% if settings.reviewstars5 == 5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"> {% endif %}
+                {% if settings.reviewstars5 == 4.5 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"> {% endif %}
+                {% if settings.reviewstars5 == 4 %} <img class="slider_star_img" src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.svg"> {% endif %}
+                <img class="verified-icon" alt="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0591/3011/8188/files/verified-badge.svg?v=1680281387" style="width: 14px;">
+                <div class="verified-text"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{{ settings.Col1_reviews }}</span></span></div>
+              </div>
+              <h3 class="rev-headingtext">{{ settings.reviewheading5 }}</h3>
+              <p class="card-text mb-5">{{ settings.reviewtext5 }}</p>
+              <div class="d-flex justify-content-end align-items-center Namediv">
+                <p class="m-0">{{ settings.reviewname5 }}</p>,
+                <p class="timestmp">{{ settings.timestmp5 }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="CustomReviewSlider_Col1" class="col-md-3 text-center static_div" style="padding:0px 15px;">
+        <div class="TP-text" style="text-align:center !important;">
+          <p>{{ settings.Col1_Title }}</p>
+        </div>
+        <div style="text-align:center;">
+          <img src="https://cdn.shopify.com/s/files/1/0759/0379/5515/files/trustpilot2525-removebg-preview.png?v=1709682595" style="width:90px; margin:0px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  $(document).ready(function () {
+    $('.custom_slider_tp').slick({
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      speed: 600,
+      infinite: true,
+      autoplaySpeed: 5000,
+      autoplay: true,
+      centerMode: false,
+      prevArrow: '<div class="slick-prev"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="position: absolute; height: 100%; width: 100%; left: 0; top: 0;"><circle class="arrow-slider-circle" cx="12" cy="12" r="11.5" fill="none" stroke="#8C8C8C"></circle><path class="arrow-slider-shape" fill="#8C8C8C" d="M10.5088835 12l3.3080582-3.02451041c.2440777-.22315674.2440777-.5849653 0-.80812204-.2440776-.22315673-.6398058-.22315673-.8838834 0L9.18305826 11.595939c-.24407768.2231567-.24407768.5849653 0 .808122l3.75000004 3.4285714c.2440776.2231568.6398058.2231568.8838834 0 .2440777-.2231567.2440777-.5849653 0-.808122L10.5088835 12z"></path></svg></div>',
+      nextArrow: '<div class="slick-next"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="position: absolute; height: 100%; width: 100%; left: 0; top: 0;"><circle class="arrow-slider-circle" cx="12" cy="12" r="11.5" fill="none" stroke="#8C8C8C"></circle><path class="arrow-slider-shape" fill="#8C8C8C" d="M10.5088835 12l3.3080582-3.02451041c.2440777-.22315674.2440777-.5849653 0-.80812204-.2440776-.22315673-.6398058-.22315673-.8838834 0L9.18305826 11.595939c-.24407768.2231567-.24407768.5849653 0 .808122l3.75000004 3.4285714c.2440776.2231568.6398058.2231568.8838834 0 .2440777-.2231567.2440777-.5849653 0-.808122L10.5088835 12z"></path></svg></div>',
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2,
+            centerMode: false,
+          }
+        },
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 1,
+            centerMode: false,
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            centerMode: false
+          }
+        }
+      ]
+    });
+  });
+</script>
