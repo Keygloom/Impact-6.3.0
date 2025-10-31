@@ -126,6 +126,12 @@
             "content": "<p>We believe that fashion is a way to showcase your individuality and embrace your confidence.<br/><br/>That's why we're committed to helping you discover the perfect outfit that reflects your unique style and personality.</p><p>Our <strong>friendly customer service team</strong> is always ready to assist. Whether you need advice on sizing, outfit recommendations, or simply want to reach out, we're here to support you!</p><p>Feel free to get in touch anytime through our <strong>contact form</strong> or drop us an email at <strong>info@wuxiz.com.</strong></p>",
             "page": ""
           }
+        },
+        "liquid_jEXQVj": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<details class=\"product-info__accordion accordion  group\" aria-expanded=\"true\" is=\"accordion-disclosure\" open=\"\" style=\"overflow: visible; height: auto;\">\n  <summary><div class=\"accordion__toggle bold\"><span>Reviews</span><span class=\"circle-chevron group-hover:colors group-expanded:colors group-expanded:rotate\"><svg role=\"presentation\" focusable=\"false\" width=\"8\" height=\"6\" class=\"icon icon-chevron-bottom-small\" viewBox=\"0 0 8 6\">\n        <path d=\"m1 1.5 3 3 3-3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path>\n      </svg></span>\n    </div>\n  </summary>\n\n  <div class=\"accordion__content\" style=\"opacity: 1; transform: translateY(-4px);\">{% render 'svg-down' %}</div>\n</details>"
+          }
         }
       },
       "block_order": [
@@ -144,7 +150,8 @@
         "description",
         "collapsible_text_JfimfT",
         "collapsible_text_86WpAt",
-        "collapsible_text_UdYfW4"
+        "collapsible_text_UdYfW4",
+        "liquid_jEXQVj"
       ],
       "settings": {
         "full_width": true,
