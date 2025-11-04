@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "Col1_Title": "rated <b>4.8/5</b> based on <b>2392</b> reviews.",
+    "Col1_Title": "Rated <b>4.8/5</b> based on <b>2392</b> reviews.",
     "Col1_reviews": "Verified",
-    "reviewstars1": 5,
+    "reviewstars1": 4.5,
     "reviewheading1": "Beautiful Dress",
     "reviewtext1": "<p>Lovely fabric and perfect fit. I received so many compliments at the party!</p>",
     "reviewname1": "Sarah Williams",
@@ -26,7 +26,7 @@
     "reviewtext3": "<p>Great stitching and material. You can really see the attention to detail.</p>",
     "reviewname3": "Grace Miller",
     "timestmp3": "10 days ago",
-    "reviewstars4": 5,
+    "reviewstars4": 4.5,
     "reviewheading4": "Very Chic",
     "reviewtext4": "<p>The dress is trendy yet classic. Makes me feel confident every time I wear it.</p>",
     "reviewname4": "Sophia Davis",
