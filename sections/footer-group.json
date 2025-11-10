@@ -79,7 +79,7 @@
           "settings": {
             "title": "",
             "content": "<p>Need help? Please contact our customer service.</p><p><strong>Monday to Sunday:</strong> <br/>08:00 - 20:30 (Weekdays), <br/>09:00 - 13:00 (Weekends)</p><p>Our team is at your disposal 7 days a week. Do not hesitate to contact us!</p><p><strong>Email:</strong> info@wuxiz.com</p>",
-            "enable_follow_on_shop": true
+            "enable_follow_on_shop": false
           }
         },
         "links": {
