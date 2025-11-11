@@ -51,7 +51,6 @@
     },
     "main": {
       "type": "main-list-collections",
-      "disabled": true,
       "settings": {
         "collections": [
           "pre-black-friday-sale"
@@ -62,38 +61,11 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
-    },
-    "featured_collection_4KiVqU": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "collection": "pre-black-friday-sale",
-        "products": [],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Pre-Black Friday Collection | 1+1 FREE",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
     "image_with_text_overlay_UHUzDf",
     "rich_text_88nNWN",
-    "main",
-    "featured_collection_4KiVqU"
+    "main"
   ]
 }
