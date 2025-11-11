@@ -26,6 +26,29 @@
         "overlay_opacity": 30
       }
     },
+    "rich_text_88nNWN": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_nFqdwC": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>A gentle beginning to the season…</strong></p><p>As the days grow colder, we wanted to share a little warmth with you.</p><p>Enjoy up to <strong>30% off</strong> during our <em><strong>Pre-Black Friday Sale, </strong></em>a thoughtful thank-you for being part of the Wuxiz Boutique family.</p><p>Timeless comfort, made for the moments that matter most.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_nFqdwC"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "main": {
       "type": "main-list-collections",
       "settings": {
@@ -40,6 +63,7 @@
   },
   "order": [
     "image_with_text_overlay_UHUzDf",
+    "rich_text_88nNWN",
     "main"
   ]
 }
