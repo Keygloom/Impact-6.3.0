@@ -24,14 +24,14 @@
         "message_tWgfVH": {
           "type": "message",
           "settings": {
-            "text": "ADD 2 TO CART TO UNLOCK 15% SAVINGS",
+            "text": "ADD 2 ITEMS TO CART TO UNLOCK 15% SAVINGS",
             "url": "shopify://collections"
           }
         },
         "message_3JB4ac": {
           "type": "message",
           "settings": {
-            "text": "ADD 3 TO CART TO UNLOCK 25% SAVINGS",
+            "text": "ADD 3 ITEMS TO CART TO UNLOCK 25% SAVINGS",
             "url": "shopify://collections"
           }
         }
