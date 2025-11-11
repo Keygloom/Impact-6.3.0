@@ -20,10 +20,18 @@
             "text": "PRE-BLACK FRIDAY SALE | ADD 2 TO CART TO UNLOCK 15% SAVINGS | ADD 3 TO CART TO UNLOCK 25% SAVINGS",
             "url": "shopify://collections"
           }
+        },
+        "message_tWgfVH": {
+          "type": "message",
+          "settings": {
+            "text": "ADD 2 TO CART TO UNLOCK 15% SAVINGS",
+            "url": "shopify://collections"
+          }
         }
       },
       "block_order": [
-        "message_nFVXWh"
+        "message_nFVXWh",
+        "message_tWgfVH"
       ],
       "settings": {
         "enable_sticky": true,
