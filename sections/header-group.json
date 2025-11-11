@@ -17,7 +17,7 @@
         "message_nFVXWh": {
           "type": "message",
           "settings": {
-            "text": "PRE-BLACK FRIDAY SALE | ADD 2 TO CART TO UNLOCK 15% SAVINGS | ADD 3 TO CART TO UNLOCK 25% SAVINGS",
+            "text": "PRE-BLACK FRIDAY SALE",
             "url": "shopify://collections"
           }
         },
@@ -27,11 +27,19 @@
             "text": "ADD 2 TO CART TO UNLOCK 15% SAVINGS",
             "url": "shopify://collections"
           }
+        },
+        "message_3JB4ac": {
+          "type": "message",
+          "settings": {
+            "text": "ADD 3 TO CART TO UNLOCK 25% SAVINGS",
+            "url": "shopify://collections"
+          }
         }
       },
       "block_order": [
         "message_nFVXWh",
-        "message_tWgfVH"
+        "message_tWgfVH",
+        "message_3JB4ac"
       ],
       "settings": {
         "enable_sticky": true,
