@@ -53,7 +53,12 @@
       "type": "main-list-collections",
       "settings": {
         "collections": [
-          "pre-black-friday-sale"
+          "bottoms",
+          "jurken-jumpsuits",
+          "footwear",
+          "jackets-coats",
+          "sweaters-cardigans",
+          "tops-blousen"
         ],
         "collections_per_row_mobile": "1",
         "collections_per_row": 3,
