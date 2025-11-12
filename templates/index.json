@@ -90,7 +90,7 @@
         "collection_hNVQff": {
           "type": "collection",
           "settings": {
-            "collection": "sweaters",
+            "collection": "sweaters-cardigans",
             "image": "shopify://shop_images/Kersttrui_met_persona.png",
             "subheading": "",
             "title": "",
@@ -135,7 +135,7 @@
         "collection_9Xkdbg": {
           "type": "collection",
           "settings": {
-            "collection": "heels-sandals",
+            "collection": "footwear",
             "image": "shopify://shop_images/6_9c721a20-a22f-42a1-9670-06650612a89f.png",
             "subheading": "",
             "title": "",
@@ -150,8 +150,23 @@
         "collection_dn9LVp": {
           "type": "collection",
           "settings": {
-            "collection": "blouses-shirts",
+            "collection": "tops-blousen",
             "image": "shopify://shop_images/7_8030036a-d63e-4ed9-841c-118ce6e6768b.png",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_LVyT83": {
+          "type": "collection",
+          "settings": {
+            "collection": "bottoms",
+            "image": "shopify://shop_images/7630926e04244fca8d9e889318a780c1.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -168,7 +183,8 @@
         "collection_DPRmJV",
         "collection_BTTyQA",
         "collection_9Xkdbg",
-        "collection_dn9LVp"
+        "collection_dn9LVp",
+        "collection_LVyT83"
       ],
       "name": "Collection list",
       "settings": {
@@ -335,6 +351,7 @@
         "testimonial_zMkz4p",
         "testimonial_MML34b"
       ],
+      "disabled": true,
       "name": "Testimonials",
       "settings": {
         "full_width": true,
