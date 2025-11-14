@@ -17,29 +17,29 @@
         "message_nFVXWh": {
           "type": "message",
           "settings": {
-            "text": "PRE-BLACK FRIDAY COLLECTION SAVE 50% PER ITEM",
+            "text": "PRE-BLACK FRIDAY COLLECTION | SAVE 50% PER ITEM",
             "url": "shopify://collections/bestsellers"
           }
         },
         "message_tWgfVH": {
           "type": "message",
           "settings": {
-            "text": "ADD 2 ITEMS TO CART TO UNLOCK 10% SAVINGS",
-            "url": "shopify://collections"
+            "text": "ADD 2 ITEMS TO CART TO UNLOCK 10% SAVINGS ON TOP OF THE PRE-BLACK FRIDAY COLLECTION",
+            "url": "shopify://collections/bestsellers"
           }
         },
         "message_3JB4ac": {
           "type": "message",
           "settings": {
-            "text": "ADD 3 ITEMS TO CART TO UNLOCK 20% SAVINGS",
-            "url": "shopify://collections"
+            "text": "ADD 3 ITEMS TO CART TO UNLOCK 20% SAVINGS ON TOP OF THE PRE-BLACK FRIDAY COLLECTION",
+            "url": "shopify://collections/bestsellers"
           }
         },
         "message_hPmNjK": {
           "type": "message",
           "settings": {
-            "text": "ADD 4 ITEMS TO CART TO UNLOCK 30% SAVINGS",
-            "url": "shopify://collections"
+            "text": "ADD 4 ITEMS TO CART TO UNLOCK 30% SAVINGS ON TOP OF THE PRE-BLACK FRIDAY COLLECTION",
+            "url": "shopify://collections/bestsellers"
           }
         }
       },
