@@ -37,7 +37,7 @@
         "richtext_gDKLEw": {
           "type": "richtext",
           "settings": {
-            "content": "<p><strong>A gentle beginning to the season…</strong></p><p>As the days grow colder, we wanted to share a little warmth with you.</p><p>Enjoy up to <strong>50% off</strong> during our <em><strong>Pre-Black Friday Season, </strong></em>a thoughtful thank-you for being part of the Wuxiz Boutique family.</p><p>Timeless comfort, made for the moments that matter most.</p>"
+            "content": "<p><strong>A gentle beginning to the season…</strong></p><p>As the days grow colder, we wanted to share a little warmth with you.</p><p>Enjoy up to <strong>50% off</strong> during our <a href=\"/collections/bestsellers\" title=\"Pre-Black Friday Collection\"><em><strong>Pre-Black Friday Season</strong></em></a><em><strong>, </strong></em>a thoughtful thank-you for being part of the Wuxiz Boutique family.</p><p>Timeless comfort, made for the moments that matter most.</p>"
           }
         }
       },
