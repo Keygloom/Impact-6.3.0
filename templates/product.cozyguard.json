@@ -172,6 +172,63 @@
         "input_text_color": ""
       }
     },
+    "multiple_images_with_text_hahiNF": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_8jCTB9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/256874bc-3885-4b52-af88-6450b0dd70e9_675x1200_1a83d0f8-9edf-41ff-b17f-186972b68fe0.webp",
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "",
+            "content": "<p>Wonderfully warm, well-fitting slippers that are easy to walk around the garden in. They're waterproof, so I can walk through wet grass without any problems!</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_fjXAVV": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/64f356b2-cb7a-4c78-8fb4-83238221c23a.webp",
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "",
+            "content": "<p>So comfortable, soft, and warm! Gorgeous! 👍❤️<br/>As of November 15, 2025, I still love wearing it and wear it often; it keeps its shape well!</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_4Tctyh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/f59e80f2-81fd-4d56-b6ce-c34ea6934665.webp",
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "",
+            "content": "<p>They're very light, yet sturdy. Which honestly surprises me. Especially because this is a combination I can't find anywhere, but now it actually exists. The bottom of the sole is non-slip, so I can walk anywhere without any danger!❤️</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_8jCTB9",
+        "item_fjXAVV",
+        "item_4Tctyh"
+      ],
+      "name": "Multiple images with text",
+      "settings": {
+        "full_width": true,
+        "images_layout": "collage",
+        "collage_images_alignment": "shifted",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
     "ss_testimonial_16_ABDJAY": {
       "type": "ss-testimonial-16",
       "blocks": {
@@ -440,6 +497,7 @@
   },
   "order": [
     "main",
+    "multiple_images_with_text_hahiNF",
     "ss_testimonial_16_ABDJAY",
     "timeline_cL7Q6K",
     "related-products"
