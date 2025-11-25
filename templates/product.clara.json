@@ -1,0 +1,447 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "liquid_NGg8xy": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<a href=\"#CustomReviewSlider_RowMain\" class=\"reviews_stars\">\n<style>\n  .reviews_stars {\n    display: flex;\n    gap: 10px;\n    align-items: center;\n    text-decoration: none;\n    color: #000000;\n  }\n  .reviews_stars .stars {\n    display: flex;\n    gap: 4px;\n    max-width: 90px;\n  }\n  .reviews_stars .ratings span {\n    white-space: nowrap;  \n  }\n  \n</style>\n  <div class=\"stars\">\n    <svg class=\"star-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M32 0H0V32H32V0Z\" fill=\"#E3E3E3\"></path>\n      <path class=\"star-indicator\" d=\"M32 0H0V32H32V0Z\" fill=\"#00B67A\"></path>\n      <mask id=\"mask0_19_10a\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"5\" y=\"5\" width=\"22\" height=\"22\">\n        <path d=\"M27 5H5V27H27V5Z\" fill=\"white\"></path>\n      </mask>\n      <g mask=\"url(#mask0_19_10a)\">\n        <path d=\"M9.20283 27L16.001 21.807L22.7972 27L20.2018 18.596L27 13.403H18.5984L16.001 5L13.4037 13.403H5L11.7982 18.596L9.20283 27Z\" fill=\"white\"></path>\n      </g>\n    </svg>\n    <svg class=\"star-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M32 0H0V32H32V0Z\" fill=\"#E3E3E3\"></path>\n      <path class=\"star-indicator\" d=\"M32 0H0V32H32V0Z\" fill=\"#00B67A\"></path>\n      <mask id=\"mask0_19_10b\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"5\" y=\"5\" width=\"22\" height=\"22\">\n        <path d=\"M27 5H5V27H27V5Z\" fill=\"white\"></path>\n      </mask>\n      <g mask=\"url(#mask0_19_10b)\">\n        <path d=\"M9.20283 27L16.001 21.807L22.7972 27L20.2018 18.596L27 13.403H18.5984L16.001 5L13.4037 13.403H5L11.7982 18.596L9.20283 27Z\" fill=\"white\"></path>\n      </g>\n    </svg>\n    <svg class=\"star-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M32 0H0V32H32V0Z\" fill=\"#E3E3E3\"></path>\n      <path class=\"star-indicator\" d=\"M32 0H0V32H32V0Z\" fill=\"#00B67A\"></path>\n      <mask id=\"mask0_19_10c\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"5\" y=\"5\" width=\"22\" height=\"22\">\n        <path d=\"M27 5H5V27H27V5Z\" fill=\"white\"></path>\n      </mask>\n      <g mask=\"url(#mask0_19_10c)\">\n        <path d=\"M9.20283 27L16.001 21.807L22.7972 27L20.2018 18.596L27 13.403H18.5984L16.001 5L13.4037 13.403H5L11.7982 18.596L9.20283 27Z\" fill=\"white\"></path>\n      </g>\n    </svg>\n    <svg class=\"star-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M32 0H0V32H32V0Z\" fill=\"#E3E3E3\"></path>\n      <path class=\"star-indicator\" d=\"M32 0H0V32H32V0Z\" fill=\"#00B67A\"></path>\n      <mask id=\"mask0_19_10d\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"5\" y=\"5\" width=\"22\" height=\"22\">\n        <path d=\"M27 5H5V27H27V5Z\" fill=\"white\"></path>\n      </mask>\n      <g mask=\"url(#mask0_19_10d)\">\n        <path d=\"M9.20283 27L16.001 21.807L22.7972 27L20.2018 18.596L27 13.403H18.5984L16.001 5L13.4037 13.403H5L11.7982 18.596L9.20283 27Z\" fill=\"white\"></path>\n      </g>\n    </svg>\n    <svg class=\"star-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M32 0H0V32H32V0Z\" fill=\"#E3E3E3\"></path>\n      <path class=\"star-indicator\" d=\"M32 0H0V32H32V0Z\" fill=\"#00B67A\" style=\"transform: translateX(-6.4px);\"></path>\n      <mask id=\"mask0_19_10e\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"5\" y=\"5\" width=\"22\" height=\"22\">\n        <path d=\"M27 5H5V27H27V5Z\" fill=\"white\"></path>\n      </mask>\n      <g mask=\"url(#mask0_19_10e)\">\n        <path d=\"M9.20283 27L16.001 21.807L22.7972 27L20.2018 18.596L27 13.403H18.5984L16.001 5L13.4037 13.403H5L11.7982 18.596L9.20283 27Z\" fill=\"white\"></path>\n      </g>\n    </svg>\n  </div>\n  <div class=\"ratings\">\n    <span> 4.8 / 5 Rating (2392 reviews) </span>\n  </div>\n</a>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h5"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "liquid_NL63im": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<ul style=\"list-style: none; padding: 0; margin: 0;\">\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/5676238.png?v=1760558390\" \n      alt=\"Pay safely\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Pay safely</strong> with Creditcard, Shop Pay & PayPal</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/197430.png?v=1760558322\" \n      alt=\"Free shipping\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span><strong>Free shipping</strong> across Canada</span>\n  </li>\n  <li style=\"margin-bottom: 6px; display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/655339-200.png?v=1760182300\" \n      alt=\"Money Back Guarantee\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    <span>30-Day<strong> Money Back Guarantee</strong></span>\n  </li>\n  <li style=\"display: flex; align-items: center;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0976/7898/3514/files/dc2fc339-324c-4e47-9692-73ba06eb760a.webp?v=1761952544\" \n      alt=\"Stock indicator\" \n      style=\"width: 18px; height: 18px; margin-right: 8px;\" \n    />\n    {% if product.available and product.inventory_quantity > 0 %}\n      <span>Nog {{ product.inventory_quantity }} stuks op voorraad</span>\n    {% else %}\n      <span>Wuxiz Boutique is trusted by <strong> 2.000+ Canadian women </strong></span>\n    {% endif %}\n  </li>\n</ul>"
+          }
+        },
+        "kiwi_size_chart_recommender_kiwi_sizing_dw3Gkh": {
+          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
+          "settings": {
+            "product": "{{product}}",
+            "waitForElementSelector": "",
+            "waitForElementDelay": 5
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "block_swatch",
+            "variant_image_options": "Color",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "liquid_8pqqfN": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n.payment-icons-container {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center;\n  align-items: center;\n  gap: 12px;\n}\n.payment-icons-container svg {\n  width: 55px;\n  height: auto;\n  max-height: 50px;\n}\n@media (max-width: 768px) {\n  .payment-icons-container {\n    justify-content: center;\n    gap: 8px;\n  }\n  .payment-icons-container svg {\n    width: 45px;\n    max-height: 38px;\n  }\n}\n</style>\n<div class=\"payment-icons-container\">\n  {%- for type in shop.enabled_payment_types -%}\n    {{ type | payment_type_svg_tag }}\n  {%- endfor -%}\n</div>"
+          }
+        },
+        "offer_jLLEVK": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-star",
+            "icon_width": 24,
+            "title": "UPDATE",
+            "content": "<p>Pre-Black Friday demand is high. Restock expected to sell out again soon.</p>",
+            "background": "#e0f7ef",
+            "text_color": "#04da8d"
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "collapsible_text_JfimfT": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Delivery information",
+            "content": "<p>Once your payment is confirmed, we’ll begin processing your order right away.<br/><br/>Typically, it takes <strong>1-3 business days </strong>to prepare and fulfill your order from the Canadian fulfillment center.<br/><br/>After your order is dispatched, you'll receive a confirmation email with a tracking number, allowing you to follow your package’s journey. You can also track your order anytime on the <strong>Track Order </strong>page. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_86WpAt": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>Wrong size? Displeased? <strong>No problem!</strong> If for any reason you are not satisfied with the product, we offer a 30 day return policy.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_UdYfW4": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Any other questions?",
+            "content": "<p>We believe that fashion is a way to showcase your individuality and embrace your confidence.<br/><br/>That's why we're committed to helping you discover the perfect outfit that reflects your unique style and personality.</p><p>Our <strong>friendly customer service team</strong> is always ready to assist. Whether you need advice on sizing, outfit recommendations, or simply want to reach out, we're here to support you!</p><p>Feel free to get in touch anytime through our <strong>contact form</strong> or drop us an email at <strong>info@wuxiz.com.</strong></p>",
+            "page": ""
+          }
+        },
+        "liquid_jEXQVj": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<details class=\"product-info__accordion accordion  group\" aria-expanded=\"true\" is=\"accordion-disclosure\" open=\"\" style=\"overflow: visible; height: auto;margin-top:-25px;border-top:none;\">\n  <summary><div class=\"accordion__toggle bold\"><span>Reviews</span><span class=\"circle-chevron group-hover:colors group-expanded:colors group-expanded:rotate\"><svg role=\"presentation\" focusable=\"false\" width=\"8\" height=\"6\" class=\"icon icon-chevron-bottom-small\" viewBox=\"0 0 8 6\">\n        <path d=\"m1 1.5 3 3 3-3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path>\n      </svg></span>\n    </div>\n  </summary>\n\n  <div class=\"accordion__content\" style=\"opacity: 1; transform: translateY(-4px);\">{% render 'svg-down' %}</div>\n</details>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_NGg8xy",
+        "title",
+        "badges",
+        "price",
+        "liquid_NL63im",
+        "kiwi_size_chart_recommender_kiwi_sizing_dw3Gkh",
+        "variant_picker",
+        "buy_buttons",
+        "liquid_8pqqfN",
+        "offer_jLLEVK",
+        "payment_terms",
+        "separator",
+        "description",
+        "collapsible_text_JfimfT",
+        "collapsible_text_86WpAt",
+        "collapsible_text_UdYfW4",
+        "liquid_jEXQVj"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "ss_testimonial_16_ABDJAY": {
+      "type": "ss-testimonial-16",
+      "blocks": {
+        "item_MaK7gL": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Easy and quick Ordering",
+            "text": "The service in the store was fast and friendly. The products are of top quality, and I’m very satisfied with my purchase. Highly recommended!",
+            "author_date": "Sarah W.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_fpl36qfpl36qfpl3.png"
+          }
+        },
+        "item_knpNYx": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Definitely Coming Back!",
+            "text": "I had such a great experience at the store. Amelia was friendly and helpful, guiding me to the perfect choice and making me feel welcome. I’ll definitely be back!",
+            "author_date": "Olivia B.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_ot172not172not17.png"
+          }
+        },
+        "item_FTMbjy": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Attention to detail",
+            "text": "The beautiful packaging and high-quality materials impressed me. You can really feel the attention to detail. Great experience!",
+            "author_date": "Grace M.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_qgnugpqgnugpqgnu.png"
+          }
+        },
+        "item_VCf98m": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Fast delivery",
+            "text": "My order came 2 days after I ordered, spot on. The set is cosy without being heavy, and it looks just like the photos.",
+            "author_date": "Helen D.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_1n0r6m1n0r6m1n0r.png"
+          }
+        },
+        "item_cq6P8h": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Perfect fit",
+            "text": "The clothing fits perfectly and is very comfortable. Thanks to the accurate size chart, choosing the right size was easy. I will definitely order again!",
+            "author_date": "Cathrine F.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_ntrigpntrigpntri.png"
+          }
+        },
+        "item_WjYgER": {
+          "type": "item",
+          "settings": {
+            "stars_count": 5,
+            "heading": "Excellent value for the money",
+            "text": "High quality products at fair prices. I'm glad I found this site and will definitely order again!",
+            "author_date": "Linda W.",
+            "author_image": "shopify://shop_images/Gemini_Generated_Image_lc0rhclc0rhclc0r.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_MaK7gL",
+        "item_knpNYx",
+        "item_FTMbjy",
+        "item_VCf98m",
+        "item_cq6P8h",
+        "item_WjYgER"
+      ],
+      "name": "SS - Testimonial #16",
+      "settings": {
+        "content_align": "center",
+        "content_align_mobile": "center",
+        "heading": "Our customers tell it better than we do!",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 40,
+        "heading_size_mobile": 24,
+        "heading_height": 130,
+        "rating_text": "Excellent",
+        "rating_text_custom": false,
+        "rating_text_font": "josefin_sans_n4",
+        "rating_text_size": 24,
+        "rating_text_size_mobile": 20,
+        "rating_text_advanced": false,
+        "rating_text_height": 130,
+        "rating_text_mt": 16,
+        "rating_text_mt_mobile": 16,
+        "rating": 4.8,
+        "rating_hide": false,
+        "rating_text_hide": false,
+        "stars_count": 5,
+        "stars_size": 28,
+        "stars_size_mobile": 24,
+        "text": "<p>based on <strong>2392 </strong>reviews</p>",
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 20,
+        "text_size_mobile": 16,
+        "text_advanced": false,
+        "text_height": 130,
+        "text_mt": 16,
+        "text_mt_mobile": 16,
+        "scrolling_velocity": 80,
+        "scrolling_velocity_mobile": 100,
+        "reverse_direction": false,
+        "pause_hover": true,
+        "scrolling_advanced": false,
+        "scrolling_mt": 36,
+        "scrolling_mt_mobile": 36,
+        "scrolling_gap": 20,
+        "scrolling_gap_mobile": 20,
+        "card_width": 360,
+        "card_width_mobile": 280,
+        "card_advanced": false,
+        "card_padding_vertical": 36,
+        "card_padding_vertical_mobile": 28,
+        "card_padding_horizontal": 40,
+        "card_padding_horizontal_mobile": 24,
+        "card_radius": 16,
+        "card_border_thickness": 0,
+        "card_shadow_style": "2",
+        "card_content_align": "center",
+        "card_content_align_mobile": "center",
+        "card_height": false,
+        "card_heading_custom": false,
+        "card_heading_font": "josefin_sans_n4",
+        "card_heading_size": 24,
+        "card_heading_size_mobile": 20,
+        "card_heading_advanced": false,
+        "card_heading_height": 130,
+        "card_heading_mt": 16,
+        "card_heading_mt_mobile": 16,
+        "card_text_custom": false,
+        "card_text_font": "josefin_sans_n4",
+        "card_text_size": 14,
+        "card_text_size_mobile": 14,
+        "card_text_advanced": false,
+        "card_text_height": 150,
+        "card_text_mt": 16,
+        "card_text_mt_mobile": 16,
+        "card_text_more": "View More",
+        "card_text_less": "View Less",
+        "card_count_words": 60,
+        "author_image_size": 200,
+        "author_image_size_mobile": 200,
+        "author_image_position": "top",
+        "card_author_date_text_custom": false,
+        "card_author_date_text_font": "josefin_sans_n4",
+        "card_author_date_text_size": 16,
+        "card_author_date_text_size_mobile": 16,
+        "card_author_date_text_advanced": false,
+        "card_author_date_text_height": 130,
+        "card_author_date_text_mt": 16,
+        "card_author_date_text_mt_mobile": 16,
+        "button": "",
+        "url": "",
+        "open_in_new_tab": false,
+        "button_style": "outline",
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 16,
+        "button_size_mobile": 14,
+        "button_advanced": false,
+        "button_height": 100,
+        "button_padding_horizontal": 20,
+        "button_padding_horizontal_mobile": 20,
+        "button_padding_vertical": 16,
+        "button_padding_vertical_mobile": 16,
+        "button_radius": 8,
+        "button_border_thickness": 1,
+        "button_mt": 32,
+        "button_mt_mobile": 28,
+        "button_align": "center",
+        "button_align_mobile": "center",
+        "heading_color": "#000000",
+        "rating_text_color": "#000000",
+        "text_color": "#000000",
+        "stars_color": "#ffffff",
+        "stars_bg_color": "#00b67a",
+        "stars_bg_half_color": "#dddddd",
+        "button_color": "#ffffff",
+        "button_hover_color": "#121212",
+        "button_bg_color": "#121212",
+        "button_bg_hover_color": "#ffffff",
+        "button_border_color": "#121212",
+        "button_border_hover_color": "#121212",
+        "card_heading_color": "#000000",
+        "card_text_color": "#000000",
+        "card_author_date_text_color": "#000000",
+        "view_color": "#000000",
+        "card_bg_color": "#ffffff",
+        "card_border_color": "#000000",
+        "background_style": "solid",
+        "background_color": "#ffffff",
+        "background_gradient": "linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%)",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
+    "timeline_cL7Q6K": {
+      "type": "timeline",
+      "blocks": {
+        "slide_XmEBY9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/79520693-f7c1-4a30-976f-bf0cba82e503.png",
+            "navigation_label": "",
+            "subheading": "The Heart Behind Wuxiz Boutique",
+            "title": "",
+            "content": "<p>Wuxiz Boutique was born from three generations of women: grandmother, mother, and granddaughter. United by a shared passion for timeless style and comfort.<br/><br/>What began as a small family dream has grown into a boutique that celebrates every woman’s journey.<br/><br/>Each piece is designed with care, made to move with you through every season of life.</p><p><strong>From our family to yours, discover confidence that never fades.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_XmEBY9"
+      ],
+      "name": "Timeline",
+      "settings": {
+        "full_width": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [
+          "megan-oversized-hooded-pullover-hooded-jacket",
+          "michelle™-cozy-corduroy-hooded-jacket",
+          "rachel™-cozy-hooded-windbreaker-jacket",
+          "caroline™-knit-sweater-denim",
+          "estelle™-ruffled-collar-sweater-top"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Combine & save more",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ss_testimonial_16_ABDJAY",
+    "timeline_cL7Q6K",
+    "related-products"
+  ]
+}
