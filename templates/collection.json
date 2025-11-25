@@ -20,8 +20,8 @@
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "auto",
-        "image": "shopify://shop_images/Black_Week_Banners.png",
-        "mobile_image": "shopify://shop_images/Black_Week_Banners.png",
+        "image": "shopify://shop_images/Black_Week_Banners_a158d7f2-ab2d-40ac-818b-5a3b1181ed21.png",
+        "mobile_image": "shopify://shop_images/Black_Week_Banners_a158d7f2-ab2d-40ac-818b-5a3b1181ed21.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -37,7 +37,7 @@
         "richtext_gDKLEw": {
           "type": "richtext",
           "settings": {
-            "content": "<p><strong>A gentle beginning to the season…</strong></p><p>As the days grow colder, we wanted to share a little warmth with you.</p><p>Enjoy up to <strong>50% off</strong> during our <a href=\"/collections/bestsellers\" title=\"Pre-Black Friday Collection\"><em><strong>Black Friday Season</strong></em></a><em><strong>, </strong></em>a thoughtful thank-you for being part of the Wuxiz Boutique family.</p><p>Timeless comfort, made for the moments that matter most.</p>"
+            "content": "<p><strong>A gentle beginning to the season…</strong></p><p>As the days grow colder, we wanted to share a little warmth with you.</p><p>Enjoy up to <strong>80% off</strong> during our <a href=\"/collections/bestsellers\" title=\"Pre-Black Friday Collection\"><em><strong>Black Friday Season</strong></em></a><em><strong>, </strong></em>a thoughtful thank-you for being part of the Wuxiz Boutique family.</p><p>Timeless comfort, made for the moments that matter most.</p>"
           }
         }
       },
