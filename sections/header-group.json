@@ -18,28 +18,28 @@
           "type": "message",
           "settings": {
             "text": "BLACK FRIDAY COLLECTION | SAVE 80% PER ITEM",
-            "url": "shopify://collections/bestsellers"
+            "url": "shopify://collections/christmas-season-collection"
           }
         },
         "message_tWgfVH": {
           "type": "message",
           "settings": {
             "text": "ADD 2 ITEMS TO CART TO UNLOCK 10% SAVINGS ON TOP OF THE BLACK FRIDAY COLLECTION",
-            "url": "shopify://collections/bestsellers"
+            "url": "shopify://collections/christmas-season-collection"
           }
         },
         "message_3JB4ac": {
           "type": "message",
           "settings": {
             "text": "ADD 3 ITEMS TO CART TO UNLOCK 20% SAVINGS ON TOP OF THE BLACK FRIDAY COLLECTION",
-            "url": "shopify://collections/bestsellers"
+            "url": "shopify://collections/christmas-season-collection"
           }
         },
         "message_hPmNjK": {
           "type": "message",
           "settings": {
             "text": "ADD 4 ITEMS TO CART TO UNLOCK 30% SAVINGS ON TOP OF THE BLACK FRIDAY COLLECTION",
-            "url": "shopify://collections/bestsellers"
+            "url": "shopify://collections/christmas-season-collection"
           }
         }
       },
